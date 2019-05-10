@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background_white"
+    android:icon="@drawable/navigater"
+    android:label="台大雲林分院 - 室內導航系統"
+    tools:context=".MainActivity">
+
+
+    <TextView
+        android:id="@+id/VersiontextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:text="VersionTextView" />
+
+    <ImageView
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/logo3"
+        />
+
+    <TextView
+        android:id="@+id/tv_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="5dip"
+        android:layout_marginTop="5dip"
+        android:text="【點選圖片選擇目的地】"
+        android:textSize="25dp" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:weightSum="1"
+            android:layout_weight="0.5">
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.33">
+
+                <Button
+                    android:id="@+id/btn_stethoscope"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/background"
+                    android:gravity="center|bottom"
+                    android:paddingBottom="10dp"
+                    android:singleLine="false"
+                    android:text="各科門診"
+                    android:onClick="onClick"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:id="@+id/im_stethoscope"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="35dip"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+
+                    android:src="@drawable/stethoscope2" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.33">
+
+                <Button
+                    android:id="@+id/btn_bill"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/background"
+                    android:gravity="center|bottom"
+                    android:paddingBottom="10dp"
+
+                    android:singleLine="false"
+                    android:text="批價櫃臺"
+                    android:onClick="onClick"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:id="@+id/im_bill"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginBottom="35dip"
+                    android:src="@drawable/cash" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.33">
+
+                <Button
+                    android:id="@+id/btn_medicent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/background"
+                    android:gravity="center|bottom"
+                    android:paddingBottom="10dp"
+                    android:text="領藥處"
+                    android:onClick="onClick"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:id="@+id/im_medicent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginBottom="35dip"
+                    android:src="@drawable/pill" />
+            </RelativeLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:weightSum="1"
+            android:layout_weight="0.5">
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.33">
+
+                <Button
+                    android:id="@+id/btn_examination_room"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/background"
+                    android:gravity="center|bottom"
+                    android:onClick="onClick"
+                    android:paddingBottom="10dp"
+                    android:text="檢查室"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:id="@+id/im_examination_room"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginBottom="35dip"
+                    android:src="@drawable/examination" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.33">
+
+                <Button
+                    android:id="@+id/btn_exsanguinate"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/background"
+                    android:gravity="center|bottom"
+                    android:paddingBottom="10dp"
+                    android:text="抽血處"
+                    android:onClick="onClick"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:id="@+id/im_exsanguinate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginBottom="35dip"
+                    android:src="@drawable/exsanguinate" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.33">
+
+                <Button
+                    android:id="@+id/btn_convenience_store"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/background"
+                    android:gravity="center|bottom"
+                    android:paddingBottom="10dp"
+                    android:text="萊爾富"
+                    android:onClick="onClick"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:id="@+id/im_convenience_store"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginBottom="35dip"
+                    android:src="@drawable/convenience_store" />
+            </RelativeLayout>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:weightSum="1"
+            android:layout_weight="0.5">
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.33">
+
+                <Button
+                    android:id="@+id/btn_other"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/background"
+                    android:gravity="center|bottom"
+                    android:onClick="onClick"
+                    android:paddingBottom="10dp"
+                    android:text="其它"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:id="@+id/im_other"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginBottom="35dip"
+                    android:src="@drawable/route" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.33">
+
+                <Button
+                    android:id="@+id/btn_wc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/background"
+                    android:gravity="center|bottom"
+                    android:paddingBottom="10dp"
+                    android:text="廁所"
+                    android:onClick="onClick"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:id="@+id/im_wc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginBottom="35dip"
+                    android:src="@drawable/bathroom" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.33">
+
+                <Button
+                    android:id="@+id/btn_exit"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/background"
+                    android:gravity="center|bottom"
+                    android:paddingBottom="10dp"
+
+                    android:singleLine="false"
+                    android:text="出口"
+                    android:onClick="onClick"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:id="@+id/im_exit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginBottom="35dip"
+                    android:src="@drawable/exit3" />
+            </RelativeLayout>
+        </TableRow>
+
+    </TableLayout>
+
+</LinearLayout>
