@@ -405,6 +405,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                 }
                 break;
 
+                //其他
             case R.id.btn_other:
                 ButtonClicked = true;
                 intent = new Intent(MainActivity.this, ListViewActivity.class);
@@ -413,6 +414,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                 finish();
                 break;
 
+                //批價掛號
             case R.id.btn_bill:
                 ButtonClicked = true;
                 for (int i = 0; i < listForStoringAllNodes.size(); i++) {
@@ -440,6 +442,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                 }
                 break;
 
+                //領藥處
             case R.id.btn_medicent:
                 ButtonClicked = true;
                 for (int i = 0; i < listForStoringAllNodes.size(); i++) {
@@ -467,6 +470,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                 }
                 break;
 
+                //廁所
             case R.id.btn_wc:
                 ButtonClicked = true;
                 for (int i = 0; i < listForStoringAllNodes.size(); i++) {
@@ -520,12 +524,12 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                     finish();
                 }
                 break;
-            //萊爾富
+            //商店餐廳
             case R.id.btn_convenience_store:
                 ButtonClicked = true;
                 for (int i = 0; i < listForStoringAllNodes.size(); i++) {
                     Log.i("asdd", listForStoringAllNodes.get(i)._category);
-                    if (listForStoringAllNodes.get(i)._category.equals("超商")) {
+                    if (listForStoringAllNodes.get(i)._category.equals("商店餐廳")) {
                         Log.i("asdd", listForStoringAllNodes.get(i)._category + "2");
                         CList.add(listForStoringAllNodes.get(i));
                     }
@@ -542,7 +546,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                     finish();
                 } else if (CList.size() > 1) {
                     intent = new Intent(MainActivity.this, ListViewActivity.class);
-                    intent.putExtra("Category", "超商");
+                    intent.putExtra("Category", "商店餐廳");
                     startActivity(intent);
                     finish();
                 }
@@ -552,7 +556,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                 ButtonClicked = true;
                 for (int i = 0; i < listForStoringAllNodes.size(); i++) {
                     Log.i("asdd", listForStoringAllNodes.get(i)._category);
-                    if (listForStoringAllNodes.get(i)._category.equals("抽血處")) {
+                    if (listForStoringAllNodes.get(i)._category.equals("檢驗醫學部")) {
                         Log.i("asdd", listForStoringAllNodes.get(i)._category + "2");
                         CList.add(listForStoringAllNodes.get(i));
                     }
@@ -569,7 +573,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                     finish();
                 } else if (CList.size() > 1) {
                     intent = new Intent(MainActivity.this, ListViewActivity.class);
-                    intent.putExtra("Category", "抽血處");
+                    intent.putExtra("Category", "檢驗醫學部");
                     startActivity(intent);
                     finish();
                 }

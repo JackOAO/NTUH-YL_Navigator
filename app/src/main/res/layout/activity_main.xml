@@ -168,7 +168,7 @@
                     android:background="@drawable/background"
                     android:gravity="center|bottom"
                     android:paddingBottom="10dp"
-                    android:text="抽血處"
+                    android:text="檢驗醫學部"
                     android:onClick="onClick"
                     android:textSize="18sp" />
 
@@ -193,7 +193,7 @@
                     android:background="@drawable/background"
                     android:gravity="center|bottom"
                     android:paddingBottom="10dp"
-                    android:text="萊爾富"
+                    android:text="商店餐廳"
                     android:onClick="onClick"
                     android:textSize="18sp" />
 
@@ -204,7 +204,7 @@
                     android:layout_centerInParent="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginBottom="35dip"
-                    android:src="@drawable/convenience_store" />
+                    android:src="@drawable/shop2" />
             </RelativeLayout>
         </TableRow>
 

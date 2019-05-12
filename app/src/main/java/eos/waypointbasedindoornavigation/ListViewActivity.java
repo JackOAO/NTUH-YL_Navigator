@@ -93,8 +93,8 @@ public class ListViewActivity extends AppCompatActivity implements Serializable{
 
         if(!x.equals("其他"))
             adapter = new RecyclerViewAdapter(this, categorizedDataList.get(x));
-        else
-            adapter = new RecyclerViewAdapter(this, sortList);
+        //else
+        //    adapter = new RecyclerViewAdapter(this, sortList);
 
         //Separate every selectable item with divider line
         DividerItemDecoration divider = new
