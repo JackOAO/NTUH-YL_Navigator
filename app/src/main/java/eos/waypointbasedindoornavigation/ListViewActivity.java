@@ -91,7 +91,7 @@ public class ListViewActivity extends AppCompatActivity implements Serializable{
 
        // Log.i("123123","comein");
 
-        if(!x.equals("其他"))
+       // if(!x.equals("其他"))
             adapter = new RecyclerViewAdapter(this, categorizedDataList.get(x));
         //else
         //    adapter = new RecyclerViewAdapter(this, sortList);
