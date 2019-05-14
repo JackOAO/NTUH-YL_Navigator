@@ -23,7 +23,7 @@
 		<node id='0xde57c8410x0721f342' name='驗糞' region='region1' category='檢驗醫學部'/>
 		<node id='0xde57c8410x0721f342' name='驗尿' region='region1' category='檢驗醫學部'/>
 		<node id='0xde57c8410x0721f342' name='住院服務中心' region='region1' category='其他'/>
-		<node id='0x0800b8410x0200f042' name='病歷室' region='region1' category='其他'/>
+		<node id='0x553bc2410x2d44f042' name='病歷室' region='region1' category='其他'/>
 		<node id='0xeb57ba410xfb95f042' name='後門出口' region='region1' category='出口'/>
 	
 	</region>
@@ -31,7 +31,7 @@
 	<region id='2' name='region2' neighbor1='region1' neighbor2='' neighbor3='' neighbor4='' elevation='2'>
      
 	<node id='0x006317170x00020000' name='心臟血管檢查室' region='region2' category='檢查室'/>
-	<node id='0x553bc2410x2d44f042' name='內視鏡/超音波檢查室' region='region2' category='檢查室'/>
+	<node id='0x0800b8410x0200f042' name='內視鏡/超音波檢查室' region='region2' category='檢查室'/>
 	<node id='0x021234110x00020000' name='神經部檢查室' region='region2' category='檢查室'/>
 
     </region>
