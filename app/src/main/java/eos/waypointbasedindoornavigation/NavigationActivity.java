@@ -1654,6 +1654,7 @@ public class NavigationActivity extends AppCompatActivity implements BeaconConsu
     public void onBeaconServiceConnect() {
         //Start scanning for Lbeacon signal
         beaconManager.addRangeNotifier(new RangeNotifier() {
+            @RequiresApi(api = VERSION_CODES.JELLY_BEAN_MR2)
             @Override
             public void didRangeBeaconsInRegion(Collection<Beacon> beacons, Region region) {
                 Log.i("beacon", "Beacono Size:" + beacons.size());

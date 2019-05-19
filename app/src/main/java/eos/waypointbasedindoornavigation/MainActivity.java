@@ -179,8 +179,8 @@ public class MainActivity extends AppCompatActivity implements Serializable {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-      /* if(item.getItemId() == R.id.gear){
-            AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
+       if(item.getItemId() == R.id.gear){
+            /*AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
             dialog.setTitle("系統");
             dialog.setMessage("是否開始進行訊號校正?");
             dialog.setCancelable(false);
@@ -198,8 +198,10 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                 }
             });
 
-            dialog.show();
-        }else*/
+            dialog.show();*/
+            Intent intent = new Intent(MainActivity.this,Language_change_Activity.class);
+            startActivity(intent);
+        }else
             if(item.getItemId() == R.id.information){
             Intent intent = new Intent();
             intent = new Intent(MainActivity.this, author_list.class);
@@ -733,6 +735,41 @@ public class MainActivity extends AppCompatActivity implements Serializable {
 
         return version;
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Context appContext = GetApplicationContext.getAppContext();
+        SharedPreferences languagePref = PreferenceManager.getDefaultSharedPreferences(appContext);
+        String language_option = languagePref.getString("language","繁體中文");
+        if(language_option.equals("繁體中文"))
+        {
+            btn_stethoscope.setText("各科門診");
+            btn_bill.setText("批價櫃檯");
+            btn_medicent.setText("領藥處");
+            btn_examination_room.setText("檢查室");
+            btn_exsanguinate.setText("檢驗醫學部");
+            btn_convenience_store.setText("商店餐廳");
+            btn_other.setText("其他");
+            btn_wc.setText("廁所");
+            btn_exit.setText("出口");
+            tv_description.setText("【點選圖片選擇目的地】");
+        }
+        else  if(language_option.equals("English"))
+        {
+            btn_stethoscope.setText("Clinics");
+            btn_bill.setText("Cashier/Registration");
+            btn_medicent.setText("Pharmacy");
+            btn_examination_room.setText("Examination Room");
+            btn_exsanguinate.setText("Department of Laboratory Medicine");
+            btn_convenience_store.setText("Convenience store");
+            btn_other.setText("Other");
+            btn_wc.setText("Toilet");
+            btn_exit.setText("Exit");
+            tv_description.setText("Click on the picture to select the destination");
+        }
+    }
+
 }
 
 

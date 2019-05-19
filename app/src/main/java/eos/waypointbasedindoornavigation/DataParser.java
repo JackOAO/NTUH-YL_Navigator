@@ -20,8 +20,10 @@ Author:
 //testcommit3
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.util.Xml;
 
@@ -36,6 +38,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import static android.content.Context.MODE_PRIVATE;
 import static java.lang.Integer.parseInt;
 
 
@@ -43,11 +46,13 @@ public class DataParser {
 
     // a list of String to store a list of category for UI display
     static List<String> categoryList = new ArrayList<>();
+    static Context appContext =  GetApplicationContext.getAppContext();
+    private static SharedPreferences languagePref = PreferenceManager.getDefaultSharedPreferences(appContext);
+    static String language_option = languagePref.getString("language","繁體中文");
 
     //public static File file;
     //public static File path  =  Environment.getExternalStoragePublicDirectory
      //       (Environment.DIRECTORY_DOWNLOADS+File.separator+"WGRAPH_雲林台大醫院地圖");
-
 
     //Parse data from Region Graph  抓取Download裡面的資料夾將BuildingA讀取
     public static RegionGraph getRegionDataFromRegionGraph(Context context) {
@@ -66,7 +71,14 @@ public class DataParser {
     //將BulidA.xml檔裡面的資料抓出來
         try
         {
-            is = assetManager.open("buildingA.xml");
+            language_option = languagePref.getString("language","繁體中文");
+            Log.i("language_option", "language_option: " + language_option);
+            if(language_option.equals("繁體中文"))
+                is = assetManager.open("CHT_version/buildingA.xml");
+            else if(language_option.equals("English"))
+                is = assetManager.open("EN_version/buildingA.xml");
+            else
+                is = assetManager.open("CHT_version/buildingA.xml");
             //is = assetManager.open("buildingA.xml"); //read the XML file
             pullParser.setInput(is , "utf-8");
             int eventType = pullParser.getEventType();
@@ -190,7 +202,13 @@ public class DataParser {
             InputStream is;
 
             try {
-                is = assetManager.open("buildingA/buildingA_"+s+".xml");
+                language_option = languagePref.getString("language","繁體中文");
+                if(language_option.equals("繁體中文"))
+                    is = assetManager.open("CHT_version/buildingA/buildingA_"+s+".xml");
+                else if(language_option.equals("English"))
+                    is = assetManager.open("EN_version/buildingA/buildingA_"+s+".xml");
+                else
+                    is = assetManager.open("CHT_version/buildingA/buildingA_"+s+".xml");
                 pullParser.setInput(is, "utf-8");
                 int eventType = pullParser.getEventType();
                 while (eventType != XmlPullParser.END_DOCUMENT) {
@@ -325,10 +343,24 @@ public static List<Node> getVirtualNode(Context context,int UpOrDown) {
         InputStream is;
 
         try {
-            if (UpOrDown ==1)
-                is = assetManager.open("virtual_node_up.xml");
-            else
-                is = assetManager.open("virtual_node_down.xml");
+            if (UpOrDown ==1) {
+                language_option = languagePref.getString("language","繁體中文");
+                if(language_option.equals("繁體中文"))
+                    is = assetManager.open("CHT_version/virtual_node_up.xml");
+                else if(language_option.equals("English"))
+                    is = assetManager.open("EN_version/virtual_node_up.xml");
+                else
+                    is = assetManager.open("CHT_version/virtual_node_up.xml");
+            }
+            else {
+                language_option = languagePref.getString("language","繁體中文");
+                if(language_option.equals("繁體中文"))
+                    is = assetManager.open("CHT_version/virtual_node_down.xml");
+                else if(language_option.equals("English"))
+                    is = assetManager.open("EN_version/virtual_node_up.xml");
+                else
+                    is = assetManager.open("CHT_version/virtual_node_up.xml");
+            }
             pullParser.setInput(is, "utf-8");
             int eventType = pullParser.getEventType();
             while (eventType != XmlPullParser.END_DOCUMENT) {
@@ -397,7 +429,13 @@ public static List<Node> getVirtualNode(Context context,int UpOrDown) {
             AssetManager assetManager = context.getAssets();
             InputStream is;
             try {
-                is = assetManager.open("buildingA/buildingA_"+s+".xml");
+                language_option = languagePref.getString("language","繁體中文");
+                if(language_option.equals("繁體中文"))
+                    is = assetManager.open("CHT_version/buildingA/buildingA_"+s+".xml");
+                else if(language_option.equals("English"))
+                    is = assetManager.open("EN_version/buildingA/buildingA_"+s+".xml");
+                else
+                    is = assetManager.open("CHT_version/virtual_node_up.xml");
                 pullParser.setInput(is, "utf-8");
                 int eventType = pullParser.getEventType();
                 while (eventType != XmlPullParser.END_DOCUMENT) {
@@ -444,7 +482,14 @@ public static List<Node> getVirtualNode(Context context,int UpOrDown) {
         AssetManager assetManager = context.getAssets();
         InputStream is;
         try {
-            is = assetManager.open("init_direction.xml");
+            language_option = languagePref.getString("language","繁體中文");
+            Log.i("language_option", "language_option: " + language_option);
+            if(language_option.equals("繁體中文"))
+                is = assetManager.open("CHT_version/init_direction.xml");
+            else if(language_option.equals("English"))
+                is = assetManager.open("EN_version/init_direction.xml");
+            else
+                is = assetManager.open("CHT_version/virtual_node_up.xml");
             pullParser.setInput(is, "utf-8");
             int eventType = pullParser.getEventType();
             Log.i("xxx_initDirectionName", "Start  : " + StartUUID + "Next :" + NextUUID);
