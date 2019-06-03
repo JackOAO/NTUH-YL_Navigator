@@ -17,9 +17,12 @@ Author:
 
 --*/
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Debug;
+import android.preference.PreferenceManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
@@ -64,7 +67,16 @@ public class ListViewActivity extends AppCompatActivity implements Serializable{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listview);
-        setTitle("台大雲林分院室內導航系統");
+        Context appContext = GetApplicationContext.getAppContext();
+        SharedPreferences languagePref = PreferenceManager.getDefaultSharedPreferences(appContext);
+        String language_option = languagePref.getString("language","繁體中文");
+
+        if(language_option.equals("繁體中文")) {
+            setTitle("台大雲林分院室內導航系統");
+        }else  if(language_option.equals("English")) {
+            setTitle("NTUH - Yunlin");
+        }
+
         Log.i("List_Create_Mem", "usedMemory: Heap/Allocated Heap "+ Debug.getNativeHeapSize() + "/" + Debug.getNativeHeapAllocatedSize());
 
 

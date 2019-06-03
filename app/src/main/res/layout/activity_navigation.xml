@@ -24,13 +24,13 @@
             android:textColor="@android:color/black"/>
 
         <TextView
+            android:id="@+id/nowAt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="目前位置 :"
             android:padding="8sp"
-            android:textSize="20dp"
-            android:id="@+id/nowAt"
-            android:textColor="@android:color/black"/>
+            android:text="目前位置："
+            android:textColor="@android:color/black"
+            android:textSize="20dp" />
     </LinearLayout>
 
     <!--

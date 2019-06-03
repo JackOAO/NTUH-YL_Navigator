@@ -65,7 +65,7 @@ public class ana_signal {
         }
 //        find difference between first and second higher RSSI of UUID
         List<String> location_range = new ArrayList<>();
-        if (data_list.size() > 0) {
+        if (data_list.size() > 1) {
             for (int i = 0; i < data_list.size(); i++)
                 data_list.get(i).set_sort_way(1);
             Collections.sort(data_list);

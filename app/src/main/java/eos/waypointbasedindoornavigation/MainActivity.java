@@ -744,6 +744,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         String language_option = languagePref.getString("language","繁體中文");
         if(language_option.equals("繁體中文"))
         {
+            setTitle("台大雲林分院室內導航系統");
             btn_stethoscope.setText("各科門診");
             btn_bill.setText("批價櫃檯");
             btn_medicent.setText("領藥處");
@@ -757,16 +758,22 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         }
         else  if(language_option.equals("English"))
         {
+            setTitle("NTUH - Yunlin");
             btn_stethoscope.setText("Clinics");
             btn_bill.setText("Cashier/Registration");
+            btn_bill.setTextSize(12);
             btn_medicent.setText("Pharmacy");
             btn_examination_room.setText("Examination Room");
+            btn_examination_room.setTextSize(14);
             btn_exsanguinate.setText("Department of Laboratory Medicine");
+            btn_exsanguinate.setTextSize(10);
             btn_convenience_store.setText("Convenience store");
+            btn_convenience_store.setTextSize(14);
             btn_other.setText("Other");
             btn_wc.setText("Toilet");
             btn_exit.setText("Exit");
-            tv_description.setText("Click on the picture to select the destination");
+            tv_description.setText("【Click on the picture to select the destination】");
+            tv_description.setTextSize(15);
         }
     }
 

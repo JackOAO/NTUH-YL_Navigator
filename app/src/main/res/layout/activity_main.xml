@@ -57,6 +57,7 @@
                     android:gravity="center|bottom"
                     android:paddingBottom="10dp"
                     android:singleLine="false"
+                    android:textAllCaps="false"
                     android:text="各科門診"
                     android:onClick="onClick"
                     android:textSize="18sp" />
@@ -83,7 +84,7 @@
                     android:background="@drawable/background"
                     android:gravity="center|bottom"
                     android:paddingBottom="10dp"
-
+                    android:textAllCaps="false"
                     android:singleLine="false"
                     android:text="批價櫃臺"
                     android:onClick="onClick"
@@ -110,6 +111,7 @@
                     android:background="@drawable/background"
                     android:gravity="center|bottom"
                     android:paddingBottom="10dp"
+                    android:textAllCaps="false"
                     android:text="領藥處"
                     android:onClick="onClick"
                     android:textSize="18sp" />
@@ -145,6 +147,7 @@
                     android:onClick="onClick"
                     android:paddingBottom="10dp"
                     android:text="檢查室"
+                    android:textAllCaps="false"
                     android:textSize="18sp" />
 
                 <ImageView
@@ -169,6 +172,7 @@
                     android:gravity="center|bottom"
                     android:paddingBottom="10dp"
                     android:text="檢驗醫學部"
+                    android:textAllCaps="false"
                     android:onClick="onClick"
                     android:textSize="18sp" />
 
@@ -194,6 +198,7 @@
                     android:gravity="center|bottom"
                     android:paddingBottom="10dp"
                     android:text="商店餐廳"
+                    android:textAllCaps="false"
                     android:onClick="onClick"
                     android:textSize="18sp" />
 
@@ -227,6 +232,7 @@
                     android:onClick="onClick"
                     android:paddingBottom="10dp"
                     android:text="其它"
+                    android:textAllCaps="false"
                     android:textSize="18sp" />
 
                 <ImageView
@@ -251,6 +257,7 @@
                     android:gravity="center|bottom"
                     android:paddingBottom="10dp"
                     android:text="廁所"
+                    android:textAllCaps="false"
                     android:onClick="onClick"
                     android:textSize="18sp" />
 
@@ -276,7 +283,7 @@
                     android:background="@drawable/background"
                     android:gravity="center|bottom"
                     android:paddingBottom="10dp"
-
+                    android:textAllCaps="false"
                     android:singleLine="false"
                     android:text="出口"
                     android:onClick="onClick"
