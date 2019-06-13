@@ -1518,7 +1518,7 @@ public class NavigationActivity extends AppCompatActivity implements BeaconConsu
         //SignalLog("----------指令模組結束----------");
         FirstTurn = false;
 
-        Log.i("xxx_End", "Last node = " + lastNode._waypointName + " navigationPath(0) & (1)  = " + navigationPath.get(0)._waypointName + "&" + navigationPath.get(1)._waypointName);
+       // Log.i("xxx_End", "Last node = " + lastNode._waypointName + " navigationPath(0) & (1)  = " + navigationPath.get(0)._waypointName + "&" + navigationPath.get(1)._waypointName);
 
 
         if(FirstTurn == false) {
@@ -1840,6 +1840,8 @@ public class NavigationActivity extends AppCompatActivity implements BeaconConsu
                             receiveNode._groupID != 0) {
                         Log.i("NAP2-1", receiveNode.getName());
                         Log.i("enter", "1");
+                        //待測試
+                        //navigationPath.get(0)._waypointID = receiveNode._waypointID;
                         currentLBeaconID = navigationPath.get(0)._waypointID;
                         pass = true;
                     } else if (receiveNode._groupID == passedGroupID && receiveNode._groupID != 0) {

@@ -2,4 +2,8 @@
     <string name="app_name">台大雲林分院導航</string>
     <string name="title_activity_init_signal">initSignal</string>
     <string name="rssitestfile">rssitestfile</string>
+    <string name="Outpatient">門診進度</string>
+    <string name="Blood_collect">抽血進度</string>
+    <string name="Cashier">批價掛號進度</string>
+    <string name="Emergency">急診資訊</string>
 </resources>

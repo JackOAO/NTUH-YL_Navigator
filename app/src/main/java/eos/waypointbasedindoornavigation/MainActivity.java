@@ -163,12 +163,12 @@ public class MainActivity extends AppCompatActivity implements Serializable {
             Manifest.permission.ACCESS_COARSE_LOCATION};
     //UI design
     Intent intent;
-    Button btn_stethoscope, btn_bill, btn_exit, btn_medicent, btn_convenience_store, btn_wc,btn_exsanguinate,btn_examination_room,btn_other;
+    Button btn_stethoscope, btn_bill, btn_exit, btn_medicent, btn_convenience_store, btn_wc,btn_exsanguinate,btn_examination_room,btn_other,btn_search;
     TextView tv_description;
     TextView localVersionText = null;
     //PHP
     String phpVersion = null;
-    String VersionCode = "1.0.2";
+    String VersionCode = "1.0.3";
     private static int count = 0;
 
     @Override
@@ -284,7 +284,8 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         //Find UI objects by ID
         btn_stethoscope = (Button) findViewById(R.id.btn_stethoscope);
         btn_bill = (Button)findViewById(R.id.btn_bill);
-        btn_exit = (Button)findViewById(R.id.btn_exit);
+       // btn_exit = (Button)findViewById(R.id.btn_exit);
+        btn_search = (Button)findViewById(R.id.btn_search);
         btn_medicent = (Button)findViewById(R.id.btn_medicent);
         btn_convenience_store = (Button)findViewById(R.id.btn_convenience_store);
         btn_wc = (Button)findViewById(R.id.btn_wc);
@@ -307,7 +308,8 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     protected void onDestroy() {
         btn_stethoscope.setBackground(null);
         btn_bill.setBackground(null);
-        btn_exit.setBackground(null);
+//        btn_exit.setBackground(null);
+        btn_search.setBackground(null);
         btn_medicent.setBackground(null);
         btn_convenience_store.setBackground(null);
         btn_wc.setBackground(null);
@@ -500,31 +502,18 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                 }
                 break;
             //出口
-            case R.id.btn_exit:
-                ButtonClicked = true;
-                for (int i = 0; i < listForStoringAllNodes.size(); i++) {
-                    Log.i("asdd", listForStoringAllNodes.get(i)._category);
-                    if (listForStoringAllNodes.get(i)._category.equals("出口")) {
-                        Log.i("asdd", listForStoringAllNodes.get(i)._category + "2");
-                        CList.add(listForStoringAllNodes.get(i));
-                    }
-                }
-                if (CList.size() == 1) {
-                    destinationName = CList.get(0)._waypointName;
-                    destinationID = CList.get(0)._waypointID;
-                    destinationRegion = CList.get(0)._regionID;
-                    Intent i = new Intent(MainActivity.this, NavigationActivity.class);
-                    i.putExtra("destinationName", destinationName);
-                    i.putExtra("destinationID", destinationID);
-                    i.putExtra("destinationRegion", destinationRegion);
-                    startActivity(i);
+            case R.id.btn_search:
+                //檢測網路權限
+                ConnectivityManager mConnectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                NetworkInfo mNetworkInfo = mConnectivityManager.getActiveNetworkInfo();
+                if (mNetworkInfo != null) { //網路有開啟，檢查擷取php版本
+                    Intent intent_search = new Intent(MainActivity.this, Search_Schedule.class);
+                    startActivity(intent_search);
                     finish();
-                } else if (CList.size() > 1) {
-                    intent = new Intent(MainActivity.this, ListViewActivity.class);
-                    intent.putExtra("Category", "出口");
-                    startActivity(intent);
-                    finish();
+                   }else {
+                    Toast.makeText(this, "未偵測到網路，請開啟網路使用此功能", Toast.LENGTH_SHORT).show();
                 }
+
                 break;
             //商店餐廳
             case R.id.btn_convenience_store:
@@ -639,7 +628,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
 
                 AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
                 dialog.setTitle("系統");
-                dialog.setMessage("偵測到有最新版本，是否進行更新?(建議使用Wi-Fi下載)");
+                dialog.setMessage("偵測到有最新版本，是否進行更新?(下載會消耗網路流量，建議使用Wi-Fi下載)");
                 dialog.setCancelable(false);
                 dialog.setPositiveButton("確定",new DialogInterface.OnClickListener() {
                     @Override
@@ -753,7 +742,8 @@ public class MainActivity extends AppCompatActivity implements Serializable {
             btn_convenience_store.setText("商店餐廳");
             btn_other.setText("其他");
             btn_wc.setText("廁所");
-            btn_exit.setText("出口");
+            btn_search.setText("看診進度查詢");
+           // btn_exit.setText("出口");
             tv_description.setText("【點選圖片選擇目的地】");
         }
         else  if(language_option.equals("English"))
@@ -771,7 +761,9 @@ public class MainActivity extends AppCompatActivity implements Serializable {
             btn_convenience_store.setTextSize(14);
             btn_other.setText("Other");
             btn_wc.setText("Toilet");
-            btn_exit.setText("Exit");
+            btn_search.setText("OutPatient progress");
+            btn_search.setTextSize(14);
+         //   btn_exit.setText("Exit");
             tv_description.setText("【Click on the picture to select the destination】");
             tv_description.setTextSize(15);
         }

@@ -65,7 +65,7 @@ public class InitDirectionImage extends AppCompatActivity{
             faceto.setText("請面向圖中方向開始導航");
         }else if(language_option.equals("English")){
             setTitle("NTUH - Yunlin");
-            faceto.setText("Please face to the direction in picture and start navugation.");
+            faceto.setText("Please face to the direction in picture and start navigation.");
         }
 
         Log.i("test123", nowWaypointID + " next " + nextWaypointID);
@@ -119,7 +119,7 @@ public class InitDirectionImage extends AppCompatActivity{
                 else if (nextWaypointID.equals("0x4d36b9410x934df042")) //A18(樓梯)
                     image.setImageResource(R.drawable.a7_1);
                 else if (nextWaypointID.equals("0xbf52c8410x3323f542") || nextWaypointID.equals("0xeb57ca410x0e21f342")) //服務台(A4 & A5)
-                    faceto.setText("台大基層聯合示範中心");
+                    image.setImageResource(R.drawable.a8_2);
                 break;
             case "0x0400c8410x0721f342": //A9大門
                 if (nextWaypointID.equals("0x4b81ca410x0e21f342"))  //中央走廊(A8 & A10)
@@ -131,7 +131,7 @@ public class InitDirectionImage extends AppCompatActivity{
                 else if (nextWaypointID.equals("0x4d36b9410x934df042")) //A18(樓梯)
                     image.setImageResource(R.drawable.a7_1);
                 else if (nextWaypointID.equals("0xbf52c8410x3323f542") || nextWaypointID.equals("0xeb57ca410x0e21f342")) //服務台(A4 & A5)
-                    faceto.setText("請面對台大基層聯合示範中心");
+                    image.setImageResource(R.drawable.a8_2);;
                 break;
             case "0xcf90b8410x3424f042": //A11批價
                 if (nextWaypointID.equals("0x0154bd410x0055f142")) //A12(30~41診走廊交叉口)
@@ -266,7 +266,10 @@ public class InitDirectionImage extends AppCompatActivity{
                 if(nextWaypointID.equals("0x5c93bd410x4f0df142")) //B3 X光報到處
                     image.setImageResource(R.drawable.b1_2);
                 else if(nextWaypointID.equals("0x4d36b9410x934df042")) //A18 (1F樓梯)
-                    faceto.setText("請面對樓梯");
+                {
+                    image.setImageResource(R.drawable.b2_1);
+                    //faceto.setText("請面對樓梯");
+                }
                 break;
             case "0x5519b8410x5506f042": //B2 電梯
                 if(nextWaypointID.equals("0x0193bd410x780df142"))  //B1 樓梯
@@ -360,7 +363,7 @@ public class InitDirectionImage extends AppCompatActivity{
                 if(nextWaypointID.equals("0x3219b8410x4d06f042")) //D4 岔路
                     image.setImageResource(R.drawable.d1_1);
                 else if(nextWaypointID.equals("0xf295c2410x63a8f042") || nextWaypointID.equals("0x8193bd410x540df142")) //C2 & C3 樓梯
-                    faceto.setText("請面對樓梯");
+                    image.setImageResource(R.drawable.d1_s);
                 break;
             case "0x021234110x00020000": //D2 神經部檢查室
                 if(nextWaypointID.equals("0x3219b8410x4d06f042")) //D4 岔路

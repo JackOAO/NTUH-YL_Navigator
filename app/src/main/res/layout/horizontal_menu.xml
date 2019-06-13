@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/button_Outpatient"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:background="@android:color/darker_gray"
+                android:text="@string/Outpatient"
+                android:textColor="#000"
+                android:textSize="18sp" />
+            <Button
+                android:id="@+id/button_Blood_collect"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:text="@string/Blood_collect"
+                android:textSize="18sp"
+                android:textColor="#000"
+                android:background="@android:color/darker_gray" />
+            <Button
+                android:id="@+id/button_Cashier"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:text="@string/Cashier"
+                android:textSize="18sp"
+                android:textColor="#000"
+                android:background="@android:color/darker_gray" />
+
+            <Button
+                android:id="@+id/button_Emergency"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:background="@android:color/darker_gray"
+                android:text="@string/Emergency"
+                android:textColor="#000"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#CCC" />
+
+</LinearLayout>

@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:textSize="30sp"
+        android:textSize="20sp"
         android:text="請面向圖中方向開始導航" />
 
     <ImageView
@@ -23,8 +23,8 @@
 
     <Button
         android:id="@+id/ok_button"
-        android:layout_width="210dp"
-        android:layout_height="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:onClick="goNavigation"
         android:text="OK" />
