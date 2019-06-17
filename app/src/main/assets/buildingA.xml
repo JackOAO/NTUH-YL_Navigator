@@ -5,7 +5,7 @@
  
 	    <node id='0xfa53bd410xff54f142' name='Main Exit' region='region1' category='其他'/>
 		<node id='0xcf90b8410x3424f042' name='Cashier/Registration' region='region1' category='批價櫃檯'/>
-		<node id='0x0454bd410x0155f142' name='pharmacy' region='region1' category='領藥處'/>
+		<node id='0x000011110x00020000' name='pharmacy' region='region1' category='領藥處'/>
 		<node id='0x4993bd410x640df142' name='Convenience store' region='region1' category='商店餐廳'/>
 		<node id='0x4993bd410x640df142' name='medFirst' region='region1' category='商店餐廳'/>
 		<node id='0xc43af3420x00000000' name='restaurant' region='region1' category='商店餐廳'/>

@@ -134,7 +134,7 @@ public class InitDirectionImage extends AppCompatActivity{
                     image.setImageResource(R.drawable.a8_2);;
                 break;
             case "0xcf90b8410x3424f042": //A11批價
-                if (nextWaypointID.equals("0x0154bd410x0055f142")) //A12(30~41診走廊交叉口)
+                if (nextWaypointID.equals("0x2ebab8410x8c2ef042")) //A12(精神內科)
                     image.setImageResource(R.drawable.a11_1);
                 else if (nextWaypointID.equals("0x0154bd410x0055f142")) //A19(41診走廊交叉口)
                     image.setImageResource(R.drawable.a11_2);
@@ -180,7 +180,7 @@ public class InitDirectionImage extends AppCompatActivity{
                     image.setImageResource(R.drawable.a18_1);
                 else if (nextWaypointID.equals(" 0x0154bd410x0055f142"))  //A19 30~41診走廊交叉口
                     image.setImageResource(R.drawable.a18_2);
-                else if (nextWaypointID.equals("0x0454bd410x0155f142")) //A24 (領藥處大廳)
+                else if (nextWaypointID.equals("0x000011110x00020000")) //A24 (領藥處大廳)
                     image.setImageResource(R.drawable.a18_3);
                 else if (nextWaypointID.equals("0x0193bd410x780df142")) //B1 (B1樓梯)
                     image.setImageResource(R.drawable.a18_s);
@@ -211,12 +211,12 @@ public class InitDirectionImage extends AppCompatActivity{
             case "0x1cc7b9410xc771f042": //A23 無障礙領藥窗口
                 if(nextWaypointID.equals("0xff53bd410x0055f142") || nextWaypointID.equals("0xbb3fc8410x0721f342")) //A16 & A17 健康教育中心
                     image.setImageResource(R.drawable.a23_1);
-                else if(nextWaypointID.equals("0x0454bd410x0155f142")) // A24 領藥處大廳
+                else if(nextWaypointID.equals("0x000011110x00020000")) // A24 領藥處大廳
                     image.setImageResource(R.drawable.a23_2);
                 else if(nextWaypointID.equals("0xed4cc8410x0e21f342"))  //A22 腎臟科/腎膽腸內科/新陳代謝分泌科
                     image.setImageResource(R.drawable.a23_3);
                 break;
-            case "0x0454bd410x0155f142": // A24 領藥處大廳
+            case "0x000011110x00020000": // A24 領藥處大廳
                 if(nextWaypointID.equals("0x4d36b9410x934df042")) // A18 樓梯
                     image.setImageResource(R.drawable.a24_1);
                 else if(nextWaypointID.equals("0x7cf0b9410x1f7cf042")) //A25 42~49診走廊交叉口
@@ -231,7 +231,7 @@ public class InitDirectionImage extends AppCompatActivity{
                     image.setImageResource(R.drawable.a25_1);
                 else if(nextWaypointID.equals("0x2c05ba410x4b81f042") || nextWaypointID.equals("0xdc19ba410x7786f042")) //A26 & A27 眼科/皮膚科
                     image.setImageResource(R.drawable.a25_2);
-                else if(nextWaypointID.equals("0x0454bd410x0155f142")) // A24 領藥處大廳
+                else if(nextWaypointID.equals("0x000011110x00020000")) // A24 領藥處大廳
                     image.setImageResource(R.drawable.a25_3);
                 break;
             case "0x2c05ba410x4b81f042": //A26 眼科/皮膚科
@@ -251,16 +251,16 @@ public class InitDirectionImage extends AppCompatActivity{
                     image.setImageResource(R.drawable.a28_1);
                 break;
             case "0x4993bd410x640df142": //A29 超商
-                if(nextWaypointID.equals("0x0454bd410x0155f142"))  //A24 領藥處大廳
+                if(nextWaypointID.equals("0x000011110x00020000"))  //A24 領藥處大廳
                     image.setImageResource(R.drawable.a29_1);
                 else if(nextWaypointID.equals("0x283ff0420x00000000"))  //C1 新舊大樓連接走廊
-                    faceto.setText("請面對舊醫療大樓");
+                    image.setImageResource(R.drawable.a29_2);
                 break;
             case "0x6793bd410x5d0df142": //A30 超商
-                if(nextWaypointID.equals("0x0454bd410x0155f142"))  //A24 領藥處大廳
+                if(nextWaypointID.equals("0x000011110x00020000"))  //A24 領藥處大廳
                     image.setImageResource(R.drawable.a29_1);
                 else if(nextWaypointID.equals("0x283ff0420x00000000"))  //C1 新舊大樓連接走廊
-                    faceto.setText("請面對舊醫療大樓");
+                    image.setImageResource(R.drawable.a29_2);
                 break;
             case "0x0193bd410x780df142": //B1 樓梯
                 if(nextWaypointID.equals("0x5c93bd410x4f0df142")) //B3 X光報到處
