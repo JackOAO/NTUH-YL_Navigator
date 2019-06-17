@@ -168,7 +168,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     TextView localVersionText = null;
     //PHP
     String phpVersion = null;
-    String VersionCode = "1.0.3";
+    String VersionCode = "1.0.4";
     private static int count = 0;
 
     @Override
