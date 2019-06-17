@@ -506,8 +506,9 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                 //檢測網路權限
                 ConnectivityManager mConnectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
                 NetworkInfo mNetworkInfo = mConnectivityManager.getActiveNetworkInfo();
-                if (mNetworkInfo != null) { //網路有開啟，檢查擷取php版本
-                    Intent intent_search = new Intent(MainActivity.this, Search_Schedule.class);
+                if (mNetworkInfo != null) { //網路有開啟
+                    //Intent intent_search = new Intent(MainActivity.this, Search_Schedule.class);
+                    Intent intent_search = new Intent(MainActivity.this, Outpatient_schedule.class);
                     startActivity(intent_search);
                     finish();
                    }else {
