@@ -129,8 +129,8 @@ public class ana_signal {
                     }
                 }else {
                     int tmp_dif2 = Math.round(data_list.get(0).countavg());
-                    if (tmp_dif2 > dp.get_RSSI_threshold(data_list.get(0).getUuid())) {
-                        Log.i("tmp_count_RSSI","threshold = " + dp.get_RSSI_threshold(data_list.get(0).getUuid()));
+                    if (tmp_dif2 > dp.get_Paramater(data_list.get(0).getUuid())) {
+                       // Log.i("tmp_count_RSSI","threshold = " + dp.get_RSSI_threshold(data_list.get(0).getUuid()));
 //                Log.i("def_range", "close " + data_list.get(0).getUuid()+ "\t"+
 //                        dp.get_Paramater(data_list.get(0).getUuid()));
                         location_range.add("close");
@@ -139,7 +139,7 @@ public class ana_signal {
                     }
                     else {
                         Log.i("def_range", "near " + data_list.get(0).getUuid());
-                        Log.i("tmp_count_RSSI","threshold = " + dp.get_RSSI_threshold(data_list.get(0).getUuid()));
+                        //Log.i("tmp_count_RSSI","threshold = " + dp.get_RSSI_threshold(data_list.get(0).getUuid()));
                         location_range.add("near");
                         location_range.add(data_list.get(0).getUuid());
                     }
@@ -148,7 +148,7 @@ public class ana_signal {
         else {
             int tmp_dif = Math.round(data_list.get(0).countavg());
             if (tmp_dif > -60) {
-                Log.i("tmp_count_RSSI","threshold = " + dp.get_RSSI_threshold(data_list.get(0).getUuid()));
+                //Log.i("tmp_count_RSSI","threshold = " + dp.get_RSSI_threshold(data_list.get(0).getUuid()));
 //                Log.i("def_range", "close " + data_list.get(0).getUuid()+ "\t"+
 //                        dp.get_Paramater(data_list.get(0).getUuid()));
                 location_range.add("close");
@@ -157,7 +157,7 @@ public class ana_signal {
             }
             else {
                 Log.i("def_range", "near " + data_list.get(0).getUuid());
-                Log.i("tmp_count_RSSI","threshold = " + dp.get_RSSI_threshold(data_list.get(0).getUuid()));
+                //Log.i("tmp_count_RSSI","threshold = " + dp.get_RSSI_threshold(data_list.get(0).getUuid()));
                 location_range.add("near");
                 location_range.add(data_list.get(0).getUuid());
             }

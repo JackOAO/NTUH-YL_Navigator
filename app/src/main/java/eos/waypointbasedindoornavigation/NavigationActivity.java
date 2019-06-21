@@ -1482,6 +1482,10 @@ public class NavigationActivity extends AppCompatActivity implements BeaconConsu
                         ||(navigationPath.get(0)._waypointID.equals("0xeb57ba410xfb95f042") && navigationPath.get(1)._waypointID.equals("0x7b9551660x00020000") && navigationPath.get(2)._waypointID.equals("0xde57c8410x0721f342")) //後門出口->電腦斷層大廳2->抽血
                         ||(navigationPath.get(0)._waypointID.equals("0xeb57ba410xfb95f042") && navigationPath.get(1)._waypointID.equals("0x553bc2410x2d44f042") && navigationPath.get(2)._waypointID.equals("0xc43af3420x00000000")) //後門出口->病歷室大廳->核子醫學部
                         ||(navigationPath.get(0)._waypointID.equals("0xeb57ba410xfb95f042") && navigationPath.get(1)._waypointID.equals("0x7b9812120x00020000") && navigationPath.get(2)._waypointID.equals("0xc43af3420x00000000")) //後門出口->病歷室大廳2->核子醫學部
+                        ||(navigationPath.get(0)._waypointID.equals("0x7b6913130x00020000") && navigationPath.get(1)._waypointID.equals("0x7b9551660x00020000") && navigationPath.get(2)._waypointID.equals("0xde57c8410x0721f342")) //後門出口2->電腦斷層大廳->抽血
+                        ||(navigationPath.get(0)._waypointID.equals("0x7b6913130x00020000") && navigationPath.get(1)._waypointID.equals("0x7b9551660x00020000") && navigationPath.get(2)._waypointID.equals("0xde57c8410x0721f342")) //後門出口2->電腦斷層大廳2->抽血
+                        ||(navigationPath.get(0)._waypointID.equals("0x7b6913130x00020000") && navigationPath.get(1)._waypointID.equals("0x553bc2410x2d44f042") && navigationPath.get(2)._waypointID.equals("0xc43af3420x00000000")) //後門出口2->病歷室大廳->核子醫學部
+                        ||(navigationPath.get(0)._waypointID.equals("0x7b6913130x00020000") && navigationPath.get(1)._waypointID.equals("0x7b9812120x00020000") && navigationPath.get(2)._waypointID.equals("0xc43af3420x00000000")) //後門出口2->病歷室大廳2->核子醫學部
                         ||(navigationPath.get(0)._waypointID.equals("0x8193bd410x540df142") && navigationPath.get(1)._waypointID.equals("0xc43af3420x00000000") && navigationPath.get(2)._waypointID.equals("0x553bc2410x2d44f042") && FirstTurn == true) //樓梯(靠新大樓)->核子->病歷室大廳
                         ||(navigationPath.get(0)._waypointID.equals("0xf295c2410x63a8f042") && navigationPath.get(1)._waypointID.equals("0xc43af3420x00000000") && navigationPath.get(2)._waypointID.equals("0x553bc2410x2d44f042") && FirstTurn == true) //樓梯->核子->病歷室大廳
                         ||(navigationPath.get(0)._waypointID.equals("0x8193bd410x540df142") && navigationPath.get(1)._waypointID.equals("0xc43af3420x00000000") && navigationPath.get(2)._waypointID.equals("0x7b9812120x00020000") && FirstTurn == true) //樓梯(靠新大樓)->核子->病歷室大廳
@@ -3112,7 +3116,7 @@ public class NavigationActivity extends AppCompatActivity implements BeaconConsu
             toThirdFloor = "to 3F";
 
             //
-            PRESENT_POSITION = "Present position：";
+            PRESENT_POSITION = "Current location：";
             currentLocationReminder.setText(PRESENT_POSITION);
             DESTINATION = "Destination：";
             howFarToMove.setText("Receiving signal");

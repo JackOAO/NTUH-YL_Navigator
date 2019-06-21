@@ -343,6 +343,12 @@ public class InitDirectionImage extends AppCompatActivity{
                 else if(nextWaypointID.equals("0x3519b8410x4d06f042") || nextWaypointID.equals("0x7b9551660x00020000"))  //C8 大廳(電腦斷層室前)
                     image.setImageResource(R.drawable.c8_1);
                 break;
+            case "0x7b6913130x00020000": //C7 後門
+                if(nextWaypointID.equals("0x553bc2410x2d44f042") || nextWaypointID.equals("0x7b9812120x00020000"))  //C6 大廳(病歷室前)
+                    image.setImageResource(R.drawable.c6_1);
+                else if(nextWaypointID.equals("0x3519b8410x4d06f042") || nextWaypointID.equals("0x7b9551660x00020000"))  //C8 大廳(電腦斷層室前)
+                    image.setImageResource(R.drawable.c8_1);
+                break;
             case "0x3519b8410x4d06f042": //C8 大廳(電腦斷層室前)
                 if(nextWaypointID.equals("0xde57c8410x0721f342")) //C5 抽血
                     image.setImageResource(R.drawable.c8_1);

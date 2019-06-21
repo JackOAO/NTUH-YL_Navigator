@@ -751,18 +751,18 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         {
             setTitle("NTUH - Yunlin");
             btn_stethoscope.setText("Clinics");
-            btn_bill.setText("Cashier/Registration");
-            btn_bill.setTextSize(12);
+            btn_bill.setText("Cashier");
+           // btn_bill.setTextSize(12);
             btn_medicent.setText("Pharmacy");
-            btn_examination_room.setText("Examination Room");
-            btn_examination_room.setTextSize(14);
-            btn_exsanguinate.setText("Department of Laboratory Medicine");
-            btn_exsanguinate.setTextSize(10);
-            btn_convenience_store.setText("Convenience store");
-            btn_convenience_store.setTextSize(14);
+            btn_examination_room.setText("Exam Room");
+           // btn_examination_room.setTextSize(14);
+            btn_exsanguinate.setText("Blood test");
+           // btn_exsanguinate.setTextSize(10);
+            btn_convenience_store.setText("Stores");
+           // btn_convenience_store.setTextSize(14);
             btn_other.setText("Other");
             btn_wc.setText("Toilet");
-            btn_search.setText("OutPatient progress");
+            btn_search.setText("Progress");
             btn_search.setTextSize(14);
          //   btn_exit.setText("Exit");
             tv_description.setText("【Click on the picture to select the destination】");
