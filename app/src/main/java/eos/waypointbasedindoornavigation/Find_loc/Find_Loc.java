@@ -27,6 +27,8 @@ public class Find_Loc {
     private Queue<List<String>> data_queue = new LinkedList<>();
     private int algo_num = 3;
     private int weight_type = 3;
+    int counter;
+    String lastNode_ID = "123";
     private ReadWrite_File wf = new ReadWrite_File();
     private long startT = System.currentTimeMillis();
     private DeviceParameter dp = new DeviceParameter();
@@ -35,7 +37,7 @@ public class Find_Loc {
         as.set_allWaypointData(allWaypointData);
         dp.set_allWaypointData(allWaypointData);
     }
-    public List<String> Find_Loc(Beacon beacon, float remind_range, double offset){
+    public List<String> Find_Loc(Beacon beacon, float remind_range, double offset, String lastNode){
 //    public List<String> logBeaconData(Beacon beacon, boolean ana_switch){
         String[] beacondata = new String[]{
                 beacon.getId1().toString(),
@@ -49,10 +51,17 @@ public class Find_Loc {
         researchdata.clear();
         researchdata.add(beacondata[1].concat(beacondata[2]));
         List<String> data_list = Arrays.asList((beacondata[1].concat(beacondata[2])),beacondata[3]);
+        if(!lastNode_ID.equals(lastNode)) {
+            counter = 0;
+            lastNode_ID = lastNode;
+        }
+        Log.i("turn_test","counter = " + counter + "lastNode = " + lastNode);
         if(dp.our_Beacon(beacondata[1].concat(beacondata[2]))){
                 data_queue.add(data_list);
                 long endT = System.currentTimeMillis();
                 if ((endT-startT)>1000){
+                    counter++;
+                    Log.i("turn_test","counter = " + counter + "lastNode = " + lastNode + "dataqueue = " + data_queue);
                     startT = System.currentTimeMillis();
                     researchdata.addAll(as.ana_signal(data_queue,algo_num,weight_type, remind_range, offset));
 //                    wf.writeFile("LBD:"+data_queue.toString() +"\t"

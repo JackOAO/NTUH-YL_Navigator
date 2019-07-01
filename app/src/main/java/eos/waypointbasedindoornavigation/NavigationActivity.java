@@ -366,6 +366,7 @@ public class NavigationActivity extends AppCompatActivity implements BeaconConsu
     private DeviceParameter dp;
     String receivebeacon;
     double offset;
+    String Find_Loc_pass = "123";
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
 
@@ -1521,6 +1522,7 @@ public class NavigationActivity extends AppCompatActivity implements BeaconConsu
 
         //SignalLog("----------指令模組結束----------");
         FirstTurn = false;
+        Find_Loc_pass = lastNode._waypointID;
 
        // Log.i("xxx_End", "Last node = " + lastNode._waypointName + " navigationPath(0) & (1)  = " + navigationPath.get(0)._waypointName + "&" + navigationPath.get(1)._waypointName);
 
@@ -1704,7 +1706,7 @@ public class NavigationActivity extends AppCompatActivity implements BeaconConsu
                     while (beaconIterator.hasNext()) {
                         Beacon beacon = beaconIterator.next();
                         Log.i("xxx_offsettest","offset = " + offset);
-                        logBeaconData(LBD.Find_Loc(beacon, 3, offset));
+                        logBeaconData(LBD.Find_Loc(beacon, 3, offset,Find_Loc_pass));
                     }
                 }
             }
