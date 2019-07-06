@@ -219,6 +219,7 @@ public class NavigationActivity extends AppCompatActivity implements BeaconConsu
     Node tmpNode;
     Node recordbeacon;
     int error_count = 0;
+    int turnback_count = 0;
 
     private BluetoothManager bluetoothManager;
     private BluetoothAdapter mBluetoothAdapter;
@@ -1742,42 +1743,53 @@ public class NavigationActivity extends AppCompatActivity implements BeaconConsu
 //            if (beacon.get(2).equals("close"))
             //              receivebeacon = beacon.get(3);
 
-            //連續收兩次判斷，close才進去
-            if (beacon.get(2).equals("close") && navigationPath.size() > 0) {
-                tmpNode = allWaypointData.get(beacon.get(3));
-                if(navigationPath.get(0)._waypointID.equals(beacon.get(3))){
-                    //inpath Next equal receive close
+        if(beacon.get(2).equals("close"))
+            Log.i("123xxxx","Now Receive " + beacon.get(3));
+        if(Find_Loc_pass.equals(beacon.get(3)) && beacon.get(2).equals("close")){
+            Log.i("123xxxx","Pass" + Find_Loc_pass);
+            turnback_count++;
+        }else if(beacon.get(2).equals("close")){
+            turnback_count = 0;
+        }
+
+    if(turnback_count == 0 || turnback_count > 5) {
+        //連續收兩次判斷，close才進去
+        if (beacon.get(2).equals("close") && navigationPath.size() > 0) {
+            tmpNode = allWaypointData.get(beacon.get(3));
+            if (navigationPath.get(0)._waypointID.equals(beacon.get(3))) {
+                //inpath Next equal receive close
+                receivebeacon = beacon.get(3);
+                error_count = 0;
+            } else if (navigationPath.get(0)._groupID != 0 && navigationPath.get(0)._groupID == tmpNode._groupID) {
+                //inpath Next equal receive group close
+                receivebeacon = beacon.get(3);
+                error_count = 0;
+            } else if (!navigationPath.get(0)._waypointID.equals(beacon.get(3)) && error_count == 0) {
+                //Not inpath First times
+                recordbeacon = allWaypointData.get(beacon.get(3));
+                error_count++;
+            } else if (!navigationPath.get(0)._waypointID.equals(beacon.get(3)) && error_count == 1) {
+                //Not inpath Second times
+                if (recordbeacon._waypointID.equals(beacon.get(3))) {
                     receivebeacon = beacon.get(3);
                     error_count = 0;
-                }else if(navigationPath.get(0)._groupID !=0 && navigationPath.get(0)._groupID == tmpNode._groupID){
-                    //inpath Next equal receive group close
-                    receivebeacon = beacon.get(3);
-                    error_count = 0;
-                }else if(!navigationPath.get(0)._waypointID.equals(beacon.get(3)) && error_count == 0){
-                    //Not inpath First times
-                    recordbeacon = allWaypointData.get(beacon.get(3));
-                    error_count ++;
-                }else if(!navigationPath.get(0)._waypointID.equals(beacon.get(3)) && error_count == 1){
-                    //Not inpath Second times
-                    if(recordbeacon._waypointID.equals(beacon.get(3))){
+                } else if (!recordbeacon._waypointID.equals(beacon.get(3)) && recordbeacon._groupID != 0) {
+
+                    if (tmpNode._groupID == recordbeacon._groupID) {
                         receivebeacon = beacon.get(3);
                         error_count = 0;
-                    }else if(!recordbeacon._waypointID.equals(beacon.get(3)) && recordbeacon._groupID != 0){
-
-                        if(tmpNode._groupID == recordbeacon._groupID){
-                            receivebeacon = beacon.get(3);
-                            error_count = 0;
-                        }else{
-                            error_count = 0;
-                        }
-                    } else{
+                    } else {
                         error_count = 0;
                     }
-                }else{
-                    receivebeacon = beacon.get(3);
+                } else {
                     error_count = 0;
                 }
+            } else {
+                receivebeacon = beacon.get(3);
+                error_count = 0;
             }
+        }
+    }
             Log.i("NAP1", beacon.toString() + receivebeacon);
 
             receiveNode = allWaypointData.get(receivebeacon);
@@ -3003,7 +3015,7 @@ public class NavigationActivity extends AppCompatActivity implements BeaconConsu
         String language_option = languagePref.getString("language","繁體中文");
         if(language_option.equals("繁體中文"))
         {
-            setTitle("台大雲林分院室內導航系統");
+            setTitle("臺大雲林分院室內導航系統");
             //指令
             NOW_GO_STRAIGHT_RIGHTSIDE = "請靠右";
             NOW_GO_STRAIGHT_LEFTSIDE = "請靠左";

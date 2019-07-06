@@ -61,7 +61,7 @@ public class InitDirectionImage extends AppCompatActivity{
         SharedPreferences languagePref = PreferenceManager.getDefaultSharedPreferences(appContext);
         String language_option = languagePref.getString("language","繁體中文");
         if(language_option.equals("繁體中文")) {
-            setTitle("台大雲林分院室內導航系統");
+            setTitle("臺大雲林分院室內導航系統");
             faceto.setText("請面向圖中方向開始導航");
         }else if(language_option.equals("English")){
             setTitle("NTUH - Yunlin");

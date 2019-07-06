@@ -59,7 +59,7 @@ public class Search_Schedule  extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_searchschedule);
-        setTitle("台大雲林分院室內導航系統");
+        setTitle("臺大雲林分院室內導航系統");
 
         Button btnOutoatient = (Button) findViewById(R.id.button_Outpatient);
         btnOutoatient.setOnClickListener(this);

@@ -99,13 +99,13 @@ public class author_list extends AppCompatActivity {
         version.add("版本:1.0.4   ( 2019.06.18)");
 
         List<String> profect_name = new ArrayList<>();
-        profect_name.add("台大醫院雲林分院跨學界計畫");
+        profect_name.add("臺大醫院雲林分院跨學界計畫");
         profect_name.add("科技部萌芽計畫");
         profect_name.add("中央研究院主題計畫");
 
         List<String> cooperation = new ArrayList<>();
         cooperation.add("雲科大嵌入式作業系統實驗室");
-        cooperation.add("台大醫院雲林分院資訊室");
+        cooperation.add("臺大醫院雲林分院資訊室");
         cooperation.add("中研院資訊所張韻詩老師實驗室");
 
         List<String> author = new ArrayList<>();

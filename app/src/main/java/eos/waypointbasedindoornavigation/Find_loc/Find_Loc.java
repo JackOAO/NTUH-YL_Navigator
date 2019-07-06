@@ -55,13 +55,12 @@ public class Find_Loc {
             counter = 0;
             lastNode_ID = lastNode;
         }
-        Log.i("turn_test","counter = " + counter + "lastNode = " + lastNode);
         if(dp.our_Beacon(beacondata[1].concat(beacondata[2]))){
                 data_queue.add(data_list);
                 long endT = System.currentTimeMillis();
                 if ((endT-startT)>1000){
                     counter++;
-                    Log.i("turn_test","counter = " + counter + "lastNode = " + lastNode + "dataqueue = " + data_queue);
+                    Log.i("turn_test","counter = " + counter + "lastNode = " + lastNode + " dataqueue = " + data_queue);
                     startT = System.currentTimeMillis();
                     researchdata.addAll(as.ana_signal(data_queue,algo_num,weight_type, remind_range, offset));
 //                    wf.writeFile("LBD:"+data_queue.toString() +"\t"

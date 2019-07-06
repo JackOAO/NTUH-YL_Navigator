@@ -90,7 +90,7 @@ public class Outpatient_schedule  extends AppCompatActivity implements View.OnCl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_outpatient);
-        setTitle("台大雲林分院室內導航系統");
+        setTitle("臺大雲林分院室內導航系統");
 
         Button btnOutoatient = (Button) findViewById(R.id.button_Outpatient);
         btnOutoatient.setOnClickListener(this);

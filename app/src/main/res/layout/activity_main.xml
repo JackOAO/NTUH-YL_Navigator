@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:background="@drawable/background_white"
     android:icon="@drawable/navigater"
-    android:label="台大雲林分院 - 室內導航系統"
+    android:label="臺大雲林分院 - 室內導航系統"
     tools:context=".MainActivity">
 
 

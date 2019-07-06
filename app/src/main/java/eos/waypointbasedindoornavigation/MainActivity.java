@@ -216,7 +216,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setTitle("台大雲林分院室內導航系統");
+        setTitle("臺大雲林分院室內導航系統");
         Log.i("Main_Create_Mem", "usedMemory: Heap/Allocated Heap "+ Debug.getNativeHeapSize() + "/" + Debug.getNativeHeapAllocatedSize());
 
         if(count == 0) {//僅在首次開啟app時檢查
@@ -734,7 +734,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         String language_option = languagePref.getString("language","繁體中文");
         if(language_option.equals("繁體中文"))
         {
-            setTitle("台大雲林分院室內導航系統");
+            setTitle("臺大雲林分院室內導航系統");
             btn_stethoscope.setText("各科門診");
             btn_bill.setText("批價櫃檯");
             btn_medicent.setText("領藥處");

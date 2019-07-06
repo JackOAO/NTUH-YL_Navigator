@@ -72,7 +72,7 @@ public class ListViewActivity extends AppCompatActivity implements Serializable{
         String language_option = languagePref.getString("language","繁體中文");
 
         if(language_option.equals("繁體中文")) {
-            setTitle("台大雲林分院室內導航系統");
+            setTitle("臺大雲林分院室內導航系統");
         }else  if(language_option.equals("English")) {
             setTitle("NTUH - Yunlin");
         }
