@@ -23,7 +23,7 @@
 		<node id='0xde57c8410x0721f342' name='Examination of feces' region='region1' category='檢驗醫學部'/>
 		<node id='0xde57c8410x0721f342' name='Urine test' region='region1' category='檢驗醫學部'/>
 		<node id='0xde57c8410x0721f342' name='Pre-Admission Testing' region='region1' category='其他'/>
-		<node id='0x553bc2410x2d44f042' name='Medical Records Department' region='region1' category='其他'/>
+		<node id='0x7b3988440x00020000' name='Medical Records Department' region='region1' category='其他'/>
 		<node id='0xeb57ba410xfb95f042' name='Back door exit' region='region1' category='其他'/>
 	
 	</region>

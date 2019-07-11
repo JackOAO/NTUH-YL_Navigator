@@ -35,11 +35,11 @@
 		<node id='0x283ff0420x00000000' name='新舊大樓連接走廊' neighbor1='0x4993bd410x640df142' neighbor2='0x6793bd410x5d0df142' neighbor3='0x8193bd410x540df142' neighbor4='0xf295c2410x63a8f042' direction1='新醫療大樓看板' direction2='新醫療大樓看板' direction3='舊醫療大樓看板' direction4='舊醫療大樓看板'/>
 		<node id='0xf295c2410x63a8f042' name='樓梯'  neighbor1='0xc43af3420x00000000' neighbor2='0xde57c8410x0721f342' neighbor3='0x283ff0420x00000000' direction1='岔路右側' direction2='岔路左側' direction3='新醫療大樓'/>
 		<node id='0x8193bd410x540df142' name='樓梯'  neighbor1='0xc43af3420x00000000' neighbor2='0xde57c8410x0721f342' neighbor3='0x283ff0420x00000000' direction1='岔路右側' direction2='岔路左側' direction3='新醫療大樓'/>
-		<node id='0xc43af3420x00000000' name='核子醫學部' neighbor1='0x8193bd410x540df142' neighbor2='0x553bc2410x2d44f042' neighbor3='0xde57c8410x0721f342' neighbor4='0xf295c2410x63a8f042' direction1='新舊大樓連接走廊' direction2='後門' direction3='抽血報到處' direction4='新舊大樓連接走廊'/>
+		<node id='0xc43af3420x00000000' name='核子醫學部' neighbor1='0x8193bd410x540df142' neighbor2='0x7b3988440x00020000' neighbor3='0xde57c8410x0721f342' neighbor4='0xf295c2410x63a8f042' direction1='新舊大樓連接走廊' direction2='後門' direction3='抽血報到處' direction4='新舊大樓連接走廊'/>
 		<node id='0xde57c8410x0721f342' name='抽血' neighbor1='0x8193bd410x540df142' neighbor2='0x3519b8410x4d06f042' neighbor3='0xc43af3420x00000000' neighbor4='0xf295c2410x63a8f042' direction1='新舊大樓連接走廊' direction2='後門' direction3='核子醫學部' direction4='新舊大樓連接走廊'/>
-		<node id='0x553bc2410x2d44f042' name='大廳(病歷室前)' neighbor1='0xc43af3420x00000000' neighbor2='0xeb57ba410xfb95f042' neighbor3='0x3519b8410x4d06f042' direction1='防火鐵門(飲水機)' direction2='後門' direction3='電腦斷層室'/>
-		<node id='0x3519b8410x4d06f042' name='大廳(電腦斷層室前)' neighbor1='0xde57c8410x0721f342' neighbor2='0xeb57ba410xfb95f042' neighbor3='0x553bc2410x2d44f042' direction1='住院服務中心' direction2='後門' direction3='病歷組'/>
-		<node id='0xeb57ba410xfb95f042' name='後門出口' neighbor1='0x553bc2410x2d44f042' neighbor2='0x3519b8410x4d06f042' direction1='防火鐵門(飲水機)' direction2='住院服務中心看板'/>
+		<node id='0x7b3988440x00020000' name='大廳(病歷室前)' neighbor1='0xc43af3420x00000000' neighbor2='0xeb57ba410xfb95f042' neighbor3='0x3519b8410x4d06f042' direction1='防火鐵門(飲水機)' direction2='後門' direction3='電腦斷層室'/>
+		<node id='0x3519b8410x4d06f042' name='大廳(電腦斷層室前)' neighbor1='0xde57c8410x0721f342' neighbor2='0xeb57ba410xfb95f042' neighbor3='0x7b3988440x00020000' direction1='住院服務中心' direction2='後門' direction3='病歷組'/>
+		<node id='0xeb57ba410xfb95f042' name='後門出口' neighbor1='0x7b3988440x00020000' neighbor2='0x3519b8410x4d06f042' direction1='防火鐵門(飲水機)' direction2='住院服務中心看板'/>
 		<node id='0x3319b8410x4d06f042' name='樓梯' neighbor1='0x3219b8410x4d06f042' direction1='心臟血管檢查室/神經部看板'/>
 		<node id='0x3219b8410x4d06f042' name='神經部檢查室/心臟血管功能檢查室岔路' neighbor1='0x006317170x00020000' neighbor2='0x3319b8410x4d06f042' neighbor3='0x021234110x00020000' direction1='心臟血管功能檢查室' direction2='電梯' direction3='神經部檢查室'/>
 		<node id='0x021234110x00020000' name='神經部檢查室'  neighbor1='0x0800b8410x0200f042' neighbor2='0x3219b8410x4d06f042' direction1='迴轉樓梯' direction2='心臟血管功能檢查室'/>

@@ -170,6 +170,8 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     String phpVersion = null;
     String VersionCode = "1.0.4";
     private static int count = 0;
+    //Arrive
+    Integer Arrivelog = 0;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -272,12 +274,43 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         // positionOfPopup = (LinearLayout) findViewById(R.id.mainActivityLayout);
 
         //Receive location information passed from ListViewActivity
+
+        //Arrive Check
         Bundle bundle = getIntent().getExtras();
         if(bundle != null) {
-            namePassedFromListView = bundle.getString("name");
+            Arrivelog = bundle.getInt("Arrived_flag");
+           /* namePassedFromListView = bundle.getString("name");
             IDPassedFromListView = bundle.getString("id");
             regionPassedFromListView = bundle.getString("region");
-            searchBarClicked = true;
+            searchBarClicked = true;*/
+        }
+        if(Arrivelog == 1){
+            android.support.v7.app.AlertDialog.Builder dialog2 = new android.support.v7.app.AlertDialog.Builder(MainActivity.this);
+            dialog2.setTitle("系統");
+            dialog2.setMessage("是否同意協助我們填寫導航滿意度調查問卷?");
+            dialog2.setCancelable(false);
+            dialog2.setNegativeButton("下次再填",new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface arg0, int arg1) {
+                }
+            });
+            dialog2.setPositiveButton("同意",new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface arg0, int arg1) {
+                    ConnectivityManager mConnectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                    NetworkInfo mNetworkInfo = mConnectivityManager.getActiveNetworkInfo();
+                    if(mNetworkInfo != null) {
+                        Intent i = new Intent(MainActivity.this, Questionwebview.class);
+                        startActivity(i);
+                        finish();
+                    }else{
+                        Toast toast = Toast.makeText(MainActivity.this,
+                                "尚未連接至網路！", Toast.LENGTH_LONG);
+                        toast.show();
+                    }
+                }
+            });
+            dialog2.show();
         }
 
 
