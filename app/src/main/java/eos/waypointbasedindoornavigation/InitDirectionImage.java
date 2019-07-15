@@ -180,7 +180,7 @@ public class InitDirectionImage extends AppCompatActivity{
                     image.setImageResource(R.drawable.a18_1);
                 else if (nextWaypointID.equals(" 0x0154bd410x0055f142"))  //A19 30~41診走廊交叉口
                     image.setImageResource(R.drawable.a18_2);
-                else if (nextWaypointID.equals("0x000011110x00020000")) //A24 (領藥處大廳)
+                else if (nextWaypointID.equals("0x7b1564880x00020000")) //A24 (領藥處大廳)
                     image.setImageResource(R.drawable.a18_3);
                 else if (nextWaypointID.equals("0x0193bd410x780df142")) //B1 (B1樓梯)
                     image.setImageResource(R.drawable.a18_s);
@@ -211,12 +211,12 @@ public class InitDirectionImage extends AppCompatActivity{
             case "0x1cc7b9410xc771f042": //A23 無障礙領藥窗口
                 if(nextWaypointID.equals("0xff53bd410x0055f142") || nextWaypointID.equals("0xbb3fc8410x0721f342")) //A16 & A17 健康教育中心
                     image.setImageResource(R.drawable.a23_1);
-                else if(nextWaypointID.equals("0x000011110x00020000")) // A24 領藥處大廳
+                else if(nextWaypointID.equals("0x7b1564880x00020000")) // A24 領藥處大廳
                     image.setImageResource(R.drawable.a23_2);
                 else if(nextWaypointID.equals("0xed4cc8410x0e21f342"))  //A22 腎臟科/腎膽腸內科/新陳代謝分泌科
                     image.setImageResource(R.drawable.a23_3);
                 break;
-            case "0x000011110x00020000": // A24 領藥處大廳
+            case "0x7b1564880x00020000": // A24 領藥處大廳
                 if(nextWaypointID.equals("0x4d36b9410x934df042")) // A18 樓梯
                     image.setImageResource(R.drawable.a24_1);
                 else if(nextWaypointID.equals("0x7cf0b9410x1f7cf042")) //A25 42~49診走廊交叉口
@@ -231,7 +231,7 @@ public class InitDirectionImage extends AppCompatActivity{
                     image.setImageResource(R.drawable.a25_1);
                 else if(nextWaypointID.equals("0x2c05ba410x4b81f042") || nextWaypointID.equals("0xdc19ba410x7786f042")) //A26 & A27 眼科/皮膚科
                     image.setImageResource(R.drawable.a25_2);
-                else if(nextWaypointID.equals("0x000011110x00020000")) // A24 領藥處大廳
+                else if(nextWaypointID.equals("0x7b1564880x00020000")) // A24 領藥處大廳
                     image.setImageResource(R.drawable.a25_3);
                 break;
             case "0x2c05ba410x4b81f042": //A26 眼科/皮膚科
@@ -251,13 +251,13 @@ public class InitDirectionImage extends AppCompatActivity{
                     image.setImageResource(R.drawable.a28_1);
                 break;
             case "0x4993bd410x640df142": //A29 超商
-                if(nextWaypointID.equals("0x000011110x00020000"))  //A24 領藥處大廳
+                if(nextWaypointID.equals("0x7b1564880x00020000"))  //A24 領藥處大廳
                     image.setImageResource(R.drawable.a29_1);
                 else if(nextWaypointID.equals("0x283ff0420x00000000"))  //C1 新舊大樓連接走廊
                     image.setImageResource(R.drawable.a29_2);
                 break;
             case "0x6793bd410x5d0df142": //A30 超商
-                if(nextWaypointID.equals("0x000011110x00020000"))  //A24 領藥處大廳
+                if(nextWaypointID.equals("0x7b1564880x00020000"))  //A24 領藥處大廳
                     image.setImageResource(R.drawable.a29_1);
                 else if(nextWaypointID.equals("0x283ff0420x00000000"))  //C1 新舊大樓連接走廊
                     image.setImageResource(R.drawable.a29_2);
@@ -312,6 +312,8 @@ public class InitDirectionImage extends AppCompatActivity{
                     image.setImageResource(R.drawable.c4_2);
                 else if(nextWaypointID.equals("0x7b3988440x00020000") || nextWaypointID.equals("0x7b9812120x00020000"))  //C6 大廳(病歷室前)
                     image.setImageResource(R.drawable.c4_3);
+                else if(nextWaypointID.equals("0xeb57ba410xfb95f042") || nextWaypointID.equals("0x7b6913130x00020000"))  //C7 C8 後門
+                    image.setImageResource(R.drawable.c4_3);
                 break;
             case "0xde57c8410x0721f342": //C5 抽血
                 if(nextWaypointID.equals("0xf295c2410x63a8f042") || nextWaypointID.equals("0x8193bd410x540df142")) //C2 & C3 樓梯
@@ -320,13 +322,15 @@ public class InitDirectionImage extends AppCompatActivity{
                     image.setImageResource(R.drawable.c5_3);
                 else if(nextWaypointID.equals("0x3519b8410x4d06f042") || nextWaypointID.equals("0x7b9551660x00020000"))  //C8 大廳(電腦斷層室前)
                     image.setImageResource(R.drawable.c5_2);
+                else if(nextWaypointID.equals("0xeb57ba410xfb95f042") || nextWaypointID.equals("0x7b6913130x00020000"))  //C7 C8 後門
+                    image.setImageResource(R.drawable.c5_2);
                 break;
             case "0x7b3988440x00020000": //C6 大廳(病歷室前)
                 if(nextWaypointID.equals("0xc43af3420x00000000")) //C4 核子醫學部
                     image.setImageResource(R.drawable.c6_1);
                 else if(nextWaypointID.equals("0x3519b8410x4d06f042") || nextWaypointID.equals("0x7b9551660x00020000"))  //C8 大廳(電腦斷層室前)
                     image.setImageResource(R.drawable.c6_2);
-                else if(nextWaypointID.equals("0x0800b8410x0200f042"))  //D3 迴轉樓梯(神經部)
+                else if(nextWaypointID.equals("0x7b9861150x00020000"))  //D3 迴轉樓梯(神經部)
                     image.setImageResource(R.drawable.c6_s);
                 break;
             case "0x7b9812120x00020000": //C6 大廳(病歷室前)
@@ -334,7 +338,7 @@ public class InitDirectionImage extends AppCompatActivity{
                     image.setImageResource(R.drawable.c6_1);
                 else if(nextWaypointID.equals("0x3519b8410x4d06f042") || nextWaypointID.equals("0x7b9551660x00020000"))  //C8 大廳(電腦斷層室前)
                     image.setImageResource(R.drawable.c6_2);
-                else if(nextWaypointID.equals("0x0800b8410x0200f042"))  //D3 迴轉樓梯(神經部)
+                else if(nextWaypointID.equals("0x7b9861150x00020000"))  //D3 迴轉樓梯(神經部)
                     image.setImageResource(R.drawable.c6_s);
                 break;
             case "0xeb57ba410xfb95f042": //C7 後門
@@ -342,11 +346,19 @@ public class InitDirectionImage extends AppCompatActivity{
                     image.setImageResource(R.drawable.c6_1);
                 else if(nextWaypointID.equals("0x3519b8410x4d06f042") || nextWaypointID.equals("0x7b9551660x00020000"))  //C8 大廳(電腦斷層室前)
                     image.setImageResource(R.drawable.c8_1);
+                else if(nextWaypointID.equals("0xc43af3420x00000000")) //C4 核子醫學部
+                    image.setImageResource(R.drawable.c6_1);
+                else  if(nextWaypointID.equals("0xde57c8410x0721f342")) //C5 抽血
+                    image.setImageResource(R.drawable.c8_1);
                 break;
             case "0x7b6913130x00020000": //C7 後門
                 if(nextWaypointID.equals("0x7b3988440x00020000") || nextWaypointID.equals("0x7b9812120x00020000"))  //C6 大廳(病歷室前)
                     image.setImageResource(R.drawable.c6_1);
                 else if(nextWaypointID.equals("0x3519b8410x4d06f042") || nextWaypointID.equals("0x7b9551660x00020000"))  //C8 大廳(電腦斷層室前)
+                    image.setImageResource(R.drawable.c8_1);
+                else if(nextWaypointID.equals("0xc43af3420x00000000")) //C4 核子醫學部
+                    image.setImageResource(R.drawable.c6_1);
+                else  if(nextWaypointID.equals("0xde57c8410x0721f342")) //C5 抽血
                     image.setImageResource(R.drawable.c8_1);
                 break;
             case "0x3519b8410x4d06f042": //C8 大廳(電腦斷層室前)
@@ -374,10 +386,10 @@ public class InitDirectionImage extends AppCompatActivity{
             case "0x021234110x00020000": //D2 神經部檢查室
                 if(nextWaypointID.equals("0x3219b8410x4d06f042")) //D4 岔路
                     image.setImageResource(R.drawable.d2_1);
-                else if(nextWaypointID.equals("0x0800b8410x0200f042")) //D3 迴轉樓梯(神經部)
+                else if(nextWaypointID.equals("0x7b9861150x00020000")) //D3 迴轉樓梯(神經部)
                     image.setImageResource(R.drawable.d3_s);
                 break;
-            case "0x0800b8410x0200f042": //D3  迴轉樓梯(神經部)
+            case "0x7b9861150x00020000": //D3  迴轉樓梯(神經部)
                 if(nextWaypointID.equals("0x021234110x00020000")) //D2 神經部檢查室
                     image.setImageResource(R.drawable.d3_1);
                 else if(nextWaypointID.equals("0x7b3988440x00020000")) //D3 迴轉樓梯(神經部)

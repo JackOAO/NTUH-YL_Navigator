@@ -4,7 +4,7 @@
 
 
     <item android:id="@+id/gear"
-        android:title="訊號校正"
+        android:title="語言"
         android:icon="@drawable/gear"
         app:showAsAction="always"
         android:orderInCategory="50"

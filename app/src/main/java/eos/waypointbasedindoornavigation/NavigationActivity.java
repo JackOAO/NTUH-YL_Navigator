@@ -2327,7 +2327,7 @@ public class NavigationActivity extends AppCompatActivity implements BeaconConsu
         Vibrator myVibrator = (Vibrator) getApplication().getSystemService(Service.VIBRATOR_SERVICE);
 
         if (instruction == ARRIVED_NOTIFIER) {
-            //appendLog("EndNavigation");
+            appendLog("抵達" + destinationName);
             turnDirection = YOU_HAVE_ARRIVE;
              image.setImageResource(R.drawable.arrived_1);
              tts.speak(turnDirection, TextToSpeech.QUEUE_ADD, null);
@@ -3032,7 +3032,7 @@ public class NavigationActivity extends AppCompatActivity implements BeaconConsu
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss - ");
         Date date = new Date(System.currentTimeMillis());
         simpleDateFormat.format(date);
-        File logFile = new File("sdcard/logfile.txt");
+        File logFile = new File("sdcard/Arrivelogfile.txt");
         if (!logFile.exists())
         {
             try

@@ -127,7 +127,7 @@ public class siganl_data_type implements Comparable<siganl_data_type>{
               return "核子醫學部(C4)";
           case "0xde57c8410x0721f342":
               return "抽血(C5)";
-          case "0x0800b8410x0200f042":
+          case "0x7b9861150x00020000":
               return "大廳(病歷室前)(C8)";
           case "0x3519b8410x4d06f042":
               return "大廳(電腦斷層室前)(C11)";

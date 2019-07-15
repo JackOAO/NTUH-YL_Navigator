@@ -52,6 +52,6 @@ public class Questionwebview extends AppCompatActivity{
         webSettings.setJavaScriptEnabled(true);
         setContentView(webview);
         webview.setWebViewClient(new WebViewClient());
-        webview.loadUrl("https://docs.google.com/forms/d/e/1FAIpQLSe4XzBglAU1JDsJ7vjYXeCVKYX8sEvX6rfgPxROzbccXsWCpA/viewform");
+        webview.loadUrl("https://docs.google.com/forms/d/e/1FAIpQLSfJ9X0quRm1d7mL50wYq65bO8p0s7_AIkoGf5r2jkYyk9M5tA/viewform?usp=sf_link");
     }
 }

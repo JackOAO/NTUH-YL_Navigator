@@ -168,7 +168,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     TextView localVersionText = null;
     //PHP
     String phpVersion = null;
-    String VersionCode = "1.0.4";
+    String VersionCode = "1.0.5";
     private static int count = 0;
     //Arrive
     Integer Arrivelog = 0;
@@ -385,153 +385,187 @@ public class MainActivity extends AppCompatActivity implements Serializable {
 
     public void onClick(View view) {
         if(ButtonClicked == false){
+            BluetoothAdapter mBtAdapter = BluetoothAdapter.getDefaultAdapter();
+            LocationManager mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+            boolean providerEnabled = mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
         switch (view.getId()) {
             case R.id.btn_stethoscope:
-                ButtonClicked = true;
-                //取出listForStoringAllNodes中的Category與各科門診相同的Node加至CList
-                for (int i = 0; i < listForStoringAllNodes.size(); i++) {
-                    Log.i("asdd", listForStoringAllNodes.get(i)._category);
-                    if (listForStoringAllNodes.get(i)._category.equals("各科門診")) {
-                        Log.i("asdd", listForStoringAllNodes.get(i)._category + "2");
-                        CList.add(listForStoringAllNodes.get(i));
+                if(!mBtAdapter.isEnabled() || !providerEnabled) {
+                    Toast toast = Toast.makeText(MainActivity.this,
+                            "藍牙或定位權限尚未開啟", Toast.LENGTH_LONG);
+                    toast.show();
+                }else {
+                    ButtonClicked = true;
+                    //取出listForStoringAllNodes中的Category與各科門診相同的Node加至CList
+                    for (int i = 0; i < listForStoringAllNodes.size(); i++) {
+                        Log.i("asdd", listForStoringAllNodes.get(i)._category);
+                        if (listForStoringAllNodes.get(i)._category.equals("各科門診")) {
+                            Log.i("asdd", listForStoringAllNodes.get(i)._category + "2");
+                            CList.add(listForStoringAllNodes.get(i));
+                        }
+                    }
+                    //如果該種類只有一種，直接導入導航頁面，否則導入目的地選單
+                    if (CList.size() == 1) {
+                        destinationName = CList.get(0)._waypointName;
+                        destinationID = CList.get(0)._waypointID;
+                        destinationRegion = CList.get(0)._regionID;
+                        Intent i = new Intent(MainActivity.this, NavigationActivity.class);
+                        i.putExtra("destinationName", destinationName);
+                        i.putExtra("destinationID", destinationID);
+                        i.putExtra("destinationRegion", destinationRegion);
+                        startActivity(i);
+                        finish();
+                    } else if (CList.size() > 1) {
+                        intent = new Intent(MainActivity.this, ListViewActivity.class);
+                        intent.putExtra("Category", "各科門診");
+                        startActivity(intent);
+                        finish();
                     }
                 }
-                //如果該種類只有一種，直接導入導航頁面，否則導入目的地選單
-                if (CList.size() == 1) {
-                    destinationName = CList.get(0)._waypointName;
-                    destinationID = CList.get(0)._waypointID;
-                    destinationRegion = CList.get(0)._regionID;
-                    Intent i = new Intent(MainActivity.this, NavigationActivity.class);
-                    i.putExtra("destinationName", destinationName);
-                    i.putExtra("destinationID", destinationID);
-                    i.putExtra("destinationRegion", destinationRegion);
-                    startActivity(i);
-                    finish();
-                } else if (CList.size() > 1) {
-                    intent = new Intent(MainActivity.this, ListViewActivity.class);
-                    intent.putExtra("Category", "各科門診");
-                    startActivity(intent);
-                    finish();
-                }
                 break;
-
             case R.id.btn_examination_room:
-                ButtonClicked = true;
-                for (int i = 0; i < listForStoringAllNodes.size(); i++) {
-                    Log.i("asdd", listForStoringAllNodes.get(i)._category);
-                    if (listForStoringAllNodes.get(i)._category.equals("檢查室")) {
-                        Log.i("asdd", listForStoringAllNodes.get(i)._category + "2");
-                        CList.add(listForStoringAllNodes.get(i));
+                if(!mBtAdapter.isEnabled() || !providerEnabled) {
+                    Toast toast = Toast.makeText(MainActivity.this,
+                            "藍牙或定位權限尚未開啟", Toast.LENGTH_LONG);
+                    toast.show();
+                }else {
+                    ButtonClicked = true;
+                    for (int i = 0; i < listForStoringAllNodes.size(); i++) {
+                        Log.i("asdd", listForStoringAllNodes.get(i)._category);
+                        if (listForStoringAllNodes.get(i)._category.equals("檢查室")) {
+                            Log.i("asdd", listForStoringAllNodes.get(i)._category + "2");
+                            CList.add(listForStoringAllNodes.get(i));
+                        }
+                    }
+                    if (CList.size() == 1) {
+                        destinationName = CList.get(0)._waypointName;
+                        destinationID = CList.get(0)._waypointID;
+                        destinationRegion = CList.get(0)._regionID;
+                        Intent i = new Intent(MainActivity.this, NavigationActivity.class);
+                        i.putExtra("destinationName", destinationName);
+                        i.putExtra("destinationID", destinationID);
+                        i.putExtra("destinationRegion", destinationRegion);
+                        startActivity(i);
+                        finish();
+                    } else if (CList.size() > 1) {
+                        intent = new Intent(MainActivity.this, ListViewActivity.class);
+                        intent.putExtra("Category", "檢查室");
+                        startActivity(intent);
+                        finish();
                     }
                 }
-                if (CList.size() == 1) {
-                    destinationName = CList.get(0)._waypointName;
-                    destinationID = CList.get(0)._waypointID;
-                    destinationRegion = CList.get(0)._regionID;
-                    Intent i = new Intent(MainActivity.this, NavigationActivity.class);
-                    i.putExtra("destinationName", destinationName);
-                    i.putExtra("destinationID", destinationID);
-                    i.putExtra("destinationRegion", destinationRegion);
-                    startActivity(i);
-                    finish();
-                } else if (CList.size() > 1) {
-                    intent = new Intent(MainActivity.this, ListViewActivity.class);
-                    intent.putExtra("Category", "檢查室");
-                    startActivity(intent);
-                    finish();
-                }
                 break;
-
                 //其他
             case R.id.btn_other:
-                ButtonClicked = true;
-                intent = new Intent(MainActivity.this, ListViewActivity.class);
-                intent.putExtra("Category", "其他");
-                startActivity(intent);
-                finish();
+                if(!mBtAdapter.isEnabled() || !providerEnabled) {
+                    Toast toast = Toast.makeText(MainActivity.this,
+                            "藍牙或定位權限尚未開啟", Toast.LENGTH_LONG);
+                    toast.show();
+                }else {
+                    ButtonClicked = true;
+                    intent = new Intent(MainActivity.this, ListViewActivity.class);
+                    intent.putExtra("Category", "其他");
+                    startActivity(intent);
+                    finish();
+                }
                 break;
-
                 //批價掛號
             case R.id.btn_bill:
-                ButtonClicked = true;
-                for (int i = 0; i < listForStoringAllNodes.size(); i++) {
-                    Log.i("asdd", listForStoringAllNodes.get(i)._category);
-                    if (listForStoringAllNodes.get(i)._category.equals("批價櫃檯")) {
-                        Log.i("asdd", listForStoringAllNodes.get(i)._category + "2");
-                        CList.add(listForStoringAllNodes.get(i));
+                if(!mBtAdapter.isEnabled() || !providerEnabled) {
+                    Toast toast = Toast.makeText(MainActivity.this,
+                            "藍牙或定位權限尚未開啟", Toast.LENGTH_LONG);
+                    toast.show();
+                }else {
+                    ButtonClicked = true;
+                    for (int i = 0; i < listForStoringAllNodes.size(); i++) {
+                        Log.i("asdd", listForStoringAllNodes.get(i)._category);
+                        if (listForStoringAllNodes.get(i)._category.equals("批價櫃檯")) {
+                            Log.i("asdd", listForStoringAllNodes.get(i)._category + "2");
+                            CList.add(listForStoringAllNodes.get(i));
+                        }
+                    }
+                    if (CList.size() == 1) {
+                        destinationName = CList.get(0)._waypointName;
+                        destinationID = CList.get(0)._waypointID;
+                        destinationRegion = CList.get(0)._regionID;
+                        Intent i = new Intent(MainActivity.this, NavigationActivity.class);
+                        i.putExtra("destinationName", destinationName);
+                        i.putExtra("destinationID", destinationID);
+                        i.putExtra("destinationRegion", destinationRegion);
+                        startActivity(i);
+                        finish();
+                    } else if (CList.size() > 1) {
+                        intent = new Intent(MainActivity.this, ListViewActivity.class);
+                        intent.putExtra("Category", "批價櫃檯");
+                        startActivity(intent);
+                        finish();
                     }
                 }
-                if (CList.size() == 1) {
-                    destinationName = CList.get(0)._waypointName;
-                    destinationID = CList.get(0)._waypointID;
-                    destinationRegion = CList.get(0)._regionID;
-                    Intent i = new Intent(MainActivity.this, NavigationActivity.class);
-                    i.putExtra("destinationName", destinationName);
-                    i.putExtra("destinationID", destinationID);
-                    i.putExtra("destinationRegion", destinationRegion);
-                    startActivity(i);
-                    finish();
-                } else if (CList.size() > 1) {
-                    intent = new Intent(MainActivity.this, ListViewActivity.class);
-                    intent.putExtra("Category", "批價櫃檯");
-                    startActivity(intent);
-                    finish();
-                }
                 break;
-
                 //領藥處
             case R.id.btn_medicent:
-                ButtonClicked = true;
-                for (int i = 0; i < listForStoringAllNodes.size(); i++) {
-                    Log.i("asdd", listForStoringAllNodes.get(i)._category);
-                    if (listForStoringAllNodes.get(i)._category.equals("領藥處")) {
-                        Log.i("asdd", listForStoringAllNodes.get(i)._category + "2");
-                        CList.add(listForStoringAllNodes.get(i));
+                if(!mBtAdapter.isEnabled() || !providerEnabled) {
+                    Toast toast = Toast.makeText(MainActivity.this,
+                            "藍牙或定位權限尚未開啟", Toast.LENGTH_LONG);
+                    toast.show();
+                }else {
+                    ButtonClicked = true;
+                    for (int i = 0; i < listForStoringAllNodes.size(); i++) {
+                        Log.i("asdd", listForStoringAllNodes.get(i)._category);
+                        if (listForStoringAllNodes.get(i)._category.equals("領藥處")) {
+                            Log.i("asdd", listForStoringAllNodes.get(i)._category + "2");
+                            CList.add(listForStoringAllNodes.get(i));
+                        }
                     }
-                }
-                if (CList.size() == 1) {
-                    destinationName = CList.get(0)._waypointName;
-                    destinationID = CList.get(0)._waypointID;
-                    destinationRegion = CList.get(0)._regionID;
-                    Intent i = new Intent(MainActivity.this, NavigationActivity.class);
-                    i.putExtra("destinationName", destinationName);
-                    i.putExtra("destinationID", destinationID);
-                    i.putExtra("destinationRegion", destinationRegion);
-                    startActivity(i);
-                    finish();
-                } else if (CList.size() > 1) {
-                    intent = new Intent(MainActivity.this, ListViewActivity.class);
-                    intent.putExtra("Category", "領藥處");
-                    startActivity(intent);
-                    finish();
+                    if (CList.size() == 1) {
+                        destinationName = CList.get(0)._waypointName;
+                        destinationID = CList.get(0)._waypointID;
+                        destinationRegion = CList.get(0)._regionID;
+                        Intent i = new Intent(MainActivity.this, NavigationActivity.class);
+                        i.putExtra("destinationName", destinationName);
+                        i.putExtra("destinationID", destinationID);
+                        i.putExtra("destinationRegion", destinationRegion);
+                        startActivity(i);
+                        finish();
+                    } else if (CList.size() > 1) {
+                        intent = new Intent(MainActivity.this, ListViewActivity.class);
+                        intent.putExtra("Category", "領藥處");
+                        startActivity(intent);
+                        finish();
+                    }
                 }
                 break;
-
                 //廁所
             case R.id.btn_wc:
-                ButtonClicked = true;
-                for (int i = 0; i < listForStoringAllNodes.size(); i++) {
-                    Log.i("asdd", listForStoringAllNodes.get(i)._category);
-                    if (listForStoringAllNodes.get(i)._category.equals("廁所")) {
-                        Log.i("asdd", listForStoringAllNodes.get(i)._category + "2");
-                        CList.add(listForStoringAllNodes.get(i));
+                if(!mBtAdapter.isEnabled() || !providerEnabled) {
+                    Toast toast = Toast.makeText(MainActivity.this,
+                            "藍牙或定位權限尚未開啟", Toast.LENGTH_LONG);
+                    toast.show();
+                }else {
+                    ButtonClicked = true;
+                    for (int i = 0; i < listForStoringAllNodes.size(); i++) {
+                        Log.i("asdd", listForStoringAllNodes.get(i)._category);
+                        if (listForStoringAllNodes.get(i)._category.equals("廁所")) {
+                            Log.i("asdd", listForStoringAllNodes.get(i)._category + "2");
+                            CList.add(listForStoringAllNodes.get(i));
+                        }
                     }
-                }
-                if (CList.size() == 1) {
-                    destinationName = CList.get(0)._waypointName;
-                    destinationID = CList.get(0)._waypointID;
-                    destinationRegion = CList.get(0)._regionID;
-                    Intent i = new Intent(MainActivity.this, NavigationActivity.class);
-                    i.putExtra("destinationName", destinationName);
-                    i.putExtra("destinationID", destinationID);
-                    i.putExtra("destinationRegion", destinationRegion);
-                    startActivity(i);
-                    finish();
-                } else if (CList.size() > 1) {
-                    intent = new Intent(MainActivity.this, ListViewActivity.class);
-                    intent.putExtra("Category", "廁所");
-                    startActivity(intent);
-                    finish();
+                    if (CList.size() == 1) {
+                        destinationName = CList.get(0)._waypointName;
+                        destinationID = CList.get(0)._waypointID;
+                        destinationRegion = CList.get(0)._regionID;
+                        Intent i = new Intent(MainActivity.this, NavigationActivity.class);
+                        i.putExtra("destinationName", destinationName);
+                        i.putExtra("destinationID", destinationID);
+                        i.putExtra("destinationRegion", destinationRegion);
+                        startActivity(i);
+                        finish();
+                    } else if (CList.size() > 1) {
+                        intent = new Intent(MainActivity.this, ListViewActivity.class);
+                        intent.putExtra("Category", "廁所");
+                        startActivity(intent);
+                        finish();
+                    }
                 }
                 break;
             //出口
@@ -547,60 +581,71 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                    }else {
                     Toast.makeText(this, "未偵測到網路，請開啟網路使用此功能", Toast.LENGTH_SHORT).show();
                 }
-
                 break;
             //商店餐廳
             case R.id.btn_convenience_store:
-                ButtonClicked = true;
-                for (int i = 0; i < listForStoringAllNodes.size(); i++) {
-                    Log.i("asdd", listForStoringAllNodes.get(i)._category);
-                    if (listForStoringAllNodes.get(i)._category.equals("商店餐廳")) {
-                        Log.i("asdd", listForStoringAllNodes.get(i)._category + "2");
-                        CList.add(listForStoringAllNodes.get(i));
+                if(!mBtAdapter.isEnabled() || !providerEnabled) {
+                    Toast toast = Toast.makeText(MainActivity.this,
+                            "藍牙或定位權限尚未開啟", Toast.LENGTH_LONG);
+                    toast.show();
+                }else {
+                    ButtonClicked = true;
+                    for (int i = 0; i < listForStoringAllNodes.size(); i++) {
+                        Log.i("asdd", listForStoringAllNodes.get(i)._category);
+                        if (listForStoringAllNodes.get(i)._category.equals("商店餐廳")) {
+                            Log.i("asdd", listForStoringAllNodes.get(i)._category + "2");
+                            CList.add(listForStoringAllNodes.get(i));
+                        }
                     }
-                }
-                if (CList.size() == 1) {
-                    destinationName = CList.get(0)._waypointName;
-                    destinationID = CList.get(0)._waypointID;
-                    destinationRegion = CList.get(0)._regionID;
-                    Intent i = new Intent(MainActivity.this, NavigationActivity.class);
-                    i.putExtra("destinationName", destinationName);
-                    i.putExtra("destinationID", destinationID);
-                    i.putExtra("destinationRegion", destinationRegion);
-                    startActivity(i);
-                    finish();
-                } else if (CList.size() > 1) {
-                    intent = new Intent(MainActivity.this, ListViewActivity.class);
-                    intent.putExtra("Category", "商店餐廳");
-                    startActivity(intent);
-                    finish();
+                    if (CList.size() == 1) {
+                        destinationName = CList.get(0)._waypointName;
+                        destinationID = CList.get(0)._waypointID;
+                        destinationRegion = CList.get(0)._regionID;
+                        Intent i = new Intent(MainActivity.this, NavigationActivity.class);
+                        i.putExtra("destinationName", destinationName);
+                        i.putExtra("destinationID", destinationID);
+                        i.putExtra("destinationRegion", destinationRegion);
+                        startActivity(i);
+                        finish();
+                    } else if (CList.size() > 1) {
+                        intent = new Intent(MainActivity.this, ListViewActivity.class);
+                        intent.putExtra("Category", "商店餐廳");
+                        startActivity(intent);
+                        finish();
+                    }
                 }
                 break;
             //抽血處
             case R.id.btn_exsanguinate:
-                ButtonClicked = true;
-                for (int i = 0; i < listForStoringAllNodes.size(); i++) {
-                    Log.i("asdd", listForStoringAllNodes.get(i)._category);
-                    if (listForStoringAllNodes.get(i)._category.equals("檢驗醫學部")) {
-                        Log.i("asdd", listForStoringAllNodes.get(i)._category + "2");
-                        CList.add(listForStoringAllNodes.get(i));
+                if(!mBtAdapter.isEnabled() || !providerEnabled) {
+                    Toast toast = Toast.makeText(MainActivity.this,
+                            "藍牙或定位權限尚未開啟", Toast.LENGTH_LONG);
+                    toast.show();
+                }else {
+                    ButtonClicked = true;
+                    for (int i = 0; i < listForStoringAllNodes.size(); i++) {
+                        Log.i("asdd", listForStoringAllNodes.get(i)._category);
+                        if (listForStoringAllNodes.get(i)._category.equals("檢驗醫學部")) {
+                            Log.i("asdd", listForStoringAllNodes.get(i)._category + "2");
+                            CList.add(listForStoringAllNodes.get(i));
+                        }
                     }
-                }
-                if (CList.size() == 1) {
-                    destinationName = CList.get(0)._waypointName;
-                    destinationID = CList.get(0)._waypointID;
-                    destinationRegion = CList.get(0)._regionID;
-                    Intent i = new Intent(MainActivity.this, NavigationActivity.class);
-                    i.putExtra("destinationName", destinationName);
-                    i.putExtra("destinationID", destinationID);
-                    i.putExtra("destinationRegion", destinationRegion);
-                    startActivity(i);
-                    finish();
-                } else if (CList.size() > 1) {
-                    intent = new Intent(MainActivity.this, ListViewActivity.class);
-                    intent.putExtra("Category", "檢驗醫學部");
-                    startActivity(intent);
-                    finish();
+                    if (CList.size() == 1) {
+                        destinationName = CList.get(0)._waypointName;
+                        destinationID = CList.get(0)._waypointID;
+                        destinationRegion = CList.get(0)._regionID;
+                        Intent i = new Intent(MainActivity.this, NavigationActivity.class);
+                        i.putExtra("destinationName", destinationName);
+                        i.putExtra("destinationID", destinationID);
+                        i.putExtra("destinationRegion", destinationRegion);
+                        startActivity(i);
+                        finish();
+                    } else if (CList.size() > 1) {
+                        intent = new Intent(MainActivity.this, ListViewActivity.class);
+                        intent.putExtra("Category", "檢驗醫學部");
+                        startActivity(intent);
+                        finish();
+                    }
                 }
                 break;
 
