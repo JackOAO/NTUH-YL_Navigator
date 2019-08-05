@@ -31,17 +31,17 @@
 	
 	<region id='2' name='region2' neighbor1='region1' neighbor2='' neighbor3='' neighbor4='' elevation='2'>
      
-	<node id='0x006317170x00020000' name='心臟血管檢查室' region='region2' category='檢查室'/>
-	<node id='0x7b9861150x00020000' name='內視鏡/超音波檢查室' region='region2' category='檢查室'/>
-	<node id='0x021234110x00020000' name='神經部檢查室' region='region2' category='檢查室'/>
+		<node id='0x006317170x00020000' name='心臟血管檢查室' region='region2' category='檢查室'/>
+		<node id='0x7b9861150x00020000' name='內視鏡/超音波檢查室' region='region2' category='檢查室'/>
+		<node id='0x021234110x00020000' name='神經部檢查室' region='region2' category='檢查室'/>
 
     </region>
 
 
     <region id='3' name='region3' neighbor1='region1' neighbor2='' neighbor3='' neighbor4='' elevation='0'>
 
-	 <node id='0x5c93bd410x4f0df142' name='X光/電腦斷層室' region='region3' category='檢查室'/>
-	<node id='0x5c93bd410x4f0df142' name='影像醫學部' region='region3' category='檢查室'/>
+		<node id='0x5c93bd410x4f0df142' name='X光/電腦斷層室' region='region3' category='檢查室'/>
+		<node id='0x5c93bd410x4f0df142' name='影像醫學部' region='region3' category='檢查室'/>
 
     </region>
 

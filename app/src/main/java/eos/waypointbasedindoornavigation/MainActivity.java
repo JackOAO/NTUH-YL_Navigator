@@ -574,8 +574,8 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                 ConnectivityManager mConnectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
                 NetworkInfo mNetworkInfo = mConnectivityManager.getActiveNetworkInfo();
                 if (mNetworkInfo != null) { //網路有開啟
-                    Intent intent_search = new Intent(MainActivity.this, Search_Schedule.class);
-                    //Intent intent_search = new Intent(MainActivity.this, Outpatient_schedule.class);
+                    //Intent intent_search = new Intent(MainActivity.this, Search_Schedule.class);
+                    Intent intent_search = new Intent(MainActivity.this, Outpatient_schedule.class);
                     startActivity(intent_search);
                     finish();
                    }else {

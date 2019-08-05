@@ -469,6 +469,7 @@ public class NavigationActivity extends AppCompatActivity implements BeaconConsu
             destinationID = bundle.getString("destinationID");
             destinationRegion = bundle.getString("destinationRegion");
         }
+        Log.i("xxx_ReceiveData","destinationName = " + destinationName + " destinationID = " + destinationID + " destinationRegion = "+ destinationRegion);
 
 
         Log.i("abc", "Initial REgion ID:" + passedRegionID);
