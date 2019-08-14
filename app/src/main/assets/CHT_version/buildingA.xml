@@ -8,7 +8,7 @@
 		<node id='0x7b1564880x00020000' name='領藥處' region='region1' category='領藥處'/>
 		<node id='0x4993bd410x640df142' name='萊爾富' region='region1' category='商店餐廳'/>
 		<node id='0x4993bd410x640df142' name='杏一藥局' region='region1' category='商店餐廳'/>
-		<node id='0xc43af3420x00000000' name='雲苑餐廳' region='region1' category='商店餐廳'/>
+		<node id='0x000004040x00020000' name='雲苑餐廳' region='region1' category='商店餐廳'/>
 		<node id='0x6029b8410x580af042' name='心臟內科/內科/體檢區(1~10診)' region='region1' category='各科門診'/>
 		<node id='0x3ef8b8410x0f3ef042' name='耳鼻喉科/小兒科/婦產科(11~20診)' region='region1' category='各科門診'/>
         <node id='0xed4cc8410x0e21f342' name='腎臟科/腎膽腸內科/新陳代謝分泌科(21~25診)' region='region1' category='各科門診'/>
@@ -17,15 +17,15 @@
         <node id='0x2c05ba410x4b81f042' name='眼科/皮膚科(42~49診)' region='region1' category='各科門診'/>
 		<node id='0xf853bd410xfe54f142' name='女廁' region='region1' category='廁所'/>
 		<node id='0x8b2eba410xa38bf042' name='男廁' region='region1' category='廁所'/>
-		<node id='0x283ff0420x00000000' name='中央出口' region='region1' category='其他'/>
-		<node id='0xc43af3420x00000000' name='核子醫學部' region='region1' category='檢查室'/>
-		<node id='0xde57c8410x0721f342' name='抽血' region='region1' category='檢驗醫學部'/>
-		<node id='0xde57c8410x0721f342' name='驗糞' region='region1' category='檢驗醫學部'/>
-		<node id='0xde57c8410x0721f342' name='驗尿' region='region1' category='檢驗醫學部'/>
-		<node id='0xde57c8410x0721f342' name='心電圖' region='region1' category='檢驗醫學部'/>
-		<node id='0xeb57ba410xfb95f042' name='後門出口' region='region1' category='其他'/>
-		<node id='0xde57c8410x0721f342' name='住院服務中心' region='region1' category='其他'/>
-		<node id='0x7b3988440x00020000' name='病歷室' region='region1' category='其他'/>
+		<node id='0x000001010x00020000' name='中央出口' region='region1' category='其他'/>
+		<node id='0x000004040x00020000' name='核子醫學部' region='region1' category='檢查室'/>
+		<node id='0x000005050x00020000' name='抽血' region='region1' category='檢驗醫學部'/>
+		<node id='0x000005050x00020000' name='驗糞' region='region1' category='檢驗醫學部'/>
+		<node id='0x000005050x00020000' name='驗尿' region='region1' category='檢驗醫學部'/>
+		<node id='0x000005050x00020000' name='心電圖' region='region1' category='檢驗醫學部'/>
+		<node id='0x000009090x00020000' name='後門出口' region='region1' category='其他'/>
+		<node id='0x000005050x00020000' name='住院服務中心' region='region1' category='其他'/>
+		<node id='0x000006060x00020000' name='病歷室' region='region1' category='其他'/>
 	
 	</region>
 	
