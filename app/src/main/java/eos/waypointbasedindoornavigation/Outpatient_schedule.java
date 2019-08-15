@@ -1,5 +1,6 @@
 package eos.waypointbasedindoornavigation;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -70,9 +71,11 @@ import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -209,6 +212,7 @@ public class Outpatient_schedule  extends AppCompatActivity implements View.OnCl
     }
 
     //PHP
+    @SuppressLint("HandlerLeak")
     Handler handler_Success = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -216,13 +220,18 @@ public class Outpatient_schedule  extends AppCompatActivity implements View.OnCl
             Bundle data = msg.getData();
             String val = data.getString("key");//取出key中的字串存入val
             Toast.makeText(getApplicationContext(), val, Toast.LENGTH_LONG).show();
-            try {
-                nowtime = getVersionFormphp(val);
-            } catch (JSONException e) {
-                e.printStackTrace();
+            if(API_type == 1) {
+                try {
+                    nowtime = getVersionFormphp(val);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                Log.i("xxx_all_nowtime", "" + nowtime);
+                parseJSONWithJSONObject(nowtime);
+            }else if(API_type == 2 || API_type == 3){
+                nowtime = ReceiveBody(val);
+                Log.i("xxx_all_nowtime", "" + nowtime);
             }
-            Log.i("xxx_all_nowtime", "" + nowtime);
-            parseJSONWithJSONObject(nowtime);
         }
 
     };
@@ -327,6 +336,13 @@ public class Outpatient_schedule  extends AppCompatActivity implements View.OnCl
         String version = jsonObject.getString("opd_all");
 
         return version;
+    }
+
+    public String ReceiveBody(String all){
+        String r_body = all;
+
+        return r_body;
+
     }
 
     private void parseJSONWithJSONObject(String JsonData) {
