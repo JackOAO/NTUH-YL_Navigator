@@ -229,7 +229,11 @@ public class Outpatient_schedule  extends AppCompatActivity implements View.OnCl
                 Log.i("xxx_all_nowtime", "" + nowtime);
                 parseJSONWithJSONObject(nowtime);
             }else if(API_type == 2 || API_type == 3){
-                nowtime = ReceiveBody(val);
+                try {
+                    nowtime = getjsonFormphp(val);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 Log.i("xxx_all_nowtime", "" + nowtime);
             }
         }
@@ -333,7 +337,16 @@ public class Outpatient_schedule  extends AppCompatActivity implements View.OnCl
     public String getVersionFormphp(String all) throws JSONException {
 
         JSONObject jsonObject = new JSONObject(all);
+        Log.i("jsonOBJ ", "JSONOBJ = " + jsonObject);
         String version = jsonObject.getString("opd_all");
+
+        return version;
+    }
+    public String getjsonFormphp(String all) throws JSONException {
+
+        JSONObject jsonObject = new JSONObject(all);
+        Log.i("jsonOBJ ", "JSONOBJ = " + jsonObject);
+        String version = jsonObject.getString("2");
 
         return version;
     }
