@@ -230,11 +230,12 @@ public class Outpatient_schedule  extends AppCompatActivity implements View.OnCl
                 parseJSONWithJSONObject(nowtime);
             }else if(API_type == 2 || API_type == 3){
                 try {
-                    nowtime = getjsonFormphp(val);
+                    getjsonFormphp(val);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
                 Log.i("xxx_all_nowtime", "" + nowtime);
+                CreateListView();
             }
         }
 
@@ -342,28 +343,68 @@ public class Outpatient_schedule  extends AppCompatActivity implements View.OnCl
 
         return version;
     }
-    public String getjsonFormphp(String all) throws JSONException {
+    public void getjsonFormphp(String all) throws JSONException {
 
         JSONObject jsonObject = new JSONObject(all);
-        Log.i("jsonOBJ ", "JSONOBJ = " + jsonObject);
-        String version = jsonObject.getString("2");
+        int i;
+        String counter1_list = null;
+        itemname_list.clear();
+        qnum_list.clear();
+        counter_list.clear();
+        for(i = 1; i < 7 ;i++) {
+            counter1_list = null;
+            try {
+                Log.i("executetime", "" + i);
+                String x = String.valueOf(i);
+                counter1_list = jsonObject.getString(x);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            Log.i("executetime", "counterlist1 = " + counter1_list);
+            if(counter1_list != null){
+                Log.i("xxx456", "counterlist1 = " + counter1_list);
+                JSONObject jsonObject2 = new JSONObject(counter1_list);
+                String item1 = jsonObject2.getString("itemname");
+                String qnum1 = jsonObject2.getString("qnum");
+                String counter1 = jsonObject2.getString("counter");
+                itemname_list.add(item1);
+                qnum_list.add(qnum1);
+                counter_list.add(counter1);
+            }
+        }
 
-        return version;
+        return;
     }
 
-    public String ReceiveBody(String all){
-        String r_body = all;
+    public void CreateListView(){
+        List<outpatient_list_class> outpatient_list = new ArrayList<outpatient_list_class>();
+        listV = (ListView) findViewById(R.id.List_View_outpaient);
+        adapter = new MyAdapter(Outpatient_schedule.this, outpatient_list);
+        listV.setAdapter(adapter);
+        outpatient_list.add(new outpatient_list_class("型態", "", "櫃檯號碼", "", "現在號碼"));
+        for (int i = 0; i < itemname_list.size(); i++) {
+            outpatient_list.add(new outpatient_list_class(itemname_list.get(i),null, counter_list.get(i), null, qnum_list.get(i)));
+        }
+        listV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (position != 0) {
+                    Intent intent = new Intent(Outpatient_schedule.this, NavigationActivity.class);
+                    intent.putExtra("destinationName", "批價掛號櫃臺");
+                    intent.putExtra("destinationID", "0xcf90b8410x3424f042");
+                    intent.putExtra("destinationRegion", "region1");
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        });
 
-        return r_body;
+
+        return;
 
     }
 
     private void parseJSONWithJSONObject(String JsonData) {
-       /* roomnumtext = (TextView) findViewById(R.id.textView4);
-        clinnametext = (TextView) findViewById(R.id.textView5);
-        drnametext = (TextView) findViewById(R.id.textView6);
-        callnumtext = (TextView) findViewById(R.id.textView7);
-        timetypetext = (TextView) findViewById(R.id.textView8);*/
             List<outpatient_list_class> outpatient_list = new ArrayList<outpatient_list_class>();
             listV = (ListView) findViewById(R.id.List_View_outpaient);
             adapter = new MyAdapter(Outpatient_schedule.this, outpatient_list);
@@ -392,17 +433,6 @@ public class Outpatient_schedule  extends AppCompatActivity implements View.OnCl
                     String timetype = jsonArray.getJSONObject(i).getString("timetype");
                     timetype_list.add(timetype);
                 }
-           /* roomnumtext.setText("診間號碼：" + roomnum2_list.toString());
-            clinnametext.setText("類別：" + divnname_list.toString() + clinname_list.toString());
-            drnametext.setText("醫生姓名：" + drname_list.toString());
-            callnumtext.setText("診號：" + callnum_list.toString());
-            timetypetext.setText("時段：" + timetype_list.toString());*/
-                Log.i("xxx_all", "roomnum2_list:" + roomnum2_list + " size =" + roomnum2_list.size());
-                Log.i("xxx_all", "divnname_list:" + divnname_list + " size =" + divnname_list.size());
-                Log.i("xxx_all", "clinname_list:" + clinname_list + " size =" + clinname_list.size());
-                Log.i("xxx_all", "drname_list:" + drname_list + " size =" + drname_list.size());
-                Log.i("xxx_all", "callnum_list:" + callnum_list + " size =" + callnum_list.size());
-                Log.i("xxx_all", "timetype_list:" + timetype_list + " size =" + timetype_list.size());
                 outpatient_list.add(new outpatient_list_class("診間號碼", "部別名稱", "科別名稱", "醫生姓名", "目前叫號"));
                 for (int i = 0; i < roomnum2_list.size(); i++) {
                     outpatient_list.add(new outpatient_list_class(roomnum2_list.get(i), divnname_list.get(i), clinname_list.get(i), drname_list.get(i), callnum_list.get(i)));
