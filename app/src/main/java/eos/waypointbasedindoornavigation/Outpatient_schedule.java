@@ -229,6 +229,24 @@ public class Outpatient_schedule  extends AppCompatActivity implements View.OnCl
                 Log.i("xxx_all_nowtime", "" + nowtime);
                 parseJSONWithJSONObject(nowtime);
             }else if(API_type == 2 || API_type == 3){
+                String[] sArraylist = val.split("\\|");
+                String lab = null, reg = null;
+                int i = 0;
+                for(String token:sArraylist) {
+                    if (i == 0) {
+                        reg = token;
+                        i++;
+                    }else if (i == 1) {
+                        lab = token;
+                    }
+                }
+                Log.i("aaa45645", "reg" + reg);
+                Log.i("aaa45645","lab" + lab);
+                if(API_type == 2){
+                    val = lab;
+                }else if(API_type == 3){
+                    val = reg;
+                }
                 try {
                     getjsonFormphp(val);
                 } catch (JSONException e) {
@@ -301,7 +319,7 @@ public class Outpatient_schedule  extends AppCompatActivity implements View.OnCl
                     data.putString("key", "連線失敗");
                     handler_Error.sendMessage(msg);
                 }
-            }else if(API_type == 3)
+            }else if(API_type == 3 || API_type == 2)
                 try {
                     URL url = new URL("http://yldepweb.ylh.gov.tw/room_num/reg_lab_json.php");
                     HttpURLConnection mUrlConnection = (HttpURLConnection) url.openConnection();
