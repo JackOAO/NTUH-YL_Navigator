@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<BuildingA>
+
+
+    <region4>
+        <node id='0x000330000x00020000' name='電梯' region='region4' lat='23.698656960350036' lon='120.52725700409886' neighbor1='0x000270000x00020000' neighbor2='' neighbor3='' neighbor4='' category='新大樓五樓' nodeType='1' connectPointID='5' groupID='' mainID='' elevation='5'/>
+		<node id='0x000270000x00020000' name='配膳室' region='region4' lat='23.698656960350036' lon='120.52713685409886' neighbor1='0x000330000x00020000' neighbor2='0x000210000x00020000' neighbor3='0x000235000x00020000' neighbor4='' category='新大樓五樓' nodeType='' connectPointID='' groupID='' mainID='' elevation='5'/>
+		<node id='0x000210000x00020000' name='中庭' region='region4' lat='23.698656960350036' lon='120.52707166909885' neighbor1='0x000270000x00020000' neighbor2='' neighbor3='' neighbor4='' category='新大樓五樓' nodeType='' connectPointID='' groupID='50' mainID='50' attachID1='50' attachID2='51' elevation='5'/>
+		<node id='0x000235000x00020000' name='輪椅放置區' region='region4' lat='23.698656960350036' lon='120.52707166909885' neighbor1='0x000270000x00020000' neighbor2='' neighbor3='' neighbor4='' category='新大樓五樓' nodeType='' connectPointID='' groupID='50' mainID='51' attachID1='50' attachID2='51' elevation='5'/>
+		
+       
+    </region4>
+
+</BuildingA>
+
+
