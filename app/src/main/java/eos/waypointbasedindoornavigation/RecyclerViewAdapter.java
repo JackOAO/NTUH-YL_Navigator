@@ -105,7 +105,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<MyViewHolder>{
             super(itemView);
 
             title = (Button) itemView.findViewById(R.id.listText);
-          /*  region = (TextView) itemView.findViewById(R.id.listRegion);*/
 
         }
     }

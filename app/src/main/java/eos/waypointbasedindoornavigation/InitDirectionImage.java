@@ -3,17 +3,14 @@ package eos.waypointbasedindoornavigation;
 /*--
 
 Module Name:
-
-    CompassActivity.java
+    Init Picture
 
 Abstract:
-
-    This module emulates the embedded compass of the device
-    which is used for heading correction
+    起始照片方向顯示
 
 Author:
 
-    Phil Wu 01-Feb-2018
+    Chia 2019/08/26
 
 --*/
 

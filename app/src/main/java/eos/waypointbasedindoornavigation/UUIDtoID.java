@@ -1,6 +1,6 @@
 package eos.waypointbasedindoornavigation;
 
-
+//為了Log轉換成中文，目前未使用
 public class UUIDtoID {
     public String trUUID (String s){
         s = ptr(s);

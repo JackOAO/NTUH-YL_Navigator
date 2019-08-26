@@ -33,16 +33,15 @@ import android.widget.TextView;
 
 Module Name:
 
-    CompassActivity.java
+    OutpatienActivity.java
 
 Abstract:
+    臺大醫院門診資訊界接
 
-    This module emulates the embedded compass of the device
-    which is used for heading correction
 
 Author:
 
-    Phil Wu 01-Feb-2018
+    Chia-2019/08/26
 
 --*/
 
@@ -85,7 +84,6 @@ public class Outpatient_schedule  extends AppCompatActivity implements View.OnCl
     int API_type = 0; // 1 = "門診" ; 2 = "抽血進度"; 3 = "批價掛號進度"
 
     String nowtime = null;
-    TextView roomnumtext, clinnametext, drnametext, callnumtext, timetypetext;
 
     List<String> roomnum2_list = new ArrayList<>();
     List<String> divnname_list = new ArrayList<>();
@@ -104,7 +102,7 @@ public class Outpatient_schedule  extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_outpatient);
         setTitle("臺大雲林分院室內導航系統");
-
+        //Findview by ID
         Button btnOutoatient = (Button) findViewById(R.id.button_Outpatient);
         btnOutoatient.setOnClickListener(this);
         Button btnBlood_collect = (Button) findViewById(R.id.button_Blood_collect);
@@ -157,6 +155,7 @@ public class Outpatient_schedule  extends AppCompatActivity implements View.OnCl
         Button btnEmergency = (Button) findViewById(R.id.button_Emergency);
         switch (v.getId()) {
             case R.id.button_Outpatient:
+                //選單顏色更換
                 btnOutoatient.setBackgroundColor(Color.BLACK);
                 btnOutoatient.setTextColor(Color.WHITE);
                 btnBlood_collect.setBackgroundColor(Color.LTGRAY);
@@ -170,6 +169,7 @@ public class Outpatient_schedule  extends AppCompatActivity implements View.OnCl
 
                 break;
             case R.id.button_Blood_collect:
+                ////選單顏色更換
                 btnOutoatient.setBackgroundColor(Color.LTGRAY);
                 btnOutoatient.setTextColor(Color.BLACK);
                 btnBlood_collect.setBackgroundColor(Color.BLACK);
@@ -181,6 +181,7 @@ public class Outpatient_schedule  extends AppCompatActivity implements View.OnCl
                 API_type = 2;
                 break;
             case R.id.button_Cashier:
+                ////選單顏色更換
                 btnOutoatient.setBackgroundColor(Color.LTGRAY);
                 btnOutoatient.setTextColor(Color.BLACK);
                 btnBlood_collect.setBackgroundColor(Color.LTGRAY);
@@ -192,6 +193,7 @@ public class Outpatient_schedule  extends AppCompatActivity implements View.OnCl
                 API_type = 3;
                 break;
             case R.id.button_Emergency:
+                ////選單顏色更換
                 btnOutoatient.setBackgroundColor(Color.LTGRAY);
                 btnOutoatient.setTextColor(Color.BLACK);
                 btnBlood_collect.setBackgroundColor(Color.LTGRAY);
@@ -220,6 +222,7 @@ public class Outpatient_schedule  extends AppCompatActivity implements View.OnCl
             Bundle data = msg.getData();
             String val = data.getString("key");//取出key中的字串存入val
             Toast.makeText(getApplicationContext(), val, Toast.LENGTH_LONG).show();
+            //門診API
             if(API_type == 1) {
                 try {
                     nowtime = getVersionFormphp(val);
@@ -228,7 +231,7 @@ public class Outpatient_schedule  extends AppCompatActivity implements View.OnCl
                 }
                 Log.i("xxx_all_nowtime", "" + nowtime);
                 parseJSONWithJSONObject(nowtime);
-            }else if(API_type == 2 || API_type == 3){
+            }else if(API_type == 2 || API_type == 3){//掛號與抽血共用相同API，用split區分兩個字串
                 String[] sArraylist = val.split("\\|");
                 String lab = null, reg = null;
                 int i = 0;
@@ -240,6 +243,7 @@ public class Outpatient_schedule  extends AppCompatActivity implements View.OnCl
                         lab = token;
                     }
                 }
+                //reg 存 掛號資訊，lab存檢驗醫學部資訊
                 Log.i("aaa45645", "reg" + reg);
                 Log.i("aaa45645","lab" + lab);
                 if(API_type == 2){
@@ -253,6 +257,7 @@ public class Outpatient_schedule  extends AppCompatActivity implements View.OnCl
                     e.printStackTrace();
                 }
                 Log.i("xxx_all_nowtime", "" + nowtime);
+                //建立ListView
                 CreateListView();
             }
         }
@@ -369,7 +374,7 @@ public class Outpatient_schedule  extends AppCompatActivity implements View.OnCl
         itemname_list.clear();
         qnum_list.clear();
         counter_list.clear();
-        for(i = 1; i < 7 ;i++) {
+        for(i = 1; i < 7 ;i++) {//標籤為1～6
             counter1_list = null;
             try {
                 Log.i("executetime", "" + i);
@@ -379,7 +384,7 @@ public class Outpatient_schedule  extends AppCompatActivity implements View.OnCl
                 e.printStackTrace();
             }
             Log.i("executetime", "counterlist1 = " + counter1_list);
-            if(counter1_list != null){
+            if(counter1_list != null){//建立List清單
                 Log.i("xxx456", "counterlist1 = " + counter1_list);
                 JSONObject jsonObject2 = new JSONObject(counter1_list);
                 String item1 = jsonObject2.getString("itemname");
@@ -395,6 +400,7 @@ public class Outpatient_schedule  extends AppCompatActivity implements View.OnCl
     }
 
     public void CreateListView(){
+        //將Array資訊傳給Adapter並建立List
         List<outpatient_list_class> outpatient_list = new ArrayList<outpatient_list_class>();
         listV = (ListView) findViewById(R.id.List_View_outpaient);
         adapter = new MyAdapter(Outpatient_schedule.this, outpatient_list);
@@ -458,7 +464,7 @@ public class Outpatient_schedule  extends AppCompatActivity implements View.OnCl
                 listV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        //Toast.makeText(Outpatient_schedule.this,"ID " + id + "position" + position ,Toast.LENGTH_LONG).show();
+                        //讀診間號碼判斷目的地
                         if (position != 0) {
                             int i = Integer.parseInt(roomnum2_list.get(position - 1));
                             if (i < 11) { // 去1~10診

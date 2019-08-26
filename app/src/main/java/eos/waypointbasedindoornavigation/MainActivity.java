@@ -111,23 +111,12 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     private static final int REQUEST_ENABLE_BT = 3;
 
 
-    //Two search bars, one for source and one for destination
-    Button searchBarForDestination;
-    Button StartButton;
-    //Variables to record a location's name, id and region passed from ListViewActivity
-    String namePassedFromListView, IDPassedFromListView, regionPassedFromListView;
-
     //Define which search bar is to be filled with location information
     static boolean searchBarClicked = false;
     boolean ButtonClicked = false;
     //Store names, IDs and Regions of source and destination
     static String destinationName, destinationID, destinationRegion;
 
-    //PopupWindow to notify user search bar can not be blank when start a navigation tour
-    private PopupWindow popupWindow;
-    private LinearLayout positionOfPopup;
-
-    private static final int PERMISSION_REQUEST_COARSE_LOCATION = 1;
 
     public static File file;
     //public static File path  = new File(Environment.getExternalStorageDirectory() +
@@ -141,21 +130,8 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     HashMap<String, List<Node>> categorizedDataList = new HashMap<>();
     //List of vertice for storing location data from regionData
     List<Node> listForStoringAllNodes = new ArrayList<>();
-    private RecyclerView recyclerView;
-    private RecyclerViewAdapter adapter;
     List<Node> CList = new ArrayList<Node>();
 
-    // Variables used to store waypoint infomration of a building
-    List<NavigationSubgraph> navigationGraph = new ArrayList<>();
-    HashMap<String, Node> allWaypointData= new HashMap<>();
-    List<NavigationSubgraph> navigationGraphForAllWaypoint = new ArrayList<>();
-    RegionGraph regionGraph = new RegionGraph();
-
-    private BeaconManager beaconManager;
-    private Find_Loc LBD = new Find_Loc();
-    private BluetoothManager bluetoothManager;
-    private BluetoothAdapter mBluetoothAdapter;
-    private org.altbeacon.beacon.Region region;
     private static String[] PERMISSIONS_STORAGE = {
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -166,7 +142,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     Button btn_stethoscope, btn_bill, btn_exit, btn_medicent, btn_convenience_store, btn_wc,btn_exsanguinate,btn_examination_room,btn_other,btn_search;
     TextView tv_description;
     TextView localVersionText = null;
-    //PHP
+    //PHP VersionSetup
     String phpVersion = null;
     String VersionCode = "1.0.5";
     private static int count = 0;
@@ -182,29 +158,12 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
        if(item.getItemId() == R.id.gear){
-            /*AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
-            dialog.setTitle("系統");
-            dialog.setMessage("是否開始進行訊號校正?");
-            dialog.setCancelable(false);
-            dialog.setNegativeButton("確定",new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface arg0, int arg1) {
-                    Intent intent = new Intent();
-                    intent = new Intent(MainActivity.this, initSignal.class);
-                    startActivity(intent);
-                }
-            });
-            dialog.setPositiveButton("取消",new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface arg0, int arg1) {
-                }
-            });
-
-            dialog.show();*/
+         //語言設定
             Intent intent = new Intent(MainActivity.this,Language_change_Activity.class);
             startActivity(intent);
         }else
             if(item.getItemId() == R.id.information){
+           //作者相關資訊
             Intent intent = new Intent();
             intent = new Intent(MainActivity.this, author_list.class);
             startActivity(intent);
@@ -219,8 +178,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setTitle("臺大雲林分院室內導航系統");
-        Log.i("Main_Create_Mem", "usedMemory: Heap/Allocated Heap "+ Debug.getNativeHeapSize() + "/" + Debug.getNativeHeapAllocatedSize());
-
+        //檢查導航版本是否有更新
         if(count == 0) {//僅在首次開啟app時檢查
             count = 1;
             //檢測網路權限
@@ -269,22 +227,12 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         }
 
 
-
-        //Get the position of popupwindow (center of phone screen)
-        // positionOfPopup = (LinearLayout) findViewById(R.id.mainActivityLayout);
-
-        //Receive location information passed from ListViewActivity
-
-        //Arrive Check
+        //Arrive Check  Receive from NavigationActivity
         Bundle bundle = getIntent().getExtras();
         if(bundle != null) {
             Arrivelog = bundle.getInt("Arrived_flag");
-           /* namePassedFromListView = bundle.getString("name");
-            IDPassedFromListView = bundle.getString("id");
-            regionPassedFromListView = bundle.getString("region");
-            searchBarClicked = true;*/
         }
-        if(Arrivelog == 1){
+        if(Arrivelog == 1){ //使用者抵達目的地，提問是否填寫問卷
             android.support.v7.app.AlertDialog.Builder dialog2 = new android.support.v7.app.AlertDialog.Builder(MainActivity.this);
             dialog2.setTitle("系統");
             dialog2.setMessage("是否同意協助我們填寫導航滿意度調查問卷?");
@@ -299,7 +247,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                 public void onClick(DialogInterface arg0, int arg1) {
                     ConnectivityManager mConnectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
                     NetworkInfo mNetworkInfo = mConnectivityManager.getActiveNetworkInfo();
-                    if(mNetworkInfo != null) {
+                    if(mNetworkInfo != null) {//跳轉至問卷選單
                         Intent i = new Intent(MainActivity.this, Questionwebview.class);
                         startActivity(i);
                         finish();
@@ -355,37 +303,9 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         super.onDestroy();
     }
 
-    public void resetSignal(View view){
-        //取得目前offset設定值
-        //SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        //float offset = pref.getFloat("offset",1);
-
-        //寫入offset初始值至內存
-        double offset = 0;
-        SharedPreferences offsetPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        SharedPreferences.Editor editor = offsetPref.edit();
-        editor.putFloat("offset", (float) offset);
-        editor.commit();
-
-        //印出目前offset值
-        AlertDialog.Builder dialogBuilder =  new AlertDialog.Builder(this);
-        dialogBuilder.setMessage(String.format("%.2f ", Float.valueOf((float)offset)));
-        dialogBuilder.setPositiveButton("確定", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.dismiss();
-            }
-        });
-        AlertDialog dialog = dialogBuilder.create();
-        dialog.show();
-        //Tester MODE
-        Setting.setModeValue(TESTER_MODE);
-
-    }
-
     public void onClick(View view) {
-        if(ButtonClicked == false){
-            BluetoothAdapter mBtAdapter = BluetoothAdapter.getDefaultAdapter();
+        if(ButtonClicked == false){ //Android 9.0要防止連點兩次圖片選單
+            BluetoothAdapter mBtAdapter = BluetoothAdapter.getDefaultAdapter();//檢測藍牙,定位是否有打開
             LocationManager mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
             boolean providerEnabled = mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
         switch (view.getId()) {
@@ -430,6 +350,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                     toast.show();
                 }else {
                     ButtonClicked = true;
+                    //取出listForStoringAllNodes中的Category與檢查室相同的Node加至CList
                     for (int i = 0; i < listForStoringAllNodes.size(); i++) {
                         Log.i("asdd", listForStoringAllNodes.get(i)._category);
                         if (listForStoringAllNodes.get(i)._category.equals("檢查室")) {
@@ -461,7 +382,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                     Toast toast = Toast.makeText(MainActivity.this,
                             "藍牙或定位權限尚未開啟", Toast.LENGTH_LONG);
                     toast.show();
-                }else {
+                }else {//導向其他選單
                     ButtonClicked = true;
                     intent = new Intent(MainActivity.this, ListViewActivity.class);
                     intent.putExtra("Category", "其他");
@@ -477,6 +398,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                     toast.show();
                 }else {
                     ButtonClicked = true;
+                    //取出listForStoringAllNodes中的Category與批價櫃檯相同的Node加至CList
                     for (int i = 0; i < listForStoringAllNodes.size(); i++) {
                         Log.i("asdd", listForStoringAllNodes.get(i)._category);
                         if (listForStoringAllNodes.get(i)._category.equals("批價櫃檯")) {
@@ -510,6 +432,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                     toast.show();
                 }else {
                     ButtonClicked = true;
+                    //取出listForStoringAllNodes中的Category與領藥處相同的Node加至CList
                     for (int i = 0; i < listForStoringAllNodes.size(); i++) {
                         Log.i("asdd", listForStoringAllNodes.get(i)._category);
                         if (listForStoringAllNodes.get(i)._category.equals("領藥處")) {
@@ -543,6 +466,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                     toast.show();
                 }else {
                     ButtonClicked = true;
+                    //取出listForStoringAllNodes中的Category與廁所相同的Node加至CList
                     for (int i = 0; i < listForStoringAllNodes.size(); i++) {
                         Log.i("asdd", listForStoringAllNodes.get(i)._category);
                         if (listForStoringAllNodes.get(i)._category.equals("廁所")) {
@@ -568,13 +492,12 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                     }
                 }
                 break;
-            //出口
+            //看診查詢
             case R.id.btn_search:
                 //檢測網路權限
                 ConnectivityManager mConnectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
                 NetworkInfo mNetworkInfo = mConnectivityManager.getActiveNetworkInfo();
-                if (mNetworkInfo != null) { //網路有開啟
-                    //Intent intent_search = new Intent(MainActivity.this, Search_Schedule.class);
+                if (mNetworkInfo != null) { //網路有開啟導入看診查詢清單
                     Intent intent_search = new Intent(MainActivity.this, Outpatient_schedule.class);
                     startActivity(intent_search);
                     finish();
@@ -590,6 +513,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                     toast.show();
                 }else {
                     ButtonClicked = true;
+                    //取出listForStoringAllNodes中的Category與各科門診相同的Node加至CList
                     for (int i = 0; i < listForStoringAllNodes.size(); i++) {
                         Log.i("asdd", listForStoringAllNodes.get(i)._category);
                         if (listForStoringAllNodes.get(i)._category.equals("商店餐廳")) {
@@ -615,7 +539,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                     }
                 }
                 break;
-            //抽血處
+            //檢驗醫學部
             case R.id.btn_exsanguinate:
                 if(!mBtAdapter.isEnabled() || !providerEnabled) {
                     Toast toast = Toast.makeText(MainActivity.this,
@@ -623,6 +547,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                     toast.show();
                 }else {
                     ButtonClicked = true;
+                    //取出listForStoringAllNodes中的Category與各科門診相同的Node加至CList
                     for (int i = 0; i < listForStoringAllNodes.size(); i++) {
                         Log.i("asdd", listForStoringAllNodes.get(i)._category);
                         if (listForStoringAllNodes.get(i)._category.equals("檢驗醫學部")) {
@@ -653,7 +578,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     }
     }
 
-    public void loadLocationDatafromRegionGraph() {
+    public void loadLocationDatafromRegionGraph() { //獲取categorylist與主選單所有
         Log.i("xxx_List","loadLocationDatafromRegionGraph");
         //A HashMap to store region data, use region name as key to retrieve data
         RegionGraph regionGraph = DataParser.getRegionDataFromRegionGraph(this);
@@ -696,13 +621,13 @@ public class MainActivity extends AppCompatActivity implements Serializable {
             super.handleMessage(msg);
             Bundle data = msg.getData();
             String val = data.getString("key");//取出key中的字串存入val
-            //Toast.makeText(getApplicationContext(), val, Toast.LENGTH_LONG).show();
             try {
                 phpVersion = getVersionFormphp(val);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
             Log.i("xxx_update","phpVersion = " + phpVersion);
+            //目前版本與網頁上版本不相符
             if(!VersionCode.equals(phpVersion) && phpVersion != null){
 
                 AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
@@ -753,7 +678,6 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     Runnable runnable = new Runnable(){
         @Override
         public void run() {
-            //
             // TODO: http request.
             //
             Message msg = new Message();
@@ -761,6 +685,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
             msg.setData(data);
             try
             {
+                //連接Server解析版本資訊
                 URL url = new URL("http://140.125.45.113/test/index.php");
                 HttpURLConnection mUrlConnection = (HttpURLConnection) url.openConnection();
                 mUrlConnection.setDoInput(true);
@@ -776,7 +701,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                 }
                 bufferedReader.close();
                 is.close();
-
+                //從網頁接收內容存入responeseString
                 String responseString = stringBuffer.toString();
 
                 if(responseString!= null){
@@ -810,6 +735,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         Context appContext = GetApplicationContext.getAppContext();
         SharedPreferences languagePref = PreferenceManager.getDefaultSharedPreferences(appContext);
         String language_option = languagePref.getString("language","繁體中文");
+        //語言設定
         if(language_option.equals("繁體中文"))
         {
             setTitle("臺大雲林分院室內導航系統");

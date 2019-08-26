@@ -45,21 +45,11 @@
             android:name=".NavigationActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CompassActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".InitDirectionImage"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".initSignal"
-            android:label="@string/title_activity_init_signal"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".author_list" />
         <activity
             android:name=".Questionwebview"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".Search_Schedule"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Outpatient_schedule"
