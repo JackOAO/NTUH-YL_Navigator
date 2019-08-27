@@ -25,7 +25,6 @@ import javax.xml.transform.dom.DOMLocator;
 
 import static java.lang.Math.pow;
 
-//Log.i("Queue2", o_member.toString());
 public class ana_signal {
     private Queue<siganl_data_type> weight_queue = new LinkedList<>();
     private  List<siganl_data_type> data_list = new ArrayList<>();
@@ -70,8 +69,6 @@ public class ana_signal {
                 data_list.get(i).set_sort_way(1);
             Collections.sort(data_list);
 
-            //data_list.get(0).setvalue_extreme_value();
-            //data_list.get(1).setvalue_extreme_value();
             for(int i = 0; i< data_list.size(); i++)
                 Log.i("xxx_datalist","Value(" + i +") = " + data_list.get(i).getUuid() + " Rssilist = " + data_list.get(i).getrssilist() + " Rssi = " + data_list.get(i).countavg());
             List<Float> tmp_count_dif = ana_signal_6(data_list, remind_range, offset);
@@ -95,25 +92,6 @@ public class ana_signal {
                            FirstTime = false;
                        }else if (FirstTime == false && tmp_dif > tmp_count_dif.get(0) &&
                               data_list.get(0).countavg() > tmp_count_dif.get(1)) {
-                           /*SignalLog("-------定位模組開始---------");
-                           SignalLog("----------------二次曲線預估-------------");
-                           SignalLog("Remind Range : " + (remind_range+dp.get_Paramater(data_list.get(0).getUuid())));
-                           SignalLog("預估最強UUID : " + data_list.get(0).getUuid_Name() + " 預估RSSI：" + String.valueOf(tmp_count_dif.get(1)));
-                           SignalLog("預估次強值UUID : " + data_list.get(1).getUuid_Name() + " 預估RSSI" + String.valueOf(tmp_count_dif.get(1) - tmp_count_dif.get(0)));
-                           SignalLog("預估差值：" + String.valueOf(tmp_count_dif.get(0)));
-                           SignalLog("經緯度計算兩顆Beacon距離：" + distance);
-                           SignalLog("Threshold : " + String.valueOf(tmp_count_dif.get(1)));
-                           SignalLog("訊號調整值  = " + offset);
-                           SignalLog("----------------二次曲線結束-------------");
-                           SignalLog("實地量測資料 ：" + data_list.get(0).getUuid_Name() +
-                                   data_list.get(0).getrssilist().toString() + " 平均：" +
-                                   String.valueOf(data_list.get(0).countavg()) + " 中位數：" + String.valueOf(data_list.get(0).getmiddlenum()) + " 標準差：" + String.valueOf(data_list.get(0).countStandard_Deviation()) + " \t " +
-                                   data_list.get(Math.round(tmp_count_dif.get(2))).getUuid_Name() +
-                                   data_list.get(Math.round(tmp_count_dif.get(2))).getrssilist().toString() + " 平均：" +
-                                   String.valueOf(data_list.get(1).countavg()) + " 中位數：" + String.valueOf(data_list.get(1).getmiddlenum()) + " 標準差：" + String.valueOf(data_list.get(1).countStandard_Deviation()));
-                           SignalLog("實際訊號差：" +  String.valueOf(data_list.get(0).countavg() - data_list.get(1).countavg()));
-                           SignalLog("Close Beacon");
-                           SignalLog("-------定位模組結束---------");*/
                            Log.i("def_range", "close " + data_list.get(0).getUuid());
                            Log.i("tmp_count", "threshold = " + tmp_count_dif.get(1));
                            location_range.add("close");
@@ -130,16 +108,11 @@ public class ana_signal {
                 }else {
                     int tmp_dif2 = Math.round(data_list.get(0).countavg());
                     if (tmp_dif2 > dp.get_Paramater(data_list.get(0).getUuid())) {
-                       // Log.i("tmp_count_RSSI","threshold = " + dp.get_RSSI_threshold(data_list.get(0).getUuid()));
-//                Log.i("def_range", "close " + data_list.get(0).getUuid()+ "\t"+
-//                        dp.get_Paramater(data_list.get(0).getUuid()));
                         location_range.add("close");
                         location_range.add(data_list.get(0).getUuid());
-                        //SignalLog("Close Beacon");
                     }
                     else {
                         Log.i("def_range", "near " + data_list.get(0).getUuid());
-                        //Log.i("tmp_count_RSSI","threshold = " + dp.get_RSSI_threshold(data_list.get(0).getUuid()));
                         location_range.add("near");
                         location_range.add(data_list.get(0).getUuid());
                     }
@@ -148,16 +121,11 @@ public class ana_signal {
         else {
             int tmp_dif = Math.round(data_list.get(0).countavg());
             if (tmp_dif > -60) {
-                //Log.i("tmp_count_RSSI","threshold = " + dp.get_RSSI_threshold(data_list.get(0).getUuid()));
-//                Log.i("def_range", "close " + data_list.get(0).getUuid()+ "\t"+
-//                        dp.get_Paramater(data_list.get(0).getUuid()));
                 location_range.add("close");
                 location_range.add(data_list.get(0).getUuid());
-                //SignalLog("Close Beacon");
             }
             else {
                 Log.i("def_range", "near " + data_list.get(0).getUuid());
-                //Log.i("tmp_count_RSSI","threshold = " + dp.get_RSSI_threshold(data_list.get(0).getUuid()));
                 location_range.add("near");
                 location_range.add(data_list.get(0).getUuid());
             }
@@ -177,10 +145,7 @@ public class ana_signal {
         return tmp_return;
     }
     //    -------------------------------------------------------------------------------------
-//    set part
-    private void set_weight_size(int weight_size) {
-        this.weight_size = weight_size;
-    }
+
 
     //    -------------------------------------------------------------------------------------
 //    weight type list
@@ -264,7 +229,6 @@ public class ana_signal {
                         setvalue(Math.round(weight_list.get(i)));
             }
         }
-//        Log.i("SLW",count_data_weight.get(0).getrssilist());
         tmplistUUID.clear();
         Collections.sort(count_data_weight);
         return count_data_weight;
@@ -331,27 +295,12 @@ public class ana_signal {
                 tmp_returen.clear();
                 Log.i("algo6", String.valueOf(distance));
                 double[] tmp_difference = new double[2];
-                //-------------------------log 函數------------------------
-              /*  double t_range = count_real_Rd(data_list.get(0).getUuid(),remind_range);
-                double test_log0,testlog1;
-                test_log0 = count_Rd(data_list.get(0).getUuid(), t_range, offset);
-                t_range = count_real_Rd(data_list.get(1).getUuid(),distance - remind_range);
-                testlog1 = count_Rd(data_list.get(1).getUuid(), t_range, offset);
-                SignalLog("----------------log預估-------------");
-                SignalLog("預估最強UUID : " + data_list.get(0).getUuid_Name() + " 預估RSSI：" + String.valueOf(test_log0));
-                SignalLog("預估次強值UUID : " + data_list.get(1).getUuid_Name() + " 預估RSSI" + String.valueOf(testlog1));
-                SignalLog("預估差值：" + String.valueOf((test_log0 - testlog1)));
-                SignalLog("經緯度計算兩顆Beacon距離：" + distance);
-                SignalLog("Threshold : " + String.valueOf(test_log0));
-                SignalLog("----------------log預估結束-------------");*/
-                //----------------------二次曲線--------------------------------------
                 tmp_difference[0] = count_Quadratic(data_list.get(0).getUuid(), remind_range, offset);
                 tmp_difference[1] = count_Quadratic(data_list.get(1).getUuid(), distance - remind_range, offset);
                 Log.i("algo6", String.valueOf(tmp_difference[0]) + "\t" + String.valueOf(tmp_difference[1]));
                 tmp_returen.add((float) Math.abs(tmp_difference[0] - tmp_difference[1]));
                 tmp_returen.add((float) (tmp_difference[0]));
                 tmp_returen.add((float) tmp_compare);
-//                0: dif, 1: Threshold
                 Log.i("algo6 return", tmp_returen.toString());
                 return tmp_returen;
             } else {
@@ -364,27 +313,7 @@ public class ana_signal {
             return null;
         }
     }
-    private double count_real_Rd(String s,double range){
-        double r_return = 0;
-//        r_return = Math.sqrt(
-//                (Math.pow(dp.get_install_hight(s),2)
-//                        +Math.pow(range,2)));
-        r_return = Math.sqrt(
-                (pow(dp.get_install_hight(s),2)
-                        + pow(range+dp.get_Paramater(s),2)));
-        return r_return;
-    }
-    private double count_distance(String s,double Rd){
-        double R0 = dp.get_R0(s);
-        double n_vlaue = dp.get_n(s);
-        return pow(10,((Rd-R0)/(10*n_vlaue)))/dp.get_install_hight(s);
-//        return Math.pow(10,((Rd-R0)/(10*n_vlaue))/1.3);
-    }
-    private double count_Rd(String s,double t_range,double offset){
-        double R0 = dp.get_R0(s);
-        double n_vlaue = dp.get_n(s);
-        return (R0+(10*n_vlaue*Math.log10(t_range/1.5))) + offset;
-    }
+
 
     private double count_Quadratic(String s,double range, double offset){
         double a_value = dp.get_a(s);
@@ -394,37 +323,5 @@ public class ana_signal {
         return (a_value*pow(range + dp.get_Paramater(s),2) + b_value* (range + dp.get_Paramater(s)) + c_vaule) + offset;
     }
 
-    public void SignalLog(String text)
-    {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss - ");
-        Date date = new Date(System.currentTimeMillis());
-        simpleDateFormat.format(date);
-        File logFile = new File("sdcard/signalLog.txt");
-        if (!logFile.exists())
-        {
-            try
-            {
-                logFile.createNewFile();
-            }
-            catch (IOException e)
-            {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        }
-        try
-        {
-            //BufferedWriter for performance, true to set append to file flag
-            Writer buf = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(logFile,true),"UTF-8"));
-            buf.append( simpleDateFormat.format(date).toString());
-            buf.append(text + "\n");
-            buf.close();
-        }
-        catch (IOException e)
-        {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
 
 }

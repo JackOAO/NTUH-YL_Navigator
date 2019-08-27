@@ -20,11 +20,6 @@ public class author_list extends AppCompatActivity {
     };
 
 
-    int[] listviewImage = new int[]{
-            R.drawable.stethoscope2, R.drawable.cash, R.drawable.examination, R.drawable.pill,
-            R.drawable.route, R.drawable.bathroom, R.drawable.home, R.drawable.stethoscope,
-    };
-
     String[] listviewShortDescription = new String[]{
             "Icon made by Smashicons from www.flaticon.com", "Icon made by DinosoftLabs from www.flaticon.com", "Icon made by Eucalyp from www.freepik.com ", "Icon made by DinosoftLabs from www.flaticon.com ",
             "Icon made Smashicons from www.freepik.com", "Icon made by Freepik from www.flaticon.com", "Icon made by Prosymbols from www.freepik.com",
@@ -59,23 +54,6 @@ public class author_list extends AppCompatActivity {
         setContentView(eos.waypointbasedindoornavigation.R.layout.activity_author_list);
         setTitle("相關資訊");
 
-
-    /*
-        List<HashMap<String, String>> aList = new ArrayList<HashMap<String, String>>();
-        for (int i = 0; i < 8; i++) {
-            HashMap<String, String> hm = new HashMap<String, String>();
-            hm.put("listview_title", listviewTitle[i]);
-            hm.put("listview_discription", listviewShortDescription[i]);
-            hm.put("listview_image", Integer.toString(listviewImage[i]));
-            aList.add(hm);
-        }
-        String[] from = {"listview_image", "listview_title", "listview_discription"};
-        //int[] to = {R.id.listview_image, R.id.listview_item_title, R.id.listview_item_short_description};
-
-        SimpleAdapter simpleAdapter = new SimpleAdapter(getBaseContext(), aList, R.layout.listview_activity, from, to);
-        //ListView androidListView = (ListView) findViewById(R.id.ex_list);
-        //androidListView.setAdapter(simpleAdapter);
-        */
         listView = (ExpandableListView) findViewById(R.id.ex_list);
         initData();
         listAdapter = new ExpandableListAdapter(this, listDataHeader, listHash);
@@ -118,7 +96,6 @@ public class author_list extends AppCompatActivity {
         listHash.put(listDataHeader.get(1),profect_name);
         listHash.put(listDataHeader.get(2),cooperation);
         listHash.put(listDataHeader.get(3),author);
-
 
 
     }

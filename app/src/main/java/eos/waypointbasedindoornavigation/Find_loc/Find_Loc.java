@@ -63,8 +63,6 @@ public class Find_Loc {
                     Log.i("turn_test","counter = " + counter + "lastNode = " + lastNode + " dataqueue = " + data_queue);
                     startT = System.currentTimeMillis();
                     researchdata.addAll(as.ana_signal(data_queue,algo_num,weight_type, remind_range, offset));
-//                    wf.writeFile("LBD:"+data_queue.toString() +"\t"
-//                            +String.valueOf(data_queue.size()));
                     Log.i("LBD1",data_queue.toString());
                     Log.i("LBD2",researchdata.toString());
                     data_queue.clear();
@@ -74,38 +72,6 @@ public class Find_Loc {
         return researchdata;
     }
 
-    public void SignalLog(String text)
-    {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss - ");
-        Date date = new Date(System.currentTimeMillis());
-        simpleDateFormat.format(date);
-        File logFile = new File("sdcard/signalLog.txt");
-        if (!logFile.exists())
-        {
-            try
-            {
-                logFile.createNewFile();
-            }
-            catch (IOException e)
-            {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        }
-        try
-        {
-            //BufferedWriter for performance, true to set append to file flag
-            Writer buf = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(logFile,true),"UTF-8"));
-            buf.append( simpleDateFormat.format(date).toString());
-            buf.append(text + "\n");
-            buf.close();
-        }
-        catch (IOException e)
-        {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
 }
 
 

@@ -67,10 +67,10 @@ public class ListViewActivity extends AppCompatActivity implements Serializable{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listview);
+        //語言設定
         Context appContext = GetApplicationContext.getAppContext();
         SharedPreferences languagePref = PreferenceManager.getDefaultSharedPreferences(appContext);
         String language_option = languagePref.getString("language","繁體中文");
-
         if(language_option.equals("繁體中文")) {
             setTitle("臺大雲林分院室內導航系統");
         }else  if(language_option.equals("English")) {
@@ -79,10 +79,6 @@ public class ListViewActivity extends AppCompatActivity implements Serializable{
 
         Log.i("List_Create_Mem", "usedMemory: Heap/Allocated Heap "+ Debug.getNativeHeapSize() + "/" + Debug.getNativeHeapAllocatedSize());
 
-
-        List<Node> ReceivedList = new ArrayList<>();
-
-        List<String> ReceivedListID = new ArrayList<String>();
         Bundle bundle = getIntent().getExtras();
         String x = bundle.getString("Category");
 
@@ -94,19 +90,9 @@ public class ListViewActivity extends AppCompatActivity implements Serializable{
         //String array of size of categoryList
         String[] stringArray = new String[categoryList.size()];
 
-        //Copy data of categoryList to stringArray
-        stringArray = categoryList.toArray(stringArray);
 
-        //Feed category list data to spinner
-        ArrayAdapter<String> categoryList =
-                new ArrayAdapter<String>(this, R.layout.spinner_item, stringArray);
+        adapter = new RecyclerViewAdapter(this, categorizedDataList.get(x));
 
-       // Log.i("123123","comein");
-
-       // if(!x.equals("其他"))
-            adapter = new RecyclerViewAdapter(this, categorizedDataList.get(x));
-        //else
-        //    adapter = new RecyclerViewAdapter(this, sortList);
 
         //Separate every selectable item with divider line
         DividerItemDecoration divider = new
@@ -130,11 +116,12 @@ public class ListViewActivity extends AppCompatActivity implements Serializable{
         //A HashMap to store region data, use region name as key to retrieve data
         RegionGraph regionGraph = DataParser.getRegionDataFromRegionGraph(this);
 
-
         //Get all category names of POI(point of interest) of the test building
         categoryList = DataParser.getCategoryList();
         int index = 0;
         //Retrieve all location information from regionData and store it as a list of vertice
+
+        //排序選單的List
         for(Region r : regionGraph.regionData.values()){
             listForStoringAllNodes.addAll(r._locationsOfRegion);
             if(index == 0)

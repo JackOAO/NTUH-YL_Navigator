@@ -86,60 +86,6 @@ public class DeviceParameter {
                 e.printStackTrace();
             }
         }
-//        Change_paramation_format();
-    }
-    public int get_RSSI_threshold(String s){
-        for (int i=0; i < jarray.length(); i ++){
-            try {
-                JSONObject tmp_jobject = jarray.getJSONObject(i);
-                if(tmp_jobject.getString(this.id).equals(s)){
-                    return Integer.parseInt(tmp_jobject.getString(this.parameter));
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-        return 0;
-    }
-    public double get_install_hight(String s){
-        for (int i=0; i < jarray.length(); i ++){
-            try {
-                JSONObject tmp_jobject = jarray.getJSONObject(i);
-                if(tmp_jobject.getString(this.install_hight).equals(s)){
-                    return tmp_jobject.getDouble(this.install_hight);
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-        return 0;
-    }
-    public double get_R0(String s){
-        for (int i=0; i < jarray.length(); i ++){
-            try {
-                JSONObject tmp_jobject = jarray.getJSONObject(i);
-                if(tmp_jobject.getString(this.id).equals(s)){
-                    return tmp_jobject.getDouble(this.R0);
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-        return 0;
-    }
-
-    public double get_n(String s){
-        for (int i=0; i < jarray.length(); i ++){
-            try {
-                JSONObject tmp_jobject = jarray.getJSONObject(i);
-                if(tmp_jobject.getString(this.id).equals(s)){
-                    return tmp_jobject.getDouble(this.n_value);
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-        return 0;
     }
     public double get_Paramater(String s){
         for (int i=0; i < jarray.length(); i ++){
@@ -195,59 +141,6 @@ public class DeviceParameter {
         return 0;
     }
     //----------------------------------------------------------------------
-
-    public void Change_paramation(String id, int parameter){
-        JSONArray tmp_jarray = new JSONArray();
-        for (int i=0; i < jarray.length(); i ++){
-            try {
-                JSONObject tmp_jobject = jarray.getJSONObject(i);
-                if(tmp_jobject.getString(this.id).equals(id)){
-                    JSONObject tmp_jobject2 = new JSONObject();
-                    tmp_jobject2.put(this.id,id);
-                    tmp_jobject2.put(this.parameter,
-                             tmp_jobject.getInt(this.parameter)+parameter);
-                    tmp_jobject2.put(this.R0,tmp_jobject.getInt(this.R0));
-                    tmp_jobject2.put(this.n_value,tmp_jobject.getInt(this.n_value));
-                    tmp_jobject2.put(this.install_hight,tmp_jobject.getInt(this.install_hight));
-                    tmp_jobject2.put(this.name,tmp_jobject.getInt(this.name));
-                    tmp_jobject2.put(this.a_value, tmp_jobject2.getInt(this.a_value));
-                    tmp_jobject2.put(this.b_value, tmp_jobject2.getInt(this.b_value));
-                    tmp_jobject2.put(this.c_value, tmp_jobject2.getInt(this.c_value));
-                    tmp_jarray.put(tmp_jobject2);
-                }
-                else tmp_jarray.put(tmp_jobject);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-        jarray = tmp_jarray;
-        wf.writejson(jarray.toString());
-    }
-    public void Change_paramation_format(){
-        JSONArray tmp_jarray = new JSONArray();
-        try {
-            for (int i=0; i < jarray.length(); i ++){
-                JSONObject tmp_jobject = jarray.getJSONObject(i);
-                for (Node tmp_nade : allWaypointData.values()) {
-                    if(tmp_nade.getID().equals(tmp_jobject.get(this.id))) {
-                        JSONObject tmp_jobject2 = new JSONObject();
-                        tmp_jobject2.put(this.id, tmp_nade.getID());
-                        tmp_jobject2.put(this.name, tmp_nade.getName());
-                        tmp_jobject2.put(this.parameter, 0);
-                        tmp_jobject2.put(this.R0, tmp_jobject.get(this.R0));
-                        tmp_jobject2.put(this.n_value, tmp_jobject.get(this.n_value));
-                        tmp_jobject2.put(this.install_hight, tmp_jobject.get(this.install_hight));
-                        tmp_jarray.put(tmp_jobject2);
-                        break;
-                    }
-                }
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        jarray = tmp_jarray;
-        wf.writejson(jarray.toString());
-    }
     public Boolean our_Beacon(String s){
         for (int i=0; i < jarray.length(); i ++){
             try {
@@ -260,53 +153,6 @@ public class DeviceParameter {
             }
         }
         return false;
-    }
-    public void count_dis(String id, int R0, int n){
-        JSONArray tmp_jarray = new JSONArray();
-        for (int i=0; i < jarray.length(); i ++){
-            try {
-                JSONObject tmp_jobject = jarray.getJSONObject(i);
-                if(tmp_jobject.getString(this.id).equals(id)){
-                    JSONObject tmp_jobject2 = new JSONObject();
-                    tmp_jobject2.put(this.id,id);
-                    tmp_jobject2.put(this.parameter, tmp_jobject.getInt(this.parameter));
-                    if (R0 != 0)tmp_jobject2.put(this.R0, R0);
-                    if (n != 0)tmp_jobject2.put(this.n_value, n);
-                    tmp_jobject2.put(this.install_hight,tmp_jobject.getInt(this.install_hight));
-                    tmp_jarray.put(tmp_jobject2);
-                }
-                else tmp_jarray.put(tmp_jobject);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-        jarray = tmp_jarray;
-        Log.i("JSONCP", jarray.toString());
-        wf.writejson(jarray.toString());
-    }
-
-    public void Direct_change_paramation(String id, int  parameter){
-        JSONArray tmp_jarray = new JSONArray();
-        for (int i=0; i < jarray.length(); i ++){
-            try {
-                JSONObject tmp_jobject = jarray.getJSONObject(i);
-                if(tmp_jobject.getString("id").equals(id)){
-                    JSONObject tmp_jobject2 = new JSONObject();
-                    tmp_jobject2.put("id",id);
-                    tmp_jobject2.put("parameter", parameter);
-                    tmp_jobject2.put(this.R0,tmp_jobject.getInt(this.R0));
-                    tmp_jobject2.put(this.n_value,tmp_jobject.getInt(this.n_value));
-                    tmp_jobject2.put(this.install_hight,tmp_jobject.getInt(this.install_hight));
-                    tmp_jarray.put(tmp_jobject2);
-                }
-                else tmp_jarray.put(tmp_jobject);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-        jarray = tmp_jarray;
-        Log.i("JSONCP", jarray.toString());
-        wf.writejson(jarray.toString());
     }
 
     private void initdivice(){

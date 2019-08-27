@@ -50,14 +50,8 @@ public class DataParser {
     private static SharedPreferences languagePref = PreferenceManager.getDefaultSharedPreferences(appContext);
     static String language_option = languagePref.getString("language","繁體中文");
 
-    //public static File file;
-    //public static File path  =  Environment.getExternalStoragePublicDirectory
-     //       (Environment.DIRECTORY_DOWNLOADS+File.separator+"WGRAPH_雲林台大醫院地圖");
-
     //Parse data from Region Graph  抓取Download裡面的資料夾將BuildingA讀取
     public static RegionGraph getRegionDataFromRegionGraph(Context context) {
-
-      //  file = new File(path, "buildingA.xml");
 
         // a hashmap of Region, the key is the name of the Region object
         RegionGraph regionGraph = new RegionGraph();
@@ -79,7 +73,6 @@ public class DataParser {
                 is = assetManager.open("EN_version/buildingA.xml");
             else
                 is = assetManager.open("CHT_version/buildingA.xml");
-            //is = assetManager.open("buildingA.xml"); //read the XML file
             pullParser.setInput(is , "utf-8");
             int eventType = pullParser.getEventType();
             while(eventType != XmlPullParser.END_DOCUMENT)
@@ -97,7 +90,6 @@ public class DataParser {
                         String regionID = null;
                         String regionName = null;
                         List<String> neighbors = new ArrayList<>();
-                        List<String> transforNodes = new ArrayList<>();
                         int elevation = 0;
 
                         // get the information of each Region
@@ -234,9 +226,6 @@ public class DataParser {
 
                        if (tag.equals("node")) {
 
-
-
-
                             id = pullParser.getAttributeValue(null, "id");
                             lon = Double.parseDouble(pullParser.getAttributeValue(null,
                                     "lat"));
@@ -326,13 +315,11 @@ public class DataParser {
         return routingData;
     }
 //-------------------------------VittualNode test-------------------------------------
-// Parse data from Navigation Graph
+// Parse data from Navigation Graph 讀取VirtualNode經緯度資訊
 public static List<Node> getVirtualNode(Context context,int UpOrDown) {
-
 
     // create a list of navigation subgraph used as routing data
     List<Node> VirtualData = new ArrayList<>();
-
 
         // create a navigationSubgraph object
         NavigationSubgraph navigationSubgraph = new NavigationSubgraph();
@@ -343,7 +330,7 @@ public static List<Node> getVirtualNode(Context context,int UpOrDown) {
         InputStream is;
 
         try {
-            if (UpOrDown ==1) {
+            if (UpOrDown ==1) { //上樓
                 language_option = languagePref.getString("language","繁體中文");
                 if(language_option.equals("繁體中文"))
                     is = assetManager.open("CHT_version/virtual_node_up.xml");
@@ -352,14 +339,14 @@ public static List<Node> getVirtualNode(Context context,int UpOrDown) {
                 else
                     is = assetManager.open("CHT_version/virtual_node_up.xml");
             }
-            else {
+            else {//下樓
                 language_option = languagePref.getString("language","繁體中文");
                 if(language_option.equals("繁體中文"))
                     is = assetManager.open("CHT_version/virtual_node_down.xml");
                 else if(language_option.equals("English"))
-                    is = assetManager.open("EN_version/virtual_node_up.xml");
+                    is = assetManager.open("EN_version/virtual_node_down.xml");
                 else
-                    is = assetManager.open("CHT_version/virtual_node_up.xml");
+                    is = assetManager.open("CHT_version/virtual_node_down.xml");
             }
             pullParser.setInput(is, "utf-8");
             int eventType = pullParser.getEventType();
@@ -471,7 +458,6 @@ public static List<Node> getVirtualNode(Context context,int UpOrDown) {
     }
     //--------------------InitDirectionTest Start-----------------------------------------------
     public static String getInitDirectionName(Context context, String StartUUID, String NextUUID) {
-
 
         //creat a string store return Data
         String DirectionName = null;

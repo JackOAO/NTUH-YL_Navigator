@@ -131,8 +131,6 @@ public class siganl_data_type implements Comparable<siganl_data_type>{
               return "大廳(病歷室前)(C8)";
           case "0x3519b8410x4d06f042":
               return "大廳(電腦斷層室前)(C11)";
-          //case "0x300000000x48d2b060":
-              //return "後門出口(前)(C9)";
           case "0xeb57ba410xfb95f042":
               return "後門出口(後)(C10)";
           case "0x3319b8410x4d06f042":

@@ -100,23 +100,5 @@ public class ReadWrite_File {
             }
         return jarray;
     }
-    /*public JSONArray ReadJsonFile() {
-        file = new File(path, "DeviceParamation.json");
-        JSONArray jarray = null;
-        if(file.exists()) {
-            try {
-                FileInputStream is = new FileInputStream(file);
-                int tmp_size = is.available();
-                byte[] buffer = new byte[tmp_size];
-                is.read(buffer);
-                is.close();
-                String jsonText = new String(buffer, "UTF-8");
-                jarray = new JSONArray(jsonText);
-                Log.i("JSON","load json success");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }else   Log.i("JSON","don't have file");
-        return jarray;
-    }*/
+
 }

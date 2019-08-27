@@ -539,7 +539,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                     }
                 }
                 break;
-            //檢驗醫學部
+            //抽血處
             case R.id.btn_exsanguinate:
                 if(!mBtAdapter.isEnabled() || !providerEnabled) {
                     Toast toast = Toast.makeText(MainActivity.this,
@@ -768,7 +768,6 @@ public class MainActivity extends AppCompatActivity implements Serializable {
             btn_wc.setText("Toilet");
             btn_search.setText("Progress");
             btn_search.setTextSize(14);
-         //   btn_exit.setText("Exit");
             tv_description.setText("【Click on the picture to select the destination】");
             tv_description.setTextSize(15);
         }
