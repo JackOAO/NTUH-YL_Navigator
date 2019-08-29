@@ -81,7 +81,7 @@ import java.util.List;
 
 public class Outpatient_schedule  extends AppCompatActivity implements View.OnClickListener {
 
-    int API_type = 0; // 1 = "門診" ; 2 = "抽血進度"; 3 = "批價掛號進度"
+    int API_type = 1; // 1 = "門診" ; 2 = "抽血進度"; 3 = "批價掛號進度"
 
     String nowtime = null;
 
@@ -114,6 +114,13 @@ public class Outpatient_schedule  extends AppCompatActivity implements View.OnCl
 
         btnOutoatient.setBackgroundColor(Color.BLACK);
         btnOutoatient.setTextColor(Color.WHITE);
+
+        //檢測網路權限
+        ConnectivityManager mConnectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo mNetworkInfo = mConnectivityManager.getActiveNetworkInfo();
+        if (mNetworkInfo != null) { //網路有開啟，檢查擷取php版本
+            new Thread(runnable).start();//啟動執行序runnable
+        }
 
 
     }
@@ -413,12 +420,25 @@ public class Outpatient_schedule  extends AppCompatActivity implements View.OnCl
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (position != 0) {
-                    Intent intent = new Intent(Outpatient_schedule.this, NavigationActivity.class);
-                    intent.putExtra("destinationName", "批價掛號櫃臺");
-                    intent.putExtra("destinationID", "0xcf90b8410x3424f042");
-                    intent.putExtra("destinationRegion", "region1");
-                    startActivity(intent);
-                    finish();
+                    if(API_type == 2)
+                    {
+                        Intent intent = new Intent(Outpatient_schedule.this, NavigationActivity.class);
+                        intent.putExtra("destinationName", "檢驗醫學部");
+                        intent.putExtra("destinationID", "0x000005050x00020000");
+                        intent.putExtra("destinationRegion", "region1");
+                        startActivity(intent);
+                        finish();
+                    }
+                    else if(API_type == 3)
+                    {
+                        Intent intent = new Intent(Outpatient_schedule.this, NavigationActivity.class);
+                        intent.putExtra("destinationName", "批價掛號櫃臺");
+                        intent.putExtra("destinationID", "0xcf90b8410x3424f042");
+                        intent.putExtra("destinationRegion", "region1");
+                        startActivity(intent);
+                        finish();
+                    }
+
                 }
             }
         });

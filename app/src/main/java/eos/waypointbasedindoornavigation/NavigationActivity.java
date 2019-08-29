@@ -401,8 +401,6 @@ public class NavigationActivity extends AppCompatActivity implements BeaconConsu
                 } else if (sensorEvent.values[2] < -2f) {//右
                     //getWindow().getDecorView().setBackgroundColor(Color.YELLOW);
                     imageTurnIndicator.setImageResource(R.drawable.up_now);
-                } else if (sensorEvent.values[1] < 2f) {
-                    getWindow().getDecorView().setBackgroundColor(Color.WHITE);
                 }
             }
             @Override
@@ -442,6 +440,7 @@ public class NavigationActivity extends AppCompatActivity implements BeaconConsu
                 }
             }
         });
+
         //語言設定
         Language_SetUp();
 
@@ -958,7 +957,7 @@ public class NavigationActivity extends AppCompatActivity implements BeaconConsu
 
             case ELEVATOR:
                 turnNotificationForPopup = ELEVATOR;
-                firstMovement.setText(WAIT_FOR_ELEVATOR);
+                firstMovement.setText(WAIT_FOR_ELEVATOR + To + navigationPath.get(1)._elevation);
                 howFarToMove.setText("");
                 nextTurnMovement.setText("");
                 imageTurnIndicator.setImageResource(R.drawable.elevator);

@@ -13,9 +13,9 @@ Abstract:
 
 Author:
 
-    Phil Wu 01-Feb-2018
+        Phil Wu 01-Feb-2018
 
---*/
+        --*/
 
 import android.app.Activity;
 import android.content.Context;

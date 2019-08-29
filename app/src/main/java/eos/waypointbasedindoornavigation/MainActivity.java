@@ -686,7 +686,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
             try
             {
                 //連接Server解析版本資訊
-                URL url = new URL("http://140.125.45.113/test/index.php");
+                URL url = new URL("http://140.125.45.120/test/index.php");
                 HttpURLConnection mUrlConnection = (HttpURLConnection) url.openConnection();
                 mUrlConnection.setDoInput(true);
 
