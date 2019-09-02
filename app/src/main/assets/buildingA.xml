@@ -3,44 +3,51 @@
 
     <region id='1' name='region1' neighbor1='region2' neighbor2='region3' neighbor3='' neighbor4='' elevation='1'>
  
-	    <node id='0xfa53bd410xff54f142' name='Main Exit' region='region1' category='其他'/>
-		<node id='0xcf90b8410x3424f042' name='Cashier/Registration' region='region1' category='批價櫃檯'/>
-		<node id='0x7b1564880x00020000' name='pharmacy' region='region1' category='領藥處'/>
-		<node id='0x4993bd410x640df142' name='Convenience store' region='region1' category='商店餐廳'/>
-		<node id='0x4993bd410x640df142' name='medFirst' region='region1' category='商店餐廳'/>
-		<node id='0x000004040x00020000' name='restaurant' region='region1' category='商店餐廳'/>
-		<node id='0x6029b8410x580af042' name='Cardiovascular Clinic/General Medicine Clinic/Physical Examination(Room1~10)' region='region1' category='各科門診'/>
-		<node id='0x3ef8b8410x0f3ef042' name='Otolaryngology Clinic/Pediatrics Clinic/Obstetrics & Gynecology Clinic(Room11~20)' region='region1' category='各科門診'/>
-        <node id='0xed4cc8410x0e21f342' name='Nephrology Clinic/Gastroenterology Clinic/Metabolic & Endocrine Clinic(Room21~25)' region='region1' category='各科門診'/>
-		<node id='0x2ebab8410x8c2ef042' name='Psychiatry Department/Neurology Department(Room26~29)' region='region1' category='各科門診'/> 
-        <node id='0x0254bd410x0055f142' name='Surgery Department/Orthopedics Clinic/Dentistry Department(Room30~41)' region='region1' category='各科門診'/>
-        <node id='0x2c05ba410x4b81f042' name='Ophthalmology Clinic/Dermatology Clinic(Room42~49)' region='region1' category='各科門診'/>
-		<node id='0xf853bd410xfe54f142' name='Female toilet' region='region1' category='廁所'/>
-		<node id='0x8b2eba410xa38bf042' name='Male toilet' region='region1' category='廁所'/>
-		<node id='0x000001010x00020000' name='Central exit' region='region1' category='其他'/>
-		<node id='0x000004040x00020000' name='Department of Nuclear Medicine' region='region1' category='檢查室'/>
-		<node id='0x000005050x00020000' name='Blood Collection Counter' region='region1' category='檢驗醫學部'/>
-		<node id='0x000005050x00020000' name='Examination of feces' region='region1' category='檢驗醫學部'/>
-		<node id='0x000005050x00020000' name='Urine test' region='region1' category='檢驗醫學部'/>
-		<node id='0x000005050x00020000' name='Pre-Admission Testing' region='region1' category='其他'/>
-		<node id='0x000006060x00020000' name='Medical Records Department' region='region1' category='其他'/>
-		<node id='0x000009090x00020000' name='Back door exit' region='region1' category='其他'/>
+	    <node id='00000015-0000-0010-1006-000000101006' name='Main Exit' region='region1' category='其他'/>
+		<node id='00000015-0000-0010-1011-000000101011' name='Cashier/Registration' region='region1' category='批價櫃檯'/>
+		<node id='00000015-0000-0010-1024-000000101024' name='pharmacy' region='region1' category='領藥處'/>
+		<node id='00000015-0000-0010-1029-000000101029' name='Convenience store' region='region1' category='商店餐廳'/>
+		<node id='00000015-0000-0010-1029-000000101029' name='medFirst' region='region1' category='商店餐廳'/>
+		<node id='00000015-0000-0000-0404-000000000404' name='restaurant' region='region1' category='商店餐廳'/>
+		<node id='00000015-0000-0010-1002-000000101002' name='Cardiovascular Clinic/General Medicine Clinic/Physical Examination(Room1~10)' region='region1' category='各科門診'/>
+		<node id='00000015-0000-0010-1014-000000101014' name='Otolaryngology Clinic/Pediatrics Clinic/Obstetrics & Gynecology Clinic(Room11~20)' region='region1' category='各科門診'/>
+        <node id='00000015-0000-0010-1022-000000101022' name='Nephrology Clinic/Gastroenterology Clinic/Metabolic & Endocrine Clinic(Room21~25)' region='region1' category='各科門診'/>
+		<node id='00000015-0000-0010-1012-000000101012' name='Psychiatry Department/Neurology Department(Room26~29)' region='region1' category='各科門診'/> 
+        <node id='00000015-0000-0010-1020-000000101020' name='Surgery Department/Orthopedics Clinic/Dentistry Department(Room30~41)' region='region1' category='各科門診'/>
+        <node id='00000015-0000-0010-1026-000000101026' name='Ophthalmology Clinic/Dermatology Clinic(Room42~49)' region='region1' category='各科門診'/>
+		<node id='00000015-0000-0010-1001-000000101001' name='Female toilet' region='region1' category='廁所'/>
+		<node id='00000015-0000-0010-1028-000000101028' name='Male toilet' region='region1' category='廁所'/>
+		<node id='00000015-0000-0000-0101-000000000101' name='Central exit' region='region1' category='其他'/>
+		<node id='00000015-0000-0000-0404-000000000404' name='Department of Nuclear Medicine' region='region1' category='檢查室'/>
+		<node id='00000015-0000-0000-0505-000000000505' name='Blood Collection Counter' region='region1' category='檢驗醫學部'/>
+		<node id='00000015-0000-0000-0505-000000000505' name='Examination of feces' region='region1' category='檢驗醫學部'/>
+		<node id='00000015-0000-0000-0505-000000000505' name='Urine test' region='region1' category='檢驗醫學部'/>
+		<node id='00000015-0000-0000-0505-000000000505' name='Pre-Admission Testing' region='region1' category='其他'/>
+		<node id='00000015-0000-0000-0606-000000000606' name='Medical Records Department' region='region1' category='其他'/>
+		<node id='00000015-0000-0000-0707-000000000707' name='Back door exit' region='region1' category='其他'/>
+		<node id='00000015-0000-0000-0505-000000000505' name='Admission information' region='region1' category='其他'/>
 	
 	</region>
 	
 	<region id='2' name='region2' neighbor1='region1' neighbor2='' neighbor3='' neighbor4='' elevation='2'>
      
-	<node id='0x006317170x00020000' name='Cardiovascular Noninvasive Laboratory' region='region2' category='檢查室'/>
-	<node id='0x7b9861150x00020000' name='Endoscopy/Ultrasonic Examination Room' region='region2' category='檢查室'/>
-	<node id='0x021234110x00020000' name='Neurological Department Examination Room' region='region2' category='檢查室'/>
+	<node id='00000016-0000-0002-8500-000000017000' name='Cardiovascular Noninvasive Laboratory' region='region2' category='檢查室'/>
+	<node id='00000016-0000-0001-9500-000000014500' name='Endoscopy/Ultrasonic Examination Room' region='region2' category='檢查室'/>
+	<node id='00000016-0000-0001-9500-000000017000' name='Neurological Department Examination Room' region='region2' category='檢查室'/>
 
     </region>
 
 
     <region id='3' name='region3' neighbor1='region1' neighbor2='' neighbor3='' neighbor4='' elevation='0'>
 
-	 <node id='0x5c93bd410x4f0df142' name='X-ray/Computer Tomography' region='region3' category='檢查室'/>
-	<node id='0x5c93bd410x4f0df142' name='Department of Medical Imaging' region='region3' category='檢查室'/>
+	 <node id='00000014-0000-0010-1103-000000101103' name='X-ray/Computer Tomography' region='region3' category='檢查室'/>
+	<node id='00000014-0000-0010-1103-000000101103' name='Department of Medical Imaging' region='region3' category='檢查室'/>
+
+    </region>
+	
+	<region id='4' name='region4' neighbor1='region1' neighbor2='' neighbor3='' neighbor4='' elevation='0'>
+
+		<node id='00000018-0000-0002-8000-000000021000' name='5B Ward Counter' region='region4' category='其他'/>
 
     </region>
 

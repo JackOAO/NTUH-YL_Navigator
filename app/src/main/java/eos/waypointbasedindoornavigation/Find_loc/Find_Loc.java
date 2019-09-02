@@ -21,7 +21,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-public class Find_Loc {
+/*public class Find_Loc {
     private List<String> researchdata = new ArrayList<>();
     private ana_signal as = new ana_signal();
     private Queue<List<String>> data_queue = new LinkedList<>();
@@ -72,17 +72,19 @@ public class Find_Loc {
         return researchdata;
     }
 
-}
+}*/
 
 
 //new version of LBeacon Format uuid search
-/*
+
 public class Find_Loc {
     private List<String> researchdata = new ArrayList<>();
     private ana_signal as = new ana_signal();
     private Queue<List<String>> data_queue = new LinkedList<>();
     private int algo_num = 3;
     private int weight_type = 3;
+    int counter;
+    String lastNode_ID = "123";
     private ReadWrite_File wf = new ReadWrite_File();
     private long startT = System.currentTimeMillis();
     private DeviceParameter dp = new DeviceParameter();
@@ -90,8 +92,8 @@ public class Find_Loc {
     public void set_allWaypointData(HashMap<String, Node> allWaypointData){
         as.set_allWaypointData(allWaypointData);
         dp.set_allWaypointData(allWaypointData);
-    }*/
- /*   public List<String> Find_Loc(Beacon beacon, float remind_range, double offset){
+    }
+   public List<String> Find_Loc(Beacon beacon, float remind_range, double offset, String lastNode){
 //    public List<String> logBeaconData(Beacon beacon, boolean ana_switch){
         String[] beacondata = new String[]{
                 beacon.getId1().toString(),
@@ -122,11 +124,18 @@ public class Find_Loc {
         researchdata.add(uuid);
         List<String> data_list = Arrays.asList(uuid,beacondata[3]);
 
+       if(!lastNode_ID.equals(lastNode)) {
+           counter = 0;
+           lastNode_ID = lastNode;
+       }
+
         if(dp.our_Beacon(uuid)){
                 data_queue.add(data_list);
                 long endT = System.currentTimeMillis();
             Log.i("beacon", "researchData1");
-                if ((endT-startT)>500){
+                if ((endT-startT)>1000){
+                    counter++;
+                    Log.i("turn_test","counter = " + counter + "lastNode = " + lastNode + " dataqueue = " + data_queue);
                     startT = System.currentTimeMillis();
                     Log.i("beacon", "researchData");
                     researchdata.addAll(as.ana_signal(data_queue,algo_num,weight_type, remind_range,offset));
@@ -140,5 +149,5 @@ public class Find_Loc {
         }
         return researchdata;
     }
-}*/
+}
 

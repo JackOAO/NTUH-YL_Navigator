@@ -3,51 +3,51 @@
 
     <region id='1' name='region1' neighbor1='region2' neighbor2='region3' neighbor3='region4' neighbor4='' elevation='1'>
  
-	    <node id='0xfa53bd410xff54f142' name='前門出口' region='region1' category='其他'/>
-		<node id='0xcf90b8410x3424f042' name='批價掛號櫃臺' region='region1' category='批價櫃檯'/>
-		<node id='0x7b1564880x00020000' name='領藥處' region='region1' category='領藥處'/>
-		<node id='0x4993bd410x640df142' name='萊爾富' region='region1' category='商店餐廳'/>
-		<node id='0x4993bd410x640df142' name='杏一藥局' region='region1' category='商店餐廳'/>
-		<node id='0x000004040x00020000' name='雲苑餐廳' region='region1' category='商店餐廳'/>
-		<node id='0x6029b8410x580af042' name='心臟內科/內科/體檢區(1~10診)' region='region1' category='各科門診'/>
-		<node id='0x3ef8b8410x0f3ef042' name='耳鼻喉科/小兒科/婦產科(11~20診)' region='region1' category='各科門診'/>
-        <node id='0xed4cc8410x0e21f342' name='腎臟科/腎膽腸內科/新陳代謝分泌科(21~25診)' region='region1' category='各科門診'/>
-		<node id='0x2ebab8410x8c2ef042' name='精神科/神經內科(26~29診)' region='region1' category='各科門診'/> 
-        <node id='0x0254bd410x0055f142' name='外科/骨科/牙科(30~41診)' region='region1' category='各科門診'/>
-        <node id='0x2c05ba410x4b81f042' name='眼科/皮膚科(42~49診)' region='region1' category='各科門診'/>
-		<node id='0xf853bd410xfe54f142' name='女廁' region='region1' category='廁所'/>
-		<node id='0x8b2eba410xa38bf042' name='男廁' region='region1' category='廁所'/>
-		<node id='0x000001010x00020000' name='中央出口' region='region1' category='其他'/>
-		<node id='0x000004040x00020000' name='核子醫學部' region='region1' category='檢查室'/>
-		<node id='0x000005050x00020000' name='抽血' region='region1' category='檢驗醫學部'/>
-		<node id='0x000005050x00020000' name='驗糞' region='region1' category='檢驗醫學部'/>
-		<node id='0x000005050x00020000' name='驗尿' region='region1' category='檢驗醫學部'/>
-		<node id='0x000005050x00020000' name='心電圖' region='region1' category='檢驗醫學部'/>
-		<node id='0x000009090x00020000' name='後門出口' region='region1' category='其他'/>
-		<node id='0x000005050x00020000' name='住院服務中心' region='region1' category='其他'/>
-		<node id='0x000006060x00020000' name='病歷室' region='region1' category='其他'/>
+	    <node id='00000015-0000-0010-1006-000000101006' name='前門出口' region='region1' category='其他'/>
+		<node id='00000015-0000-0010-1011-000000101011' name='批價掛號櫃臺' region='region1' category='批價櫃檯'/>
+		<node id='00000015-0000-0010-1024-000000101024' name='領藥處' region='region1' category='領藥處'/>
+		<node id='00000015-0000-0010-1029-000000101029' name='萊爾富' region='region1' category='商店餐廳'/>
+		<node id='00000015-0000-0010-1029-000000101029' name='杏一藥局' region='region1' category='商店餐廳'/>
+		<node id='00000015-0000-0000-0404-000000000404' name='雲苑餐廳' region='region1' category='商店餐廳'/>
+		<node id='00000015-0000-0010-1002-000000101002' name='心臟內科/內科/體檢區(1~10診)' region='region1' category='各科門診'/>
+		<node id='00000015-0000-0010-1014-000000101014' name='耳鼻喉科/小兒科/婦產科(11~20診)' region='region1' category='各科門診'/>
+        <node id='00000015-0000-0010-1022-000000101022' name='腎臟科/腎膽腸內科/新陳代謝分泌科(21~25診)' region='region1' category='各科門診'/>
+		<node id='00000015-0000-0010-1012-000000101012' name='精神科/神經內科(26~29診)' region='region1' category='各科門診'/> 
+        <node id='00000015-0000-0010-1020-000000101020' name='外科/骨科/牙科(30~41診)' region='region1' category='各科門診'/>
+        <node id='00000015-0000-0010-1026-000000101026' name='眼科/皮膚科(42~49診)' region='region1' category='各科門診'/>
+		<node id='00000015-0000-0010-1001-000000101001' name='女廁' region='region1' category='廁所'/>
+		<node id='00000015-0000-0010-1028-000000101028' name='男廁' region='region1' category='廁所'/>
+		<node id='00000015-0000-0000-0101-000000000101' name='中央出口' region='region1' category='其他'/>
+		<node id='00000015-0000-0000-0404-000000000404' name='核子醫學部' region='region1' category='檢查室'/>
+		<node id='00000015-0000-0000-0505-000000000505' name='抽血' region='region1' category='檢驗醫學部'/>
+		<node id='00000015-0000-0000-0505-000000000505' name='驗糞' region='region1' category='檢驗醫學部'/>
+		<node id='00000015-0000-0000-0505-000000000505' name='驗尿' region='region1' category='檢驗醫學部'/>
+		<node id='00000015-0000-0000-0505-000000000505' name='心電圖' region='region1' category='檢驗醫學部'/>
+		<node id='00000015-0000-0000-0707-000000000707' name='後門出口' region='region1' category='其他'/>
+		<node id='00000015-0000-0000-0505-000000000505' name='住院服務中心' region='region1' category='其他'/>
+		<node id='00000015-0000-0000-0606-000000000606' name='病歷室' region='region1' category='其他'/>
 	
 	</region>
 	
 	<region id='2' name='region2' neighbor1='region1' neighbor2='' neighbor3='' neighbor4='' elevation='2'>
      
-		<node id='0x006317170x00020000' name='心臟血管檢查室' region='region2' category='檢查室'/>
-		<node id='0x7b9861150x00020000' name='內視鏡/超音波檢查室' region='region2' category='檢查室'/>
-		<node id='0x021234110x00020000' name='神經部檢查室' region='region2' category='檢查室'/>
+		<node id='00000016-0000-0002-8500-000000017000' name='心臟血管檢查室' region='region2' category='檢查室'/>
+		<node id='00000016-0000-0001-9500-000000014500' name='內視鏡/超音波檢查室' region='region2' category='檢查室'/>
+		<node id='00000016-0000-0001-9500-000000017000' name='神經部檢查室' region='region2' category='檢查室'/>
 
     </region>
 
 
     <region id='3' name='region3' neighbor1='region1' neighbor2='' neighbor3='' neighbor4='' elevation='0'>
 
-		<node id='0x5c93bd410x4f0df142' name='X光/電腦斷層室' region='region3' category='檢查室'/>
-		<node id='0x5c93bd410x4f0df142' name='影像醫學部' region='region3' category='檢查室'/>
+		<node id='00000014-0000-0010-1103-000000101103' name='X光/電腦斷層室' region='region3' category='檢查室'/>
+		<node id='00000014-0000-0010-1103-000000101103' name='影像醫學部' region='region3' category='檢查室'/>
 
     </region>
 	
-	  <region id='4' name='region4' neighbor1='region1' neighbor2='' neighbor3='' neighbor4='' elevation='0'>
+	<region id='4' name='region4' neighbor1='region1' neighbor2='' neighbor3='' neighbor4='' elevation='0'>
 
-		<node id='0x000210000x00020000' name='5B病房櫃台' region='region4' category='其他'/>
+		<node id='00000018-0000-0002-8000-000000021000' name='5B病房櫃台' region='region4' category='其他'/>
 
     </region>
 

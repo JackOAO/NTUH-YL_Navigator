@@ -424,7 +424,7 @@ public class Outpatient_schedule  extends AppCompatActivity implements View.OnCl
                     {
                         Intent intent = new Intent(Outpatient_schedule.this, NavigationActivity.class);
                         intent.putExtra("destinationName", "檢驗醫學部");
-                        intent.putExtra("destinationID", "0x000005050x00020000");
+                        intent.putExtra("destinationID", "00000015-0000-0000-0505-000000000505");
                         intent.putExtra("destinationRegion", "region1");
                         startActivity(intent);
                         finish();
@@ -433,7 +433,7 @@ public class Outpatient_schedule  extends AppCompatActivity implements View.OnCl
                     {
                         Intent intent = new Intent(Outpatient_schedule.this, NavigationActivity.class);
                         intent.putExtra("destinationName", "批價掛號櫃臺");
-                        intent.putExtra("destinationID", "0xcf90b8410x3424f042");
+                        intent.putExtra("destinationID", "00000015-0000-0010-1011-000000101011");
                         intent.putExtra("destinationRegion", "region1");
                         startActivity(intent);
                         finish();
@@ -490,42 +490,42 @@ public class Outpatient_schedule  extends AppCompatActivity implements View.OnCl
                             if (i < 11) { // 去1~10診
                                 Intent intent = new Intent(Outpatient_schedule.this, NavigationActivity.class);
                                 intent.putExtra("destinationName", "心臟內科/內科/體檢區(1~10診)");
-                                intent.putExtra("destinationID", "0x6029b8410x580af042");
+                                intent.putExtra("destinationID", "00000015-0000-0010-1002-000000101002");
                                 intent.putExtra("destinationRegion", "region1");
                                 startActivity(intent);
                                 finish();
                             } else if (11 <= i && i < 20) {//去11~20診
                                 Intent intent = new Intent(Outpatient_schedule.this, NavigationActivity.class);
                                 intent.putExtra("destinationName", "耳鼻喉科/小兒科/婦產科(11~20診)");
-                                intent.putExtra("destinationID", "0x3ef8b8410x0f3ef042");
+                                intent.putExtra("destinationID", "00000015-0000-0010-1014-000000101014");
                                 intent.putExtra("destinationRegion", "region1");
                                 startActivity(intent);
                                 finish();
                             } else if (21 <= i && i < 25) {//去21~25診
                                 Intent intent = new Intent(Outpatient_schedule.this, NavigationActivity.class);
                                 intent.putExtra("destinationName", "腎臟科/腎膽腸內科/新陳代謝分泌科(21~25診)");
-                                intent.putExtra("destinationID", "0xed4cc8410x0e21f342");
+                                intent.putExtra("destinationID", "00000015-0000-0010-1022-000000101022");
                                 intent.putExtra("destinationRegion", "region1");
                                 startActivity(intent);
                                 finish();
                             } else if (26 <= i && i < 29) {//去26~29診
                                 Intent intent = new Intent(Outpatient_schedule.this, NavigationActivity.class);
                                 intent.putExtra("destinationName", "精神科/神經內科(26~29診)");
-                                intent.putExtra("destinationID", "0x2ebab8410x8c2ef042");
+                                intent.putExtra("destinationID", "00000015-0000-0010-1012-000000101012");
                                 intent.putExtra("destinationRegion", "region1");
                                 startActivity(intent);
                                 finish();
                             } else if (30 <= i && i < 41) {//去30~41診
                                 Intent intent = new Intent(Outpatient_schedule.this, NavigationActivity.class);
                                 intent.putExtra("destinationName", "外科/骨科/牙科(30~41診)");
-                                intent.putExtra("destinationID", "0x0254bd410x0055f142");
+                                intent.putExtra("destinationID", "00000015-0000-0010-1020-000000101020");
                                 intent.putExtra("destinationRegion", "region1");
                                 startActivity(intent);
                                 finish();
                             } else if (42 <= i && i < 49) {//去42~49診
                                 Intent intent = new Intent(Outpatient_schedule.this, NavigationActivity.class);
                                 intent.putExtra("destinationName", "眼科/皮膚科(42~49診)");
-                                intent.putExtra("destinationID", "0x2c05ba410x4b81f042");
+                                intent.putExtra("destinationID", "00000015-0000-0010-1026-000000101026");
                                 intent.putExtra("destinationRegion", "region1");
                                 startActivity(intent);
                                 finish();
