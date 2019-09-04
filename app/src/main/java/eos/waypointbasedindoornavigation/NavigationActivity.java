@@ -216,6 +216,7 @@ public class NavigationActivity extends AppCompatActivity implements BeaconConsu
     private String toFirstFloor = "至一樓";
     private String toSecondFloor = "至二樓";
     private String toThirdFloor = "至三樓";
+    private String floor = "樓";
 
 
     private String PRESENT_POSITION = "目前位置：";
@@ -957,7 +958,7 @@ public class NavigationActivity extends AppCompatActivity implements BeaconConsu
 
             case ELEVATOR:
                 turnNotificationForPopup = ELEVATOR;
-                firstMovement.setText(WAIT_FOR_ELEVATOR + To + navigationPath.get(1)._elevation);
+                firstMovement.setText(WAIT_FOR_ELEVATOR + To + navigationPath.get(1)._elevation + floor);
                 howFarToMove.setText("");
                 nextTurnMovement.setText("");
                 imageTurnIndicator.setImageResource(R.drawable.elevator);
@@ -2575,6 +2576,7 @@ public class NavigationActivity extends AppCompatActivity implements BeaconConsu
             toFirstFloor = "至一樓";
             toSecondFloor = "至二樓";
             toThirdFloor = "至三樓";
+            floor = "樓";
 
             //
             PRESENT_POSITION = "目前位置：";
@@ -2636,6 +2638,7 @@ public class NavigationActivity extends AppCompatActivity implements BeaconConsu
             toFirstFloor = "to 1F";
             toSecondFloor = "to 2F";
             toThirdFloor = "to 3F";
+            floor = "F";
 
             //
             PRESENT_POSITION = "Current location：";
