@@ -74,7 +74,7 @@ public class author_list extends AppCompatActivity {
 
 
         List<String> version = new ArrayList<>();
-        version.add("版本:1.0.5   ( 2019.07.15)");
+        version.add("版本:1.0.6   ( 2019.09.05)");
 
         List<String> profect_name = new ArrayList<>();
         profect_name.add("臺大醫院雲林分院跨學界計畫");
