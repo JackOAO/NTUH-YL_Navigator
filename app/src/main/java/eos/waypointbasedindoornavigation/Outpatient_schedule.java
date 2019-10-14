@@ -29,6 +29,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+
 /*--
 
 Module Name:
@@ -228,7 +229,7 @@ public class Outpatient_schedule  extends AppCompatActivity implements View.OnCl
             super.handleMessage(msg);
             Bundle data = msg.getData();
             String val = data.getString("key");//取出key中的字串存入val
-            Toast.makeText(getApplicationContext(), val, Toast.LENGTH_LONG).show();
+            //Toast.makeText(getApplicationContext(), val, Toast.LENGTH_LONG).show();
             //門診API
             if(API_type == 1) {
                 try {
@@ -300,10 +301,18 @@ public class Outpatient_schedule  extends AppCompatActivity implements View.OnCl
             Message msg = new Message();
             Bundle data = new Bundle();
             msg.setData(data);
+
+
             if(API_type == 1) {
                 try {
-                    URL url = new URL("http://yldepweb.ylh.gov.tw/room_num/opd_json.php");
+                    URL url = new URL("https://yldepweb.ylh.gov.tw/room_num/opd_json.php");
                     HttpURLConnection mUrlConnection = (HttpURLConnection) url.openConnection();
+
+                    //fix the non-standard port bug
+                    mUrlConnection.setRequestProperty("User-Agent","Mozilla/5.0 ( compatible ) ");
+                    mUrlConnection.setRequestProperty("Accept","*/*");
+
+                    mUrlConnection.setRequestMethod("POST");
                     mUrlConnection.setDoInput(true);
 
                     InputStream is = new BufferedInputStream(mUrlConnection.getInputStream());
@@ -322,19 +331,28 @@ public class Outpatient_schedule  extends AppCompatActivity implements View.OnCl
 
                     if (responseString != null) {
                         data.putString("key", responseString);//如果成功將網頁內容存入key
+                        Log.i("phpkey", "key has things ");
                         handler_Success.sendMessage(msg);
                     } else {
                         data.putString("key", "無資料");
+                        Log.i("phpkey", "key has no things ");
                         handler_Nodata.sendMessage(msg);
                     }
                 } catch (Exception e) {
                     data.putString("key", "連線失敗");
+                    Log.i("phpexception", e.getMessage(), e);
+                    Log.i("phpkey", "link fail ");
                     handler_Error.sendMessage(msg);
                 }
             }else if(API_type == 3 || API_type == 2)
                 try {
-                    URL url = new URL("http://yldepweb.ylh.gov.tw/room_num/reg_lab_json.php");
+                    URL url = new URL("https://yldepweb.ylh.gov.tw/room_num/reg_lab_json.php");
                     HttpURLConnection mUrlConnection = (HttpURLConnection) url.openConnection();
+
+                    //fix the non-standard port bug
+                    mUrlConnection.setRequestProperty("User-Agent","Mozilla/5.0 ( compatible ) ");
+                    mUrlConnection.setRequestProperty("Accept","*/*");
+                    mUrlConnection.setRequestMethod("POST");
                     mUrlConnection.setDoInput(true);
 
                     InputStream is = new BufferedInputStream(mUrlConnection.getInputStream());

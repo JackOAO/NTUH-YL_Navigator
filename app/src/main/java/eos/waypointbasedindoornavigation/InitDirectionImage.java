@@ -133,9 +133,11 @@ public class InitDirectionImage extends AppCompatActivity{
                 break;
             case "00000015-0000-0010-1012-000000101012": // A12 精神科/神經內科
                 if (nextWaypointID.equals("00000015-0000-0010-1013-000000101013")) //A13(26~29診走廊出口)
-                    faceto.setText("請面對26~29診走廊出口");
+                    //faceto.setText("請面對26~29診走廊出口");
+                    image.setImageResource(R.drawable.a12_2);
                 else if (nextWaypointID.equals("00000015-0000-0010-1011-000000101011")) //A11批價
-                    faceto.setText("請面對醫院大廳");
+                    //faceto.setText("請面對醫院大廳");
+                    image.setImageResource(R.drawable.a12_1);
                 break;
             case "00000015-0000-0010-1013-000000101013": //A13 26~29診走廊出口
                 if (nextWaypointID.equals("00000015-0000-0010-1012-000000101012")) //精神科
