@@ -11,10 +11,11 @@
         android:orderInCategory="101"
         app:showAsAction="always" />
 -->
-    <item android:id="@+id/menu_home"
-        android:title="首頁"
+    <item
+        android:id="@+id/menu_home"
         android:icon="@drawable/home1"
         android:orderInCategory="50"
+        android:title="首頁"
         app:showAsAction="always" />
 
 </menu>

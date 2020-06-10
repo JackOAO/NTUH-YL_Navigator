@@ -3,7 +3,7 @@
 
     <region id='1' name='region1' neighbor1='region2' neighbor2='region3' neighbor3='' neighbor4='' elevation='1'>
  
-	    <node id='00000015-0000-0010-1006-000000101006' name='Main Exit' region='region1' category='其他'/>
+	    <node id='00020015-0000-0000-0001-000000000001' name='Main Exit' region='region1' category='其他'/>
 		<node id='00000015-0000-0010-1011-000000101011' name='Cashier/Registration' region='region1' category='批價櫃檯'/>
 		<node id='00000015-0000-0010-1024-000000101024' name='pharmacy' region='region1' category='領藥處'/>
 		<node id='00000015-0000-0010-1029-000000101029' name='Convenience store' region='region1' category='商店餐廳'/>
@@ -24,7 +24,7 @@
 		<node id='00000015-0000-0000-0505-000000000505' name='Urine test' region='region1' category='檢驗醫學部'/>
 		<node id='00000015-0000-0000-0505-000000000505' name='Pre-Admission Testing' region='region1' category='其他'/>
 		<node id='00000015-0000-0000-0606-000000000606' name='Medical Records Department' region='region1' category='其他'/>
-		<node id='00000015-0000-0000-0707-000000000707' name='Back door exit' region='region1' category='其他'/>
+		<node id='00170015-0000-0000-0001-000000000002' name='Back door exit' region='region1' category='其他'/>
 		<node id='00000015-0000-0000-0505-000000000505' name='Admission information' region='region1' category='其他'/>
 	
 	</region>
@@ -32,7 +32,7 @@
 	<region id='2' name='region2' neighbor1='region1' neighbor2='' neighbor3='' neighbor4='' elevation='2'>
      
 	<node id='00000016-0000-0002-8500-000000017000' name='Cardiovascular Noninvasive Laboratory' region='region2' category='檢查室'/>
-	<node id='00000016-0000-0001-9500-000000014500' name='Endoscopy/Ultrasonic Examination Room' region='region2' category='檢查室'/>
+	<node id='00200016-0000-0000-0002-000000000002' name='Endoscopy/Ultrasonic Examination Room' region='region2' category='檢查室'/>
 	<node id='00000016-0000-0001-9500-000000017000' name='Neurological Department Examination Room' region='region2' category='檢查室'/>
 
     </region>

@@ -1,5 +1,7 @@
 package eos.waypointbasedindoornavigation;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -60,8 +62,10 @@ class RegionGraph {
 
             shortestRegionPath.add(regionData.get(destinationRegion));
 
-            if(!regionData.get(destinationRegion)._regionName.equals(sourceRegion))
+            if(!regionData.get(destinationRegion)._regionName.equals(sourceRegion)) {
                 destinationRegion = path.get(regionData.get(destinationRegion)._regionName)._regionName;
+                Log.i("destinationRegion","destinationRegtion = " + destinationRegion);
+            }
             else
                 break;
 

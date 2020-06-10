@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="eos.waypointbasedindoornavigation">
 
+    <uses-feature
+        android:name="android.hardware.bluetooth_le"
+        android:required="true" />
+
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -12,16 +16,13 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-    <uses-permission android:name="android.permission.VIBRATE" />
-
-    <uses-feature
-        android:name="android.hardware.bluetooth_le"
-        android:required="true" />
-    <uses-permission android:name="android.permission.INTERNET">
-    </uses-permission>
+    <uses-permission android:name="android.permission.VIBRATE" /> <!-- Required for AR -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
-        android:name="eos.waypointbasedindoornavigation.GetApplicationContext"
+        android:name=".GetApplicationContext"
         android:allowBackup="true"
         android:icon="@drawable/appicon"
         android:label="@string/app_name"
@@ -30,7 +31,11 @@
         android:roundIcon="@drawable/appicon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Language_change_Activity"></activity>
+        <activity android:name=".ARModeTeachingActivity"></activity>
+        <activity
+            android:name=".ARNavigationActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Language_change_Activity" />
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait">
@@ -56,6 +61,18 @@
         <activity
             android:name=".Outpatient_schedule"
             android:screenOrientation="portrait" />
+
+        <meta-data
+            android:name="com.viromedia.API_KEY"
+            android:value="7EEDCB99-2C3B-4681-AE17-17BC165BF792" />
+        <meta-data
+            android:name="com.google.ar.core"
+            android:value="optional" />
+
+        <service
+            android:name=".SensorService"
+            android:enabled="true"
+            android:exported="true" />
     </application>
 
 </manifest>

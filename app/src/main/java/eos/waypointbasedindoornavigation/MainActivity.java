@@ -149,6 +149,12 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     //Arrive
     Integer Arrivelog = 0;
 
+    //Item for mod select
+    String[] listItem;
+    String AR_MOD;
+    String NORMAL_MOD;
+    String TITLE;
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_regulate,menu);
@@ -329,12 +335,38 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                         destinationName = CList.get(0)._waypointName;
                         destinationID = CList.get(0)._waypointID;
                         destinationRegion = CList.get(0)._regionID;
-                        Intent i = new Intent(MainActivity.this, NavigationActivity.class);
-                        i.putExtra("destinationName", destinationName);
-                        i.putExtra("destinationID", destinationID);
-                        i.putExtra("destinationRegion", destinationRegion);
-                        startActivity(i);
-                        finish();
+                        //Intent i = new Intent(MainActivity.this, NavigationActivity.class);
+                        //i.putExtra("destinationName", destinationName);
+                        //i.putExtra("destinationID", destinationID);
+                        //i.putExtra("destinationRegion", destinationRegion);
+                        //startActivity(i);
+                        //finish();
+                        new android.app.AlertDialog.Builder(MainActivity.this).setTitle(TITLE)
+                                .setItems(listItem, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        if(i == 0)//AR Mode
+                                        {
+                                            Intent intent = new Intent(MainActivity.this,ARModeTeachingActivity.class);
+                                            intent.putExtra("destinationName", destinationName);
+                                            intent.putExtra("destinationID", destinationID);
+                                            intent.putExtra("destinationRegion", destinationRegion);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                        else if(i == 1)//Normal Mode
+                                        {
+                                            Intent intent = new Intent(MainActivity.this,NavigationActivity.class);
+                                            intent.putExtra("destinationName", destinationName);
+                                            intent.putExtra("destinationID", destinationID);
+                                            intent.putExtra("destinationRegion", destinationRegion);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                    }
+                                }).show();
+                        CList.clear();
+                        ButtonClicked = false;
                     } else if (CList.size() > 1) {
                         intent = new Intent(MainActivity.this, ListViewActivity.class);
                         intent.putExtra("Category", "各科門診");
@@ -362,12 +394,38 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                         destinationName = CList.get(0)._waypointName;
                         destinationID = CList.get(0)._waypointID;
                         destinationRegion = CList.get(0)._regionID;
-                        Intent i = new Intent(MainActivity.this, NavigationActivity.class);
-                        i.putExtra("destinationName", destinationName);
-                        i.putExtra("destinationID", destinationID);
-                        i.putExtra("destinationRegion", destinationRegion);
-                        startActivity(i);
-                        finish();
+                        //Intent i = new Intent(MainActivity.this, NavigationActivity.class);
+                        //i.putExtra("destinationName", destinationName);
+                        //i.putExtra("destinationID", destinationID);
+                        //i.putExtra("destinationRegion", destinationRegion);
+                        //startActivity(i);
+                        //finish();
+                        new android.app.AlertDialog.Builder(MainActivity.this).setTitle(TITLE)
+                                .setItems(listItem, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        if(i == 0)//AR Mode
+                                        {
+                                            Intent intent = new Intent(MainActivity.this,ARModeTeachingActivity.class);
+                                            intent.putExtra("destinationName", destinationName);
+                                            intent.putExtra("destinationID", destinationID);
+                                            intent.putExtra("destinationRegion", destinationRegion);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                        else if(i == 1)//Normal Mode
+                                        {
+                                            Intent intent = new Intent(MainActivity.this,NavigationActivity.class);
+                                            intent.putExtra("destinationName", destinationName);
+                                            intent.putExtra("destinationID", destinationID);
+                                            intent.putExtra("destinationRegion", destinationRegion);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                    }
+                                }).show();
+                        CList.clear();
+                        ButtonClicked = false;
                     } else if (CList.size() > 1) {
                         intent = new Intent(MainActivity.this, ListViewActivity.class);
                         intent.putExtra("Category", "檢查室");
@@ -410,12 +468,37 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                         destinationName = CList.get(0)._waypointName;
                         destinationID = CList.get(0)._waypointID;
                         destinationRegion = CList.get(0)._regionID;
-                        Intent i = new Intent(MainActivity.this, NavigationActivity.class);
-                        i.putExtra("destinationName", destinationName);
-                        i.putExtra("destinationID", destinationID);
-                        i.putExtra("destinationRegion", destinationRegion);
-                        startActivity(i);
-                        finish();
+                        //Intent i = new Intent(MainActivity.this, NavigationActivity.class);
+                        //i.putExtra("destinationName", destinationName);
+                        //i.putExtra("destinationID", destinationID);
+                        //i.putExtra("destinationRegion", destinationRegion);
+                        //startActivity(i);
+                        new android.app.AlertDialog.Builder(MainActivity.this).setTitle(TITLE)
+                                .setItems(listItem, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        if(i == 0)//AR Mode
+                                        {
+                                            Intent intent = new Intent(MainActivity.this,ARModeTeachingActivity.class);
+                                            intent.putExtra("destinationName", destinationName);
+                                            intent.putExtra("destinationID", destinationID);
+                                            intent.putExtra("destinationRegion", destinationRegion);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                        else if(i == 1)//Normal Mode
+                                        {
+                                            Intent intent = new Intent(MainActivity.this,NavigationActivity.class);
+                                            intent.putExtra("destinationName", destinationName);
+                                            intent.putExtra("destinationID", destinationID);
+                                            intent.putExtra("destinationRegion", destinationRegion);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                    }
+                                }).show();
+                        CList.clear();
+                        ButtonClicked = false;
                     } else if (CList.size() > 1) {
                         intent = new Intent(MainActivity.this, ListViewActivity.class);
                         intent.putExtra("Category", "批價櫃檯");
@@ -444,12 +527,38 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                         destinationName = CList.get(0)._waypointName;
                         destinationID = CList.get(0)._waypointID;
                         destinationRegion = CList.get(0)._regionID;
-                        Intent i = new Intent(MainActivity.this, NavigationActivity.class);
-                        i.putExtra("destinationName", destinationName);
-                        i.putExtra("destinationID", destinationID);
-                        i.putExtra("destinationRegion", destinationRegion);
-                        startActivity(i);
-                        finish();
+                        //Intent i = new Intent(MainActivity.this, NavigationActivity.class);
+                        //i.putExtra("destinationName", destinationName);
+                        //i.putExtra("destinationID", destinationID);
+                        //i.putExtra("destinationRegion", destinationRegion);
+                        //startActivity(i);
+                        //finish();
+                        new android.app.AlertDialog.Builder(MainActivity.this).setTitle(TITLE)
+                                .setItems(listItem, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        if(i == 0)//AR Mode
+                                        {
+                                            Intent intent = new Intent(MainActivity.this,ARModeTeachingActivity.class);
+                                            intent.putExtra("destinationName", destinationName);
+                                            intent.putExtra("destinationID", destinationID);
+                                            intent.putExtra("destinationRegion", destinationRegion);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                        else if(i == 1)//Normal Mode
+                                        {
+                                            Intent intent = new Intent(MainActivity.this,NavigationActivity.class);
+                                            intent.putExtra("destinationName", destinationName);
+                                            intent.putExtra("destinationID", destinationID);
+                                            intent.putExtra("destinationRegion", destinationRegion);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                    }
+                                }).show();
+                        CList.clear();
+                        ButtonClicked = false;
                     } else if (CList.size() > 1) {
                         intent = new Intent(MainActivity.this, ListViewActivity.class);
                         intent.putExtra("Category", "領藥處");
@@ -478,12 +587,38 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                         destinationName = CList.get(0)._waypointName;
                         destinationID = CList.get(0)._waypointID;
                         destinationRegion = CList.get(0)._regionID;
-                        Intent i = new Intent(MainActivity.this, NavigationActivity.class);
-                        i.putExtra("destinationName", destinationName);
-                        i.putExtra("destinationID", destinationID);
-                        i.putExtra("destinationRegion", destinationRegion);
-                        startActivity(i);
-                        finish();
+                        //Intent i = new Intent(MainActivity.this, NavigationActivity.class);
+                        //i.putExtra("destinationName", destinationName);
+                        //i.putExtra("destinationID", destinationID);
+                        //i.putExtra("destinationRegion", destinationRegion);
+                        //startActivity(i);
+                        //finish();
+                        new android.app.AlertDialog.Builder(MainActivity.this).setTitle(TITLE)
+                                .setItems(listItem, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        if(i == 0)//AR Mode
+                                        {
+                                            Intent intent = new Intent(MainActivity.this,ARModeTeachingActivity.class);
+                                            intent.putExtra("destinationName", destinationName);
+                                            intent.putExtra("destinationID", destinationID);
+                                            intent.putExtra("destinationRegion", destinationRegion);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                        else if(i == 1)//Normal Mode
+                                        {
+                                            Intent intent = new Intent(MainActivity.this,NavigationActivity.class);
+                                            intent.putExtra("destinationName", destinationName);
+                                            intent.putExtra("destinationID", destinationID);
+                                            intent.putExtra("destinationRegion", destinationRegion);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                    }
+                                }).show();
+                        CList.clear();
+                        ButtonClicked = false;
                     } else if (CList.size() > 1) {
                         intent = new Intent(MainActivity.this, ListViewActivity.class);
                         intent.putExtra("Category", "廁所");
@@ -525,12 +660,38 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                         destinationName = CList.get(0)._waypointName;
                         destinationID = CList.get(0)._waypointID;
                         destinationRegion = CList.get(0)._regionID;
-                        Intent i = new Intent(MainActivity.this, NavigationActivity.class);
-                        i.putExtra("destinationName", destinationName);
-                        i.putExtra("destinationID", destinationID);
-                        i.putExtra("destinationRegion", destinationRegion);
-                        startActivity(i);
-                        finish();
+                        //Intent i = new Intent(MainActivity.this, NavigationActivity.class);
+                        //i.putExtra("destinationName", destinationName);
+                        //i.putExtra("destinationID", destinationID);
+                        //i.putExtra("destinationRegion", destinationRegion);
+                        //startActivity(i);
+                        //finish();
+                        new android.app.AlertDialog.Builder(MainActivity.this).setTitle(TITLE)
+                                .setItems(listItem, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        if(i == 0)//AR Mode
+                                        {
+                                            Intent intent = new Intent(MainActivity.this,ARModeTeachingActivity.class);
+                                            intent.putExtra("destinationName", destinationName);
+                                            intent.putExtra("destinationID", destinationID);
+                                            intent.putExtra("destinationRegion", destinationRegion);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                        else if(i == 1)//Normal Mode
+                                        {
+                                            Intent intent = new Intent(MainActivity.this,NavigationActivity.class);
+                                            intent.putExtra("destinationName", destinationName);
+                                            intent.putExtra("destinationID", destinationID);
+                                            intent.putExtra("destinationRegion", destinationRegion);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                    }
+                                }).show();
+                        CList.clear();
+                        ButtonClicked = false;
                     } else if (CList.size() > 1) {
                         intent = new Intent(MainActivity.this, ListViewActivity.class);
                         intent.putExtra("Category", "商店餐廳");
@@ -559,12 +720,38 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                         destinationName = CList.get(0)._waypointName;
                         destinationID = CList.get(0)._waypointID;
                         destinationRegion = CList.get(0)._regionID;
-                        Intent i = new Intent(MainActivity.this, NavigationActivity.class);
-                        i.putExtra("destinationName", destinationName);
-                        i.putExtra("destinationID", destinationID);
-                        i.putExtra("destinationRegion", destinationRegion);
-                        startActivity(i);
-                        finish();
+                        //Intent i = new Intent(MainActivity.this, NavigationActivity.class);
+                        //i.putExtra("destinationName", destinationName);
+                        //i.putExtra("destinationID", destinationID);
+                        //i.putExtra("destinationRegion", destinationRegion);
+                        //startActivity(i);
+                        //finish();
+                        new android.app.AlertDialog.Builder(MainActivity.this).setTitle(TITLE)
+                                .setItems(listItem, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        if(i == 0)//AR Mode
+                                        {
+                                            Intent intent = new Intent(MainActivity.this,ARModeTeachingActivity.class);
+                                            intent.putExtra("destinationName", destinationName);
+                                            intent.putExtra("destinationID", destinationID);
+                                            intent.putExtra("destinationRegion", destinationRegion);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                        else if(i == 1)//Normal Mode
+                                        {
+                                            Intent intent = new Intent(MainActivity.this,NavigationActivity.class);
+                                            intent.putExtra("destinationName", destinationName);
+                                            intent.putExtra("destinationID", destinationID);
+                                            intent.putExtra("destinationRegion", destinationRegion);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                    }
+                                }).show();
+                        CList.clear();
+                        ButtonClicked = false;
                     } else if (CList.size() > 1) {
                         intent = new Intent(MainActivity.this, ListViewActivity.class);
                         intent.putExtra("Category", "檢驗醫學部");
@@ -750,6 +937,11 @@ public class MainActivity extends AppCompatActivity implements Serializable {
             btn_search.setText("看診進度查詢");
            // btn_exit.setText("出口");
             tv_description.setText("【點選圖片選擇目的地】");
+
+            TITLE = "模式選擇";
+            AR_MOD = "AR模式";
+            NORMAL_MOD = "一般模式";
+            listItem = new String[]{AR_MOD,NORMAL_MOD};
         }
         else  if(language_option.equals("English"))
         {
@@ -770,6 +962,11 @@ public class MainActivity extends AppCompatActivity implements Serializable {
             btn_search.setTextSize(14);
             tv_description.setText("【Click on the picture to select the destination】");
             tv_description.setTextSize(15);
+
+            TITLE = "Mode Select";
+            AR_MOD = "AR Mode";
+            NORMAL_MOD = "Normal Mode";
+            listItem = new String[]{AR_MOD,NORMAL_MOD};
         }
     }
 

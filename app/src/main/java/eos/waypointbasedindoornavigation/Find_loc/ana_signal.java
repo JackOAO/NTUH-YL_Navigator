@@ -319,9 +319,37 @@ public class ana_signal {
         double a_value = dp.get_a(s);
         double b_value = dp.get_b(s);
         double c_vaule = dp.get_c(s);
-
-        return (a_value*pow(range + dp.get_Paramater(s),2) + b_value* (range + dp.get_Paramater(s)) + c_vaule) + offset;
+        if(getType(s) == 1)
+            return -0.3469 * pow(range,3) + 4.576 * pow(range,2) - 20.671 * range -21.034 + offset;
+        else if(getType(s) == 2)
+            return -0.1944 * pow(range,3) + 3.0498 * pow(range,2) - 16.226 * range - 28.063 + offset;
+        else if(getType(s) == 3)
+            return 0.0898 * pow(range,3) - 0.803 * pow(range,2) - 2.1311 * range -36.833 + offset;
+        else
+            return (a_value*pow(range + dp.get_Paramater(s),2) + b_value* (range + dp.get_Paramater(s)) + c_vaule) + offset;
     }
 
+    private int getType(String uuid)
+    {
+        switch (uuid)
+        {
+            case "00000014-0000-0010-1103-000000101103"://X光報到處
+            case "00030018-0000-0003-1500-000000033000"://五樓電梯
+            case "00000015-0000-0010-1019-000000101019"://A19骨科路口
+                return 1;
+            case "00000014-0000-0010-1102-000000101102"://B2電梯
+            case "00000015-0000-0010-1024-000000101024"://A24領藥處
+            case "00030018-0000-0002-8000-000000021000"://5B中庭
+            case "00000015-0000-0010-1018-000000101018"://A18樓梯
+                return 2;
+            case "00010014-0000-0000-0000-000000000001"://B1樓梯
+            case "00000015-0000-0001-8500-000000011500"://C10電梯
+            case "00000015-0000-0010-1021-000000101021"://A21骨科
+            case "00030018-0000-0002-9500-000000027000"://5B配膳室
+                return 3;
+            default:
+                return 0;
+        }
+    }
 
 }

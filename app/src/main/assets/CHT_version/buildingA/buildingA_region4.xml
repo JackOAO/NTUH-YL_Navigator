@@ -3,10 +3,10 @@
 
 
     <region4>
-        <node id='00030018-0000-0003-1500-000000033000' name='電梯' region='region4' lat='23.698656960350036' lon='120.52725700409886' neighbor1='00030018-0000-0002-9500-000000027000' neighbor2='' neighbor3='' neighbor4='' category='新大樓五樓' nodeType='1' connectPointID='5' groupID='' mainID='' elevation='5'/>
-		<node id='00030018-0000-0002-9500-000000027000' name='配膳室' region='region4' lat='23.698656960350036' lon='120.52713685409886' neighbor1='00030018-0000-0003-1500-000000033000' neighbor2='00030018-0000-0002-8000-000000021000' neighbor3='00030018-0000-0003-3500-000000023500' neighbor4='' category='新大樓五樓' nodeType='' connectPointID='' groupID='' mainID='' elevation='5'/>
-		<node id='00030018-0000-0002-8000-000000021000' name='中庭' region='region4' lat='23.698656960350036' lon='120.52707166909885' neighbor1='00030018-0000-0002-9500-000000027000' neighbor2='' neighbor3='' neighbor4='' category='新大樓五樓' nodeType='' connectPointID='' groupID='50' mainID='50' attachID1='50' attachID2='51' elevation='5'/>
-		<node id='00030018-0000-0003-3500-000000023500' name='輪椅放置區' region='region4' lat='23.698656960350036' lon='120.52707166909885' neighbor1='00030018-0000-0002-9500-000000027000' neighbor2='' neighbor3='' neighbor4='' category='新大樓五樓' nodeType='' connectPointID='' groupID='50' mainID='51' attachID1='50' attachID2='51' elevation='5'/>
+        <node id='00030018-0000-0003-1500-000000033000' name='五樓電梯' region='region4' lat='23.698535555555555' lon='120.52734819444444' neighbor1='00030018-0000-0002-9500-000000027000' neighbor2='' neighbor3='' neighbor4='' category='新大樓五樓' nodeType='1' connectPointID='5' groupID='' mainID='' elevation='5'/>
+		<node id='00030018-0000-0002-9500-000000027000' name='配膳室' region='region4' lat='23.698571666666666' lon='120.52734819444444' neighbor1='00030018-0000-0003-1500-000000033000' neighbor2='00030018-0000-0002-8000-000000021000' neighbor3='00030018-0000-0003-3500-000000023500' neighbor4='' category='新大樓五樓' nodeType='' connectPointID='' groupID='' mainID='' elevation='5'/>
+		<node id='00030018-0000-0002-8000-000000021000' name='中庭' region='region4' lat='23.698662972222222' lon='120.52734819444444' neighbor1='00030018-0000-0002-9500-000000027000' neighbor2='' neighbor3='' neighbor4='' category='新大樓五樓' nodeType='' connectPointID='' groupID='50' mainID='50' attachID1='50' attachID2='51' elevation='5'/>
+		<node id='00030018-0000-0003-3500-000000023500' name='輪椅放置區' region='region4' lat='23.698662972222222' lon='120.52734819444444' neighbor1='00030018-0000-0002-9500-000000027000' neighbor2='' neighbor3='' neighbor4='' category='新大樓五樓' nodeType='' connectPointID='' groupID='50' mainID='51' attachID1='50' attachID2='51' elevation='5'/>
 		
        
     </region4>

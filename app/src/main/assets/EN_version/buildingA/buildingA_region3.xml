@@ -3,9 +3,9 @@
 
 
     <region3>
-        <node id='00000014-0000-0010-1101-000000101101' name='Stairs' region='region3' lat='23.698511120350034' lon='120.52726000409886' neighbor1='00000014-0000-0010-1103-000000101103' neighbor2='00000014-0000-0010-1102-000000101102' neighbor3='' neighbor4='' category='新大樓地下一樓' nodeType='2' connectPointID='1' groupID='' mainID='' elevation='0'/>
-        <node id='00000014-0000-0010-1103-000000101103' name='X-ray Registration' region='region3' lat='23.698395010350037' lon='120.52726000409886' neighbor1='00000014-0000-0010-1101-000000101101' neighbor2='' neighbor3='' neighbor4='' category='新大樓地下一樓' nodeType='' connectPointID='' groupID='' mainID='' elevation='0'/>
-        <node id='00000014-0000-0010-1102-000000101102' name='Elevator' region='region3' lat='23.698511120350034' lon='120.52731219409887' neighbor1='00000014-0000-0010-1101-000000101101' neighbor2='' neighbor3='' neighbor4='' category='新大樓地下一樓' nodeType='' connectPointID='' groupID='' mainID='' elevation='0'/>
+        <node id='00010014-0000-0000-0000-000000000001' name='Stairs' region='region3' lat='23.698511120350034' lon='120.52726000409886' neighbor1='00000014-0000-0010-1103-000000101103' neighbor2='00000014-0000-0010-1102-000000101102' neighbor3='' neighbor4='' category='新大樓地下一樓' nodeType='2' connectPointID='1' groupID='' mainID='' elevation='0'/>
+        <node id='00000014-0000-0010-1103-000000101103' name='X-ray Registration' region='region3' lat='23.698395010350037' lon='120.52726000409886' neighbor1='00010014-0000-0000-0000-000000000001' neighbor2='' neighbor3='' neighbor4='' category='新大樓地下一樓' nodeType='' connectPointID='' groupID='' mainID='' elevation='0'/>
+        <node id='00000014-0000-0010-1102-000000101102' name='Elevator' region='region3' lat='23.698511120350034' lon='120.52731219409887' neighbor1='00010014-0000-0000-0000-000000000001' neighbor2='' neighbor3='' neighbor4='' category='新大樓地下一樓' nodeType='' connectPointID='' groupID='' mainID='' elevation='0'/>
     </region3>
 
 

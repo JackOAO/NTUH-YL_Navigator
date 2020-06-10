@@ -3,12 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
 
-    <item android:id="@+id/gear"
-        android:title="語言"
+    <item
+        android:id="@+id/gear"
         android:icon="@drawable/gear"
-        app:showAsAction="always"
         android:orderInCategory="50"
-        />
+        android:title="語言"
+        app:showAsAction="always" />
 
     <item android:id="@+id/information"
         android:title="相關資訊"

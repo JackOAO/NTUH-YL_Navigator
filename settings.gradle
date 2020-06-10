@@ -1,1 +1,4 @@
 include ':app'
+include ':arcore_client'
+include ':viro_core'
+include ':gvr_common'
