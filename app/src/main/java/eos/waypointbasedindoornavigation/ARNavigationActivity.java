@@ -134,9 +134,6 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
     //Boolean to show whether  or not cross the floor
     private boolean isOverFloor;
 
-    //Boolean to diecise whther the NavigationInstructionDisplayFunction is running
-    private boolean isRuning;
-
     //---------------------Sensor---------------------
     private SensorManager sensorManager;
     //accelerometer
@@ -394,7 +391,6 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
         loadAllWaypointData();
         virtualNodeUp = DataParser.getVirtualNode(this,VIRTUAL_UP);
         virtualNodeDown = DataParser.getVirtualNode(this,VIRTUAL_DOWN);
-        isRuning = false;
 
         //ViroCore startup
         mViroView = new ViroViewARCore(this, new ViroViewARCore.StartupListener() {
@@ -669,7 +665,6 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
                     //imageTurnIndicator.setImageResource(R.drawable.up_now);
                     //add3DObject("file:///android_asset/ARModel/Front.obj",mViroView.getLastCameraPositionRealtime().add(mViroView.getLastCameraForwardRealtime()));
                 }
-
                 isFirstBeacon = false;
             }
 
@@ -706,7 +701,7 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
 
             if(allWaypointData.containsKey(currentLBeaconID))
             {
-                if(!placedID.contains(currentLBeaconID) && isRuning == false)
+                if(!placedID.contains(currentLBeaconID))
                     pass = true;
             }
 
@@ -1660,9 +1655,7 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
         }
     }
 
-    void navigationInstructionDisplay(String turnDirection, int distance) {
-
-        isRuning = true;
+    synchronized public void navigationInstructionDisplay(String turnDirection, int distance) {
 
         LayoutInflater inflater = getLayoutInflater();
         View layout = inflater.inflate(R.layout.toast, (ViewGroup) findViewById(R.id.toast_layout));
@@ -1710,7 +1703,9 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
         Log.i("showInstruction","turnNotification = " + turnNotificationForPopup
                                         + " turnDirection = " + turnDirection
                                         + " FirstTurn = " + FirstTurn
-                                        + " PredictDirection = " + predictDirection);
+                                        + " PredictDirection = " + predictDirection
+                                        + "Path (0) = " + navigationPath.get(0)._waypointName
+                                        + "Path (1) = " + navigationPath.get(1)._waypointName);
             switch (turnDirection) {
                 case LEFT:
                     firstMovement = GO_STRAIGHT_ABOUT;
@@ -2574,7 +2569,6 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
 
         //FirstTurn = false;
         Find_Loc_pass = lastNode._waypointID;
-        isRuning = false;
 
     }
 
