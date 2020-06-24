@@ -133,7 +133,6 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
 
     //Boolean to show whether  or not cross the floor
     private boolean isOverFloor;
-
     //---------------------Sensor---------------------
     private SensorManager sensorManager;
     //accelerometer
@@ -341,6 +340,9 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
     //Initial Time
     private long startT = System.currentTimeMillis();
 
+    //lock String
+    private String lock = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -506,7 +508,8 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
                     while (beaconIterator.hasNext()) {
                         Beacon beacon = beaconIterator.next();
                         Log.i("offset","offset = " + offset);
-                        logBeaconData(findLoc.Find_Loc(beacon, 3, offset,Find_Loc_pass));
+                        List<String> beaconList = findLoc.Find_Loc(beacon, 3, offset,Find_Loc_pass);
+                        logBeaconData(beaconList);
                     }
                 }
             }
@@ -655,15 +658,6 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
                         }
                     });
                     builder.show();
-
-                    //Show initialDirectionImage
-                    //Intent intent = new Intent(ARNavigationActivity.this, InitDirectionImage.class);
-                    //intent.putExtra("nowID", navigationPath.get(0)._waypointID);
-                    //intent.putExtra("nextID", navigationPath.get(0)._waypointID);
-                    //startActivity(intent);
-                    // TODO: 2020/2/24 maybe need to been fixed
-                    //imageTurnIndicator.setImageResource(R.drawable.up_now);
-                    //add3DObject("file:///android_asset/ARModel/Front.obj",mViroView.getLastCameraPositionRealtime().add(mViroView.getLastCameraForwardRealtime()));
                 }
                 isFirstBeacon = false;
             }
@@ -682,7 +676,10 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
                         Log.i("NAP2-1", receiveNode.getName());
                         Log.i("enter", "1");
                         currentLBeaconID = navigationPath.get(0)._waypointID;
-                        pass = true;
+                        if(!placedID.contains(currentLBeaconID))
+                        {
+                            pass = true;
+                        }
                     } else if (receiveNode._groupID == passedGroupID && receiveNode._groupID != 0) {
                         Log.i("enter", "2");
                         pass = false;
@@ -690,7 +687,10 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
                         Log.i("NAP2-2", receiveNode.getName());
                         Log.i("enter", "3");
                         currentLBeaconID = receivebeacon;
-                        pass = true;
+                        if(!placedID.contains(currentLBeaconID))
+                        {
+                            pass = true;
+                        }
                     }
                 } else {
                     Log.i("enter", "4");
@@ -702,12 +702,15 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
             if(allWaypointData.containsKey(currentLBeaconID))
             {
                 if(!placedID.contains(currentLBeaconID))
+                {
                     pass = true;
+                }
             }
 
             // block the Lbeacon ID the navigator just received
             Log.i("pass","pass = " + pass);
             if (pass) {
+                pass = false;
                 synchronized (sync) {
                     sync.notify();
                 }
@@ -1393,8 +1396,8 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
         //beaconManager.setForegroundBetweenScanPeriod(2*ONE_SECOND);
 
 
-        beaconManager.setForegroundScanPeriod(50);
-        beaconManager.setForegroundBetweenScanPeriod(0);
+        beaconManager.setForegroundScanPeriod(500);
+        beaconManager.setForegroundBetweenScanPeriod(1500);
 
         beaconManager.removeAllMonitorNotifiers();
         beaconManager.removeAllRangeNotifiers();
@@ -1423,8 +1426,8 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
         }
         beaconManager.enableForegroundServiceScanning(builder.build(), 456);
         beaconManager.setEnableScheduledScanJobs(false);
-        beaconManager.setBackgroundBetweenScanPeriod(0);
-        beaconManager.setBackgroundScanPeriod(1100);
+        beaconManager.setBackgroundBetweenScanPeriod(1500);
+        beaconManager.setBackgroundScanPeriod(500);
         beaconManager.bind(ARNavigationActivity.this);
     }
 
@@ -1657,6 +1660,8 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
 
     synchronized public void navigationInstructionDisplay(String turnDirection, int distance) {
 
+
+
         LayoutInflater inflater = getLayoutInflater();
         View layout = inflater.inflate(R.layout.toast, (ViewGroup) findViewById(R.id.toast_layout));
         ImageView image = (ImageView) layout.findViewById(R.id.toast_image);
@@ -1675,9 +1680,11 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
             if (navigationPath.size() == 2 && navigationPath.get(0)._elevation != navigationPath.get(1)._elevation)
             {
                 Log.i("showPredictDireciton","PredictDirection = " + predictDirection);
-                if(currentDirection != predictDirection)
+                if(currentDirection != predictDirection) {
                     Toast.makeText(ARNavigationActivity.this, PLEASEFACETO + toDirection(predictDirection), Toast.LENGTH_LONG).show();
-                else
+                    return;
+                }
+                else if(currentDirection == predictDirection)
                 {
                     Toast.makeText(ARNavigationActivity.this, RIGHTDIRETION, Toast.LENGTH_LONG).show();
                     turnDirection = STAIR;
@@ -1685,9 +1692,11 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
             }
             else if(turnDirection != STAIR && turnDirection != ELEVATOR && turnDirection != ARRIVED)
             {
-                if(currentDirection != predictDirection)
-                    Toast.makeText(ARNavigationActivity.this, PLEASEFACETO  + toDirection(predictDirection), Toast.LENGTH_LONG).show();
-                else
+                if(currentDirection != predictDirection) {
+                    Toast.makeText(ARNavigationActivity.this, PLEASEFACETO + toDirection(predictDirection), Toast.LENGTH_LONG).show();
+                    return;
+                }
+                else if(currentDirection == predictDirection)
                 {
                     Toast.makeText(ARNavigationActivity.this, RIGHTDIRETION , Toast.LENGTH_LONG).show();
                     add3DObject("file:///android_asset/ARModel/Front.obj",mViroView.getLastCameraPositionRealtime().add(mViroView.getLastCameraForwardRealtime()),navigationPath.get(0)._waypointID);
@@ -1699,13 +1708,11 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
         //樓梯或電梯方向顯示
         if (navigationPath.size() >= 2 && !turnDirection.equals(WRONG))
             ShowDirectionFromConnectPoint();
-        //Toast.makeText(ARNavigationActivity.this, "turnDirection = " + turnDirection , Toast.LENGTH_LONG).show();
         Log.i("showInstruction","turnNotification = " + turnNotificationForPopup
                                         + " turnDirection = " + turnDirection
                                         + " FirstTurn = " + FirstTurn
                                         + " PredictDirection = " + predictDirection
-                                        + "Path (0) = " + navigationPath.get(0)._waypointName
-                                        + "Path (1) = " + navigationPath.get(1)._waypointName);
+                                        + "currentWaypointed = " + currentLBeaconID);
             switch (turnDirection) {
                 case LEFT:
                     firstMovement = GO_STRAIGHT_ABOUT;
@@ -1731,6 +1738,7 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
                             }
                         } else {
                             Toast.makeText(ARNavigationActivity.this, PLEASEFACETO + toDirection(predictDirection), Toast.LENGTH_LONG).show();
+                            return;
                         }
                     }
 
@@ -1763,6 +1771,7 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
                             }
                         } else {
                             Toast.makeText(ARNavigationActivity.this, PLEASEFACETO + toDirection(predictDirection), Toast.LENGTH_LONG).show();
+                            return;
                         }
                     }
 
@@ -1795,6 +1804,7 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
                             }
                         } else {
                             Toast.makeText(ARNavigationActivity.this, PLEASEFACETO + toDirection(predictDirection), Toast.LENGTH_LONG).show();
+                            return;
                         }
                     }
 
@@ -1827,6 +1837,7 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
                             }
                         } else {
                             Toast.makeText(ARNavigationActivity.this, PLEASEFACETO + toDirection(predictDirection), Toast.LENGTH_LONG).show();
+                            return;
                         }
                     }
 
@@ -1859,6 +1870,7 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
                             }
                         }else {
                             Toast.makeText(ARNavigationActivity.this, PLEASEFACETO + toDirection(predictDirection), Toast.LENGTH_LONG).show();
+                            return;
                         }
                     }
 
@@ -1891,6 +1903,7 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
                             }
                         } else {
                             Toast.makeText(ARNavigationActivity.this, PLEASEFACETO + toDirection(predictDirection), Toast.LENGTH_LONG).show();
+                            return;
                         }
                     }
 
@@ -1920,10 +1933,9 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
                                 showHintAtWaypoint(MAKETURN_NOTIFIER);
                                 makeNextPreditDirection(turnNotificationForPopup);
                             }
-                            else
-                                Toast.makeText(ARNavigationActivity.this, "turnNotification = null", Toast.LENGTH_LONG).show();
                         }else {
                             Toast.makeText(ARNavigationActivity.this, PLEASEFACETO + toDirection(predictDirection), Toast.LENGTH_LONG).show();
+                            return;
                         }
                     }
 
@@ -1955,6 +1967,7 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
                             }
                         }else {
                             Toast.makeText(ARNavigationActivity.this, PLEASEFACETO + toDirection(predictDirection), Toast.LENGTH_LONG).show();
+                            return;
                         }
                     }
 
@@ -1986,6 +1999,7 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
                             }
                         }else {
                             Toast.makeText(ARNavigationActivity.this, PLEASEFACETO + toDirection(predictDirection), Toast.LENGTH_LONG).show();
+                            return;
                         }
                     }
 
@@ -2140,6 +2154,7 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
                         else
                         {
                             Toast.makeText(ARNavigationActivity.this, PLEASE_WALK_UP_STAIR + "(" + toDirection(predictDirection) + ")", Toast.LENGTH_LONG).show();
+                            return;
                         }
                     }
                     if(!placedID.contains(currentLBeaconID))
@@ -2184,6 +2199,7 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
                         else
                         {
                             Toast.makeText(ARNavigationActivity.this, PLEASE_TAKE_ELEVATOR + "(" + toDirection(predictDirection) + ")", Toast.LENGTH_LONG).show();
+                            return;
                         }
                     }
                     if(!placedID.contains(currentLBeaconID))
@@ -2471,12 +2487,12 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
                                             || (navigationPath.get(0)._waypointID.equals("00000015-0000-0000-0909-000000000909") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0505-000000000505") && navigationPath.get(2)._waypointID.equals("00000015-0000-0001-8500-000000019000")) //電腦斷層大廳->抽血->樓梯
                                             || (navigationPath.get(0)._waypointID.equals("0x7b9551660x00020000") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0505-000000000505") && navigationPath.get(2)._waypointID.equals("00000015-0000-0001-8500-000000019000")) //電腦斷層大廳2->抽血->樓梯
                                             || (navigationPath.get(0)._waypointID.equals("00000015-0000-0000-0505-000000000505") && navigationPath.get(1)._waypointID.equals("00000015-0000-0001-8500-000000019000") && navigationPath.get(2)._waypointID.equals("00000015-0000-0000-0101-000000000101")) //抽血->樓梯->連接走廊
-                                            || (navigationPath.get(0)._waypointID.equals("00000015-0000-0000-0606-000000000606") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0404-000000000404") && navigationPath.get(2)._waypointID.equals("00160015-0000-0000-0001-000000000001")) //病歷室大廳->核子->樓梯
-                                            || (navigationPath.get(0)._waypointID.equals("0x7b9812120x00020000") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0404-000000000404") && navigationPath.get(2)._waypointID.equals("00160015-0000-0000-0001-000000000001")) //病歷室大廳2->核子->樓梯
-                                            || (navigationPath.get(0)._waypointID.equals("00000015-0000-0000-0404-000000000404") && navigationPath.get(1)._waypointID.equals("00160015-0000-0000-0001-000000000001") && navigationPath.get(2)._waypointID.equals("00000015-0000-0000-0101-000000000101")) //核子->樓梯->新舊大樓連接走廊
-                                            || (navigationPath.get(0)._waypointID.equals("00000015-0000-0000-0909-000000000909") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0505-000000000505") && navigationPath.get(2)._waypointID.equals("00160015-0000-0000-0001-000000000001")) //電腦斷層大廳->抽血->樓梯
-                                            || (navigationPath.get(0)._waypointID.equals("0x7b9551660x00020000") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0505-000000000505") && navigationPath.get(2)._waypointID.equals("00160015-0000-0000-0001-000000000001")) //電腦斷層大廳2->抽血->樓梯
-                                            || (navigationPath.get(0)._waypointID.equals("00000015-0000-0000-0505-000000000505") && navigationPath.get(1)._waypointID.equals("00160015-0000-0000-0001-000000000001") && navigationPath.get(2)._waypointID.equals("00000015-0000-0000-0101-000000000101")) //抽血->樓梯->連接走廊
+                                            || (navigationPath.get(0)._waypointID.equals("00000015-0000-0000-0606-000000000606") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0404-000000000404") && navigationPath.get(2)._waypointID.equals("00170015-0000-0000-0001-000000000001")) //病歷室大廳->核子->樓梯
+                                            || (navigationPath.get(0)._waypointID.equals("0x7b9812120x00020000") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0404-000000000404") && navigationPath.get(2)._waypointID.equals("00170015-0000-0000-0001-000000000001")) //病歷室大廳2->核子->樓梯
+                                            || (navigationPath.get(0)._waypointID.equals("00000015-0000-0000-0404-000000000404") && navigationPath.get(1)._waypointID.equals("00170015-0000-0000-0001-000000000001") && navigationPath.get(2)._waypointID.equals("00000015-0000-0000-0101-000000000101")) //核子->樓梯->新舊大樓連接走廊
+                                            || (navigationPath.get(0)._waypointID.equals("00000015-0000-0000-0909-000000000909") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0505-000000000505") && navigationPath.get(2)._waypointID.equals("00170015-0000-0000-0001-000000000001")) //電腦斷層大廳->抽血->樓梯
+                                            || (navigationPath.get(0)._waypointID.equals("0x7b9551660x00020000") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0505-000000000505") && navigationPath.get(2)._waypointID.equals("00170015-0000-0000-0001-000000000001")) //電腦斷層大廳2->抽血->樓梯
+                                            || (navigationPath.get(0)._waypointID.equals("00000015-0000-0000-0505-000000000505") && navigationPath.get(1)._waypointID.equals("00170015-0000-0000-0001-000000000001") && navigationPath.get(2)._waypointID.equals("00000015-0000-0000-0101-000000000101")) //抽血->樓梯->連接走廊
                                             || (navigationPath.get(0)._waypointID.equals("00000015-0000-0000-0404-000000000404") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0606-000000000606") && navigationPath.get(2)._waypointID.equals("00170015-0000-0000-0001-000000000002")) //核子->病歷室大廳->後門出口
                                             || (navigationPath.get(0)._waypointID.equals("00000015-0000-0000-0404-000000000404") && navigationPath.get(1)._waypointID.equals("0x7b9812120x00020000") && navigationPath.get(2)._waypointID.equals("00170015-0000-0000-0001-000000000002")) //核子->病歷室大廳2->後門出口
                                             || (navigationPath.get(0)._waypointID.equals("00000015-0000-0000-0505-000000000505") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0909-000000000909") && navigationPath.get(2)._waypointID.equals("00170015-0000-0000-0001-000000000002")) //抽血->電腦斷層大廳->後門出口
@@ -2513,12 +2529,12 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
                         ||(navigationPath.get(0)._waypointID.equals("00000015-0000-0000-0909-000000000909") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0505-000000000505") && navigationPath.get(2)._waypointID.equals("00000015-0000-0001-8500-000000019000")) //電腦斷層大廳->抽血->樓梯(靠新大樓)
                         ||(navigationPath.get(0)._waypointID.equals("0x7b9551660x00020000") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0505-000000000505") && navigationPath.get(2)._waypointID.equals("00000015-0000-0001-8500-000000019000")) //電腦斷層大廳->抽血->樓梯(靠新大樓)
                         ||(navigationPath.get(0)._waypointID.equals("00000015-0000-0000-0505-000000000505") && navigationPath.get(1)._waypointID.equals("00000015-0000-0001-8500-000000019000") && navigationPath.get(2)._waypointID.equals("00000015-0000-0000-0101-000000000101")) //抽血->樓梯(靠新大樓)->連接走廊
-                        ||(navigationPath.get(0)._waypointID.equals("00000015-0000-0000-0606-000000000606") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0404-000000000404") && navigationPath.get(2)._waypointID.equals("00160015-0000-0000-0001-000000000001")) //病歷室大廳->核子->樓梯(靠新大樓)
-                        ||(navigationPath.get(0)._waypointID.equals("0x7b9812120x00020000") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0404-000000000404") && navigationPath.get(2)._waypointID.equals("00160015-0000-0000-0001-000000000001")) //病歷室大廳->核子->樓梯(靠新大樓)
-                        ||(navigationPath.get(0)._waypointID.equals("00000015-0000-0000-0404-000000000404") && navigationPath.get(1)._waypointID.equals("00160015-0000-0000-0001-000000000001") && navigationPath.get(2)._waypointID.equals("00000015-0000-0000-0101-000000000101")) //核子->樓梯->新舊大樓連接走廊
-                        ||(navigationPath.get(0)._waypointID.equals("00000015-0000-0000-0909-000000000909") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0505-000000000505") && navigationPath.get(2)._waypointID.equals("00160015-0000-0000-0001-000000000001")) //電腦斷層大廳->抽血->樓梯
-                        ||(navigationPath.get(0)._waypointID.equals("0x7b9551660x00020000") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0505-000000000505") && navigationPath.get(2)._waypointID.equals("00160015-0000-0000-0001-000000000001")) //電腦斷層大廳->抽血->樓梯
-                        ||(navigationPath.get(0)._waypointID.equals("00000015-0000-0000-0505-000000000505") && navigationPath.get(1)._waypointID.equals("00160015-0000-0000-0001-000000000001") && navigationPath.get(2)._waypointID.equals("00000015-0000-0000-0101-000000000101")) //抽血->樓梯->連接走廊
+                        ||(navigationPath.get(0)._waypointID.equals("00000015-0000-0000-0606-000000000606") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0404-000000000404") && navigationPath.get(2)._waypointID.equals("00170015-0000-0000-0001-000000000001")) //病歷室大廳->核子->樓梯(靠新大樓)
+                        ||(navigationPath.get(0)._waypointID.equals("0x7b9812120x00020000") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0404-000000000404") && navigationPath.get(2)._waypointID.equals("00170015-0000-0000-0001-000000000001")) //病歷室大廳->核子->樓梯(靠新大樓)
+                        ||(navigationPath.get(0)._waypointID.equals("00000015-0000-0000-0404-000000000404") && navigationPath.get(1)._waypointID.equals("00170015-0000-0000-0001-000000000001") && navigationPath.get(2)._waypointID.equals("00000015-0000-0000-0101-000000000101")) //核子->樓梯->新舊大樓連接走廊
+                        ||(navigationPath.get(0)._waypointID.equals("00000015-0000-0000-0909-000000000909") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0505-000000000505") && navigationPath.get(2)._waypointID.equals("00170015-0000-0000-0001-000000000001")) //電腦斷層大廳->抽血->樓梯
+                        ||(navigationPath.get(0)._waypointID.equals("0x7b9551660x00020000") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0505-000000000505") && navigationPath.get(2)._waypointID.equals("00170015-0000-0000-0001-000000000001")) //電腦斷層大廳->抽血->樓梯
+                        ||(navigationPath.get(0)._waypointID.equals("00000015-0000-0000-0505-000000000505") && navigationPath.get(1)._waypointID.equals("00170015-0000-0000-0001-000000000001") && navigationPath.get(2)._waypointID.equals("00000015-0000-0000-0101-000000000101")) //抽血->樓梯->連接走廊
                         ||(navigationPath.get(0)._waypointID.equals("00000015-0000-0000-0404-000000000404") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0606-000000000606") && navigationPath.get(2)._waypointID.equals("00170015-0000-0000-0001-000000000002")) //核子->病歷室大廳->後門出口
                         ||(navigationPath.get(0)._waypointID.equals("00000015-0000-0000-0404-000000000404") && navigationPath.get(1)._waypointID.equals("0x7b9812120x00020000") && navigationPath.get(2)._waypointID.equals("00170015-0000-0000-0001-000000000002")) //核子->病歷室大廳->後門出口
                         ||(navigationPath.get(0)._waypointID.equals("00000015-0000-0000-0505-000000000505") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0909-000000000909") && navigationPath.get(2)._waypointID.equals("00170015-0000-0000-0001-000000000002")) //抽血->電腦斷層大廳->後門出口
@@ -2531,22 +2547,22 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
                         ||(navigationPath.get(0)._waypointID.equals("0x7b6913130x00020000") && navigationPath.get(1)._waypointID.equals("0x7b9551660x00020000") && navigationPath.get(2)._waypointID.equals("00000015-0000-0000-0505-000000000505")) //後門出口2->電腦斷層大廳2->抽血
                         ||(navigationPath.get(0)._waypointID.equals("0x7b6913130x00020000") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0606-000000000606") && navigationPath.get(2)._waypointID.equals("00000015-0000-0000-0404-000000000404")) //後門出口2->病歷室大廳->核子醫學部
                         ||(navigationPath.get(0)._waypointID.equals("0x7b6913130x00020000") && navigationPath.get(1)._waypointID.equals("0x7b9812120x00020000") && navigationPath.get(2)._waypointID.equals("00000015-0000-0000-0404-000000000404")) //後門出口2->病歷室大廳2->核子醫學部
-                        ||(navigationPath.get(0)._waypointID.equals("00170015-0000-0000-0001-000000000002") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0909-000000000909") && navigationPath.get(2)._waypointID.equals("00210016-0000-0000-0002-000000000003")) //後門出口->電腦斷層大廳->心臟血管樓梯
-                        ||(navigationPath.get(0)._waypointID.equals("00170015-0000-0000-0001-000000000002") && navigationPath.get(1)._waypointID.equals("0x7b9551660x00020000") && navigationPath.get(2)._waypointID.equals("00210016-0000-0000-0002-000000000003")) //後門出口->電腦斷層大廳2->心臟血管樓梯
-                        ||(navigationPath.get(0)._waypointID.equals("00170015-0000-0000-0001-000000000002") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0606-000000000606") && navigationPath.get(2)._waypointID.equals("00200016-0000-0000-0002-000000000002")) //後門出口->病歷室大廳->神經部樓梯
-                        ||(navigationPath.get(0)._waypointID.equals("00170015-0000-0000-0001-000000000002") && navigationPath.get(1)._waypointID.equals("0x7b9812120x00020000") && navigationPath.get(2)._waypointID.equals("00200016-0000-0000-0002-000000000002")) //後門出口->病歷室大廳2->神經部樓梯
-                        ||(navigationPath.get(0)._waypointID.equals("0x7b6913130x00020000") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0909-000000000909") && navigationPath.get(2)._waypointID.equals("00210016-0000-0000-0002-000000000003")) //後門出口2->電腦斷層大廳->心臟血管樓梯
-                        ||(navigationPath.get(0)._waypointID.equals("0x7b6913130x00020000") && navigationPath.get(1)._waypointID.equals("0x7b9551660x00020000") && navigationPath.get(2)._waypointID.equals("00210016-0000-0000-0002-000000000003")) //後門出口2->電腦斷層大廳2->心臟血管樓梯
-                        ||(navigationPath.get(0)._waypointID.equals("0x7b6913130x00020000") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0606-000000000606") && navigationPath.get(2)._waypointID.equals("00200016-0000-0000-0002-000000000002")) //後門出口2->病歷室大廳->神經部樓梯
-                        ||(navigationPath.get(0)._waypointID.equals("0x7b6913130x00020000") && navigationPath.get(1)._waypointID.equals("0x7b9812120x00020000") && navigationPath.get(2)._waypointID.equals("00200016-0000-0000-0002-000000000002")) //後門出口2->病歷室大廳2->神經部樓梯
+                        ||(navigationPath.get(0)._waypointID.equals("00170015-0000-0000-0001-000000000002") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0909-000000000909") && navigationPath.get(2)._waypointID.equals("00180016-0000-0000-0002-000000000003")) //後門出口->電腦斷層大廳->心臟血管樓梯
+                        ||(navigationPath.get(0)._waypointID.equals("00170015-0000-0000-0001-000000000002") && navigationPath.get(1)._waypointID.equals("0x7b9551660x00020000") && navigationPath.get(2)._waypointID.equals("00180016-0000-0000-0002-000000000003")) //後門出口->電腦斷層大廳2->心臟血管樓梯
+                        ||(navigationPath.get(0)._waypointID.equals("00170015-0000-0000-0001-000000000002") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0606-000000000606") && navigationPath.get(2)._waypointID.equals("00180016-0000-0000-0002-000000000002")) //後門出口->病歷室大廳->神經部樓梯
+                        ||(navigationPath.get(0)._waypointID.equals("00170015-0000-0000-0001-000000000002") && navigationPath.get(1)._waypointID.equals("0x7b9812120x00020000") && navigationPath.get(2)._waypointID.equals("00180016-0000-0000-0002-000000000002")) //後門出口->病歷室大廳2->神經部樓梯
+                        ||(navigationPath.get(0)._waypointID.equals("0x7b6913130x00020000") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0909-000000000909") && navigationPath.get(2)._waypointID.equals("00180016-0000-0000-0002-000000000003")) //後門出口2->電腦斷層大廳->心臟血管樓梯
+                        ||(navigationPath.get(0)._waypointID.equals("0x7b6913130x00020000") && navigationPath.get(1)._waypointID.equals("0x7b9551660x00020000") && navigationPath.get(2)._waypointID.equals("00180016-0000-0000-0002-000000000003")) //後門出口2->電腦斷層大廳2->心臟血管樓梯
+                        ||(navigationPath.get(0)._waypointID.equals("0x7b6913130x00020000") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0606-000000000606") && navigationPath.get(2)._waypointID.equals("00180016-0000-0000-0002-000000000002")) //後門出口2->病歷室大廳->神經部樓梯
+                        ||(navigationPath.get(0)._waypointID.equals("0x7b6913130x00020000") && navigationPath.get(1)._waypointID.equals("0x7b9812120x00020000") && navigationPath.get(2)._waypointID.equals("00180016-0000-0000-0002-000000000002")) //後門出口2->病歷室大廳2->神經部樓梯
                         ||(navigationPath.get(0)._waypointID.equals("00000015-0000-0001-8500-000000019000") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0404-000000000404") && navigationPath.get(2)._waypointID.equals("00000015-0000-0000-0606-000000000606") && FirstTurn == true) //樓梯(靠新大樓)->核子->病歷室大廳
-                        ||(navigationPath.get(0)._waypointID.equals("00160015-0000-0000-0001-000000000001") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0404-000000000404") && navigationPath.get(2)._waypointID.equals("00000015-0000-0000-0606-000000000606") && FirstTurn == true) //樓梯->核子->病歷室大廳
+                        ||(navigationPath.get(0)._waypointID.equals("00170015-0000-0000-0001-000000000001") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0404-000000000404") && navigationPath.get(2)._waypointID.equals("00000015-0000-0000-0606-000000000606") && FirstTurn == true) //樓梯->核子->病歷室大廳
                         ||(navigationPath.get(0)._waypointID.equals("00000015-0000-0001-8500-000000019000") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0404-000000000404") && navigationPath.get(2)._waypointID.equals("0x7b9812120x00020000") && FirstTurn == true) //樓梯(靠新大樓)->核子->病歷室大廳
-                        ||(navigationPath.get(0)._waypointID.equals("00160015-0000-0000-0001-000000000001") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0404-000000000404") && navigationPath.get(2)._waypointID.equals("0x7b9812120x00020000") && FirstTurn == true) //樓梯->核子->病歷室大廳
+                        ||(navigationPath.get(0)._waypointID.equals("00170015-0000-0000-0001-000000000001") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0404-000000000404") && navigationPath.get(2)._waypointID.equals("0x7b9812120x00020000") && FirstTurn == true) //樓梯->核子->病歷室大廳
                         ||(navigationPath.get(0)._waypointID.equals("00000015-0000-0001-8500-000000019000") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0505-000000000505") && navigationPath.get(2)._waypointID.equals("00000015-0000-0000-0909-000000000909") && FirstTurn == true) //樓梯(靠新大樓)->抽血->電腦斷層大廳
-                        ||(navigationPath.get(0)._waypointID.equals("00160015-0000-0000-0001-000000000001") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0505-000000000505") && navigationPath.get(2)._waypointID.equals("00000015-0000-0000-0909-000000000909") && FirstTurn == true) //樓梯->抽血->電腦斷層大廳
+                        ||(navigationPath.get(0)._waypointID.equals("00170015-0000-0000-0001-000000000001") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0505-000000000505") && navigationPath.get(2)._waypointID.equals("00000015-0000-0000-0909-000000000909") && FirstTurn == true) //樓梯->抽血->電腦斷層大廳
                         ||(navigationPath.get(0)._waypointID.equals("00000015-0000-0001-8500-000000019000") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0505-000000000505") && navigationPath.get(2)._waypointID.equals("0x7b9551660x00020000") && FirstTurn == true) //樓梯(靠新大樓)->抽血->電腦斷層大廳
-                        ||(navigationPath.get(0)._waypointID.equals("00160015-0000-0000-0001-000000000001") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0505-000000000505") && navigationPath.get(2)._waypointID.equals("0x7b9551660x00020000") && FirstTurn == true) //樓梯->抽血->電腦斷層大廳
+                        ||(navigationPath.get(0)._waypointID.equals("00170015-0000-0000-0001-000000000001") && navigationPath.get(1)._waypointID.equals("00000015-0000-0000-0505-000000000505") && navigationPath.get(2)._waypointID.equals("0x7b9551660x00020000") && FirstTurn == true) //樓梯->抽血->電腦斷層大廳
                 ){
                     Log.i("xxx_Slash","強轉為直走");
                     turnNotificationForPopup = FRONT;
@@ -2607,8 +2623,6 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
                         {
                             if(FirstTurn == false && CallDirectionInWrong == false)
                                 showHintAtWaypoint(MAKETURN_NOTIFIER);
-                            /*if(navigationPath.get(0)._nodeType == 1)
-                                placedID.add(navigationPath.get(0)._waypointID);//雖然不放置模型，但仍需要紀錄為已放置過的點*/
                             isInVirtualNode = true;
                             Log.i("ConnectionStep","show on enter stair");
                         }
@@ -2657,13 +2671,11 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
                     }
                     if(!placedID.contains(currentLBeaconID))
                     {
-                        if(FirstTurn == false && CallDirectionInWrong == false)//電梯因有方向問題不顯示進樓梯之虛擬點
+                        if(FirstTurn == false && CallDirectionInWrong == false)
                         {
                             showHintAtWaypoint(MAKETURN_NOTIFIER);
                             Log.i("ConnectionStep","show on enter stair II");
                         }
-                        /*if(navigationPath.get(0)._nodeType == 1)
-                            placedID.add(navigationPath.get(0)._waypointID);//雖然不放置模型，但仍需要紀錄為已放置過的點*/
                         isInVirtualNode = true;
                     }
                 }
@@ -2808,16 +2820,12 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
                     break;
                 case STAIR:
                     turnDirection = PLEASE_WALK_UP_STAIR;
-                    // TODO: 2020/4/10 cancel the 3D model
-                    //add3DObject(turnDirection,mViroView.getLastCameraPositionRealtime().add(mViroView.getLastCameraForwardRealtime()),navigationPath.get(0)._waypointID);
                     placedID.add(navigationPath.get(0)._waypointID);
                     LastisSlash = false;
                     Log.i("Display Direction", "跳出指令方向 = " + turnNotificationForPopup);
                     break;
                 case ELEVATOR:
                     turnDirection = PLEASE_TAKE_ELEVATOR;
-                    // TODO: 2020/4/10 cancel the 3D model 
-                    //add3DObject(turnDirection,mViroView.getLastCameraPositionRealtime().add(mViroView.getLastCameraForwardRealtime()),navigationPath.get(0)._waypointID);
                     placedID.add(navigationPath.get(0)._waypointID);
                     LastisSlash = false;
                     Log.i("xxx_Direction", "跳出指令方向 = " + turnNotificationForPopup);
@@ -2827,9 +2835,7 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
                     image.setImageResource(R.drawable.turn_back);
                     toast.show();
                     myVibrator.vibrate(800);
-                    //add3DObject("file:///android_asset/ARModel/R-back.obj",mViroView.getLastCameraPositionRealtime().add(mViroView.getLastCameraForwardRealtime()),navigationPath.get(0)._waypointID);
                     Log.i("xxx_Direction", "跳出指令方向 = " + turnNotificationForPopup);
-                    // setNowPostition();
                     break;
             }
         }
@@ -2895,8 +2901,10 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
         {
             node.addChildNode(object3D);
             //showTheDistance(position.add(new Vector(0,-0.3,0)));
-            placedNode.add(node);
-            placedID.add(waypointID);
+            if(!placedNode.contains(node))
+                placedNode.add(node);
+            if(!placedID.contains(currentLBeaconID))
+                placedID.add(currentLBeaconID);
         }
     }
 

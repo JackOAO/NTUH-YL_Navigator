@@ -19,27 +19,27 @@ public class ARInitialImage {
         int predict = -1;
         switch (nowWaypointID) {
             case "first"://虛擬點1
-                if(nextWaypointID.equals("00000015-0000-0010-1018-000000101018"))//A18樓梯
+                if(nextWaypointID.equals("00020015-0000-0000-0001-000000000004"))//A18樓梯
                     predict = 6;//west
                 else if(nextWaypointID.equals("00010014-0000-0000-0000-000000000001"))//B1電梯
                     predict = 6;//west
                 break;
             case "second"://虛擬點2
-                if(nextWaypointID.equals("00160015-0000-0000-0001-000000000001") || nextWaypointID.equals("00000015-0000-0001-8500-000000019000"))//C2 & C3
+                if(nextWaypointID.equals("00170015-0000-0000-0001-000000000001") || nextWaypointID.equals("00000015-0000-0001-8500-000000019000"))//C2 & C3
                     predict = 2;//east
-                if(nextWaypointID.equals("00190016-0000-0000-0002-000000000001"))//D1
+                if(nextWaypointID.equals("00180016-0000-0000-0002-000000000001"))//D1
                     predict = 2;//east
                 break;
             case "third"://虛擬點3
                 if(nextWaypointID.equals("00000015-0000-0000-0909-000000000909"))//電腦斷層室
                     predict = 0;//north
-                if(nextWaypointID.equals("00210016-0000-0000-0002-000000000003"))//D6心血管迴轉樓梯
+                if(nextWaypointID.equals("00180016-0000-0000-0002-000000000003"))//D6心血管迴轉樓梯
                     predict = 4;//south
                 break;
             case "fourth"://虛擬點4
                 if(nextWaypointID.equals("00000015-0000-0000-0606-000000000606"))//病歷室
                     predict = 0;//north
-                if(nextWaypointID.equals("00200016-0000-0000-0002-000000000002"))//D3神經檢查室迴轉樓梯
+                if(nextWaypointID.equals("00180016-0000-0000-0002-000000000002"))//D3神經檢查室迴轉樓梯
                     predict = 4;//south
                 break;
             case "fifth"://虛擬點5
@@ -112,7 +112,7 @@ public class ARInitialImage {
                 if (nextWaypointID.equals("00000015-0000-0010-1011-000000101011")) //A11(批價櫃檯)
                 {
                     predict = 6;//west
-                } else if (nextWaypointID.equals("00000015-0000-0010-1018-000000101018")) //A18(樓梯)
+                } else if (nextWaypointID.equals("00020015-0000-0000-0001-000000000004")) //A18(樓梯)
                 {
                     predict = 0;//north
                 } else if (nextWaypointID.equals("00000015-0000-0010-1004-000000101004") || nextWaypointID.equals("00000015-0000-0010-1005-000000101005")) //服務台(A4 & A5)
@@ -130,7 +130,7 @@ public class ARInitialImage {
                 if (nextWaypointID.equals("00000015-0000-0010-1011-000000101011")) //A11(批價櫃檯)
                 {
                     predict = 6;//west
-                } else if (nextWaypointID.equals("00000015-0000-0010-1018-000000101018")) //A18(樓梯)
+                } else if (nextWaypointID.equals("00020015-0000-0000-0001-000000000004")) //A18(樓梯)
                 {
                     predict = 0;//north
                 } else if (nextWaypointID.equals("00000015-0000-0010-1004-000000101004") || nextWaypointID.equals("00000015-0000-0010-1005-000000101005")) //服務台(A4 & A5)
@@ -202,7 +202,7 @@ public class ARInitialImage {
                     predict = 2;//east
                 }
                 break;
-            case "00000015-0000-0010-1018-000000101018": //A18 樓梯
+            case "00020015-0000-0000-0001-000000000004": //A18 樓梯
                 if (nextWaypointID.equals("00000015-0000-0010-1008-000000101008") || nextWaypointID.equals("00000015-0000-0010-1010-000000101010")) //中央走廊(A8 & A10)
                 {
                     predict = 4;//south
@@ -221,7 +221,7 @@ public class ARInitialImage {
                 }
                 break;
             case "00000015-0000-0001-8500-000000011500"://C10 1樓電梯
-                if (nextWaypointID.equals("00000015-0000-0010-1018-000000101018")) //A18 樓梯
+                if (nextWaypointID.equals("00020015-0000-0000-0001-000000000004")) //A18 樓梯
                 {
                     predict = 2;//east
                 } else if (nextWaypointID.equals("00000015-0000-0010-1019-000000101019")) //42~49診交叉口
@@ -280,7 +280,7 @@ public class ARInitialImage {
                 } else if (nextWaypointID.equals("00000015-0000-0010-1025-000000101025")) //42~49診走廊交叉口
                 {
                     predict = 0;//north
-                } else if (nextWaypointID.equals("00000015-0000-0010-1018-000000101018")) //樓梯
+                } else if (nextWaypointID.equals("00020015-0000-0000-0001-000000000004")) //樓梯
                 {
                     predict = 2;//east
                 }else if(nextWaypointID.equals("00000015-0000-0001-8500-000000011500")) //電梯
@@ -319,7 +319,7 @@ public class ARInitialImage {
                 }
                 break;
             case "00000015-0000-0010-1024-000000101024": // A24 領藥處大廳
-                if (nextWaypointID.equals("00000015-0000-0010-1018-000000101018")) // A18 樓梯
+                if (nextWaypointID.equals("00020015-0000-0000-0001-000000000004")) // A18 樓梯
                 {
                     predict = 4;//south
                 } else if (nextWaypointID.equals("00000015-0000-0010-1025-000000101025")) //A25 42~49診走廊交叉口
@@ -391,7 +391,7 @@ public class ARInitialImage {
                 if (nextWaypointID.equals("00000014-0000-0010-1103-000000101103")) //B3 X光報到處
                 {
                     predict = 0;//north
-                } else if (nextWaypointID.equals("00000015-0000-0010-1018-000000101018")) //A18 (1F樓梯)
+                } else if (nextWaypointID.equals("00020015-0000-0000-0001-000000000004")) //A18 (1F樓梯)
                 {
                     predict = 2;//east
                     //faceto.setText("請面對樓梯");
@@ -416,12 +416,12 @@ public class ARInitialImage {
                 if (nextWaypointID.equals("00000015-0000-0010-1029-000000101029") || nextWaypointID.equals("00000015-0000-0010-1030-000000101030")) //A29 & A30 超商
                 {
                     predict = 4;//south
-                } else if (nextWaypointID.equals("00160015-0000-0000-0001-000000000001") || nextWaypointID.equals("00000015-0000-0001-8500-000000019000")) //C2 & C3 樓梯
+                } else if (nextWaypointID.equals("00170015-0000-0000-0001-000000000001") || nextWaypointID.equals("00000015-0000-0001-8500-000000019000")) //C2 & C3 樓梯
                 {
                     predict = 0;//north
                 }
                 break;
-            case "00160015-0000-0000-0001-000000000001": //C2 樓梯
+            case "00170015-0000-0000-0001-000000000001": //C2 樓梯
                 if (nextWaypointID.equals("00000015-0000-0000-0101-000000000101")) //C1 新舊大樓連接走廊
                 {
                     predict = 4;//south
@@ -431,7 +431,7 @@ public class ARInitialImage {
                 } else if (nextWaypointID.equals("00000015-0000-0000-0404-000000000404")) //C4 核子醫學部
                 {
                     predict = 0;//north
-                } else if (nextWaypointID.equals("00190016-0000-0000-0002-000000000001")) //D1 2F樓梯
+                } else if (nextWaypointID.equals("00180016-0000-0000-0002-000000000001")) //D1 2F樓梯
                 {
                     predict = 6;//west
                 }
@@ -446,13 +446,13 @@ public class ARInitialImage {
                 } else if (nextWaypointID.equals("00000015-0000-0000-0404-000000000404")) //C4 核子醫學部
                 {
                     predict = 0;//north
-                } else if (nextWaypointID.equals("00190016-0000-0000-0002-000000000001")) //D1 2F樓梯
+                } else if (nextWaypointID.equals("00180016-0000-0000-0002-000000000001")) //D1 2F樓梯
                 {
                     predict = 6;//west
                 }
                 break;
             case "00000015-0000-0000-0404-000000000404": //C4 核子醫學部
-                if (nextWaypointID.equals("00160015-0000-0000-0001-000000000001") || nextWaypointID.equals("00000015-0000-0001-8500-000000019000")) //C2 & C3 樓梯
+                if (nextWaypointID.equals("00170015-0000-0000-0001-000000000001") || nextWaypointID.equals("00000015-0000-0001-8500-000000019000")) //C2 & C3 樓梯
                 {
                     predict = 4;//south
                 } else if (nextWaypointID.equals("00000015-0000-0000-0505-000000000505")) //C5 抽血
@@ -467,7 +467,7 @@ public class ARInitialImage {
                 }
                 break;
             case "00000015-0000-0000-0505-000000000505": //C5 抽血
-                if (nextWaypointID.equals("00160015-0000-0000-0001-000000000001") || nextWaypointID.equals("00000015-0000-0001-8500-000000019000")) //C2 & C3 樓梯
+                if (nextWaypointID.equals("00170015-0000-0000-0001-000000000001") || nextWaypointID.equals("00000015-0000-0001-8500-000000019000")) //C2 & C3 樓梯
                 {
                     predict = 4;//south
                 } else if (nextWaypointID.equals("00000015-0000-0000-0404-000000000404")) //C4 核子醫學部
@@ -488,7 +488,7 @@ public class ARInitialImage {
                 } else if (nextWaypointID.equals("00000015-0000-0000-0909-000000000909") || nextWaypointID.equals("0x7b9551660x00020000"))  //C8 大廳(電腦斷層室前)
                 {
                     predict = 6;//west
-                } else if (nextWaypointID.equals("00200016-0000-0000-0002-000000000002"))  //D3 迴轉樓梯(神經部)
+                } else if (nextWaypointID.equals("00180016-0000-0000-0002-000000000002"))  //D3 迴轉樓梯(神經部)
                 {
                     predict = 4;//south
                 }
@@ -500,7 +500,7 @@ public class ARInitialImage {
                 } else if (nextWaypointID.equals("00000015-0000-0000-0909-000000000909") || nextWaypointID.equals("0x7b9551660x00020000"))  //C8 大廳(電腦斷層室前)
                 {
                     predict = 6;//west
-                } else if (nextWaypointID.equals("00200016-0000-0000-0002-000000000002"))  //D3 迴轉樓梯(神經部)
+                } else if (nextWaypointID.equals("00180016-0000-0000-0002-000000000002"))  //D3 迴轉樓梯(神經部)
                 {
                     predict = 4;//south
                 }
@@ -542,7 +542,7 @@ public class ARInitialImage {
                 } else if (nextWaypointID.equals("00000015-0000-0000-0606-000000000606") || nextWaypointID.equals("0x7b9812120x00020000"))  //C6 大廳(病歷室前)
                 {
                     predict = 2;//east
-                } else if (nextWaypointID.equals("00210016-0000-0000-0002-000000000003"))  //D6 迴轉樓梯(心臟血管功能)
+                } else if (nextWaypointID.equals("00180016-0000-0000-0002-000000000003"))  //D6 迴轉樓梯(心臟血管功能)
                 {
                     predict = 4;//south
                 }
@@ -554,16 +554,16 @@ public class ARInitialImage {
                 } else if (nextWaypointID.equals("00000015-0000-0000-0606-000000000606") || nextWaypointID.equals("0x7b9812120x00020000"))  //C6 大廳(病歷室前)
                 {
                     predict = 2;//east
-                } else if (nextWaypointID.equals("00210016-0000-0000-0002-000000000003"))  //D6 迴轉樓梯(心臟血管功能)
+                } else if (nextWaypointID.equals("00180016-0000-0000-0002-000000000003"))  //D6 迴轉樓梯(心臟血管功能)
                 {
                     predict = 4;//south
                 }
                 break;
-            case "00190016-0000-0000-0002-000000000001": //D1  樓梯
+            case "00180016-0000-0000-0002-000000000001": //D1  樓梯
                 if (nextWaypointID.equals("00000016-0000-0002-4000-000000017000")) //D4 岔路
                 {
                     predict = 0;//north
-                } else if (nextWaypointID.equals("00160015-0000-0000-0001-000000000001") || nextWaypointID.equals("00000015-0000-0001-8500-000000019000")) //C2 & C3 樓梯
+                } else if (nextWaypointID.equals("00170015-0000-0000-0001-000000000001") || nextWaypointID.equals("00000015-0000-0001-8500-000000019000")) //C2 & C3 樓梯
                 {
                     predict = 6;//west
                 }
@@ -572,12 +572,12 @@ public class ARInitialImage {
                 if (nextWaypointID.equals("00000016-0000-0002-4000-000000017000")) //D4 岔路
                 {
                     predict = 6;//west
-                } else if (nextWaypointID.equals("00200016-0000-0000-0002-000000000002")) //D3 迴轉樓梯(神經部)
+                } else if (nextWaypointID.equals("00180016-0000-0000-0002-000000000002")) //D3 迴轉樓梯(神經部)
                 {
                     predict = 0;//north
                 }
                 break;
-            case "00200016-0000-0000-0002-000000000002": //D3  迴轉樓梯(神經部)
+            case "00180016-0000-0000-0002-000000000002": //D3  迴轉樓梯(神經部)
                 if (nextWaypointID.equals("00000016-0000-0001-9500-000000017000")) //D2 神經部檢查室
                 {
                     predict = 4;//south
@@ -587,7 +587,7 @@ public class ARInitialImage {
                 }
                 break;
             case "00000016-0000-0002-4000-000000017000": //D4 神經部檢查室/心臟血管功能檢查室岔路
-                if (nextWaypointID.equals("00190016-0000-0000-0002-000000000001")) //D1  樓梯
+                if (nextWaypointID.equals("00180016-0000-0000-0002-000000000001")) //D1  樓梯
                 {
                     predict = 4;//south
                 } else if (nextWaypointID.equals("00000016-0000-0002-8500-000000017000")) //D5 心臟血管
@@ -602,12 +602,12 @@ public class ARInitialImage {
                 if (nextWaypointID.equals("00000016-0000-0002-4000-000000017000")) //D4 神經部檢查室/心臟血管功能檢查室岔路
                 {
                     predict = 2;//east
-                } else if (nextWaypointID.equals("00210016-0000-0000-0002-000000000003")) //D6  迴轉樓梯(心臟血管)
+                } else if (nextWaypointID.equals("00180016-0000-0000-0002-000000000003")) //D6  迴轉樓梯(心臟血管)
                 {
                     predict = 0;//north
                 }
                 break;
-            case "00210016-0000-0000-0002-000000000003": //D6  迴轉樓梯(心臟血管)
+            case "00180016-0000-0000-0002-000000000003": //D6  迴轉樓梯(心臟血管)
                 if (nextWaypointID.equals("00000016-0000-0002-8500-000000017000")) //D5  心臟血管
                 {
                     predict = 4;//south
@@ -711,7 +711,7 @@ public class ARInitialImage {
                     image = R.drawable.a8_1;
                     predictDirection = 6;//west
                 }
-                else if (nextWaypointID.equals("00000015-0000-0010-1018-000000101018")) //A18(樓梯)
+                else if (nextWaypointID.equals("00020015-0000-0000-0001-000000000004")) //A18(樓梯)
                 {
                     image = R.drawable.a7_1;
                     predictDirection = 0;//north
@@ -735,7 +735,7 @@ public class ARInitialImage {
                     image = R.drawable.a8_1;
                     predictDirection = 6;//west
                 }
-                else if (nextWaypointID.equals("00000015-0000-0010-1018-000000101018")) //A18(樓梯)
+                else if (nextWaypointID.equals("00020015-0000-0000-0001-000000000004")) //A18(樓梯)
                 {
                     image = R.drawable.a7_1;
                     predictDirection = 0;//north
@@ -832,7 +832,7 @@ public class ARInitialImage {
                     predictDirection = 2;//east
                 }
                 break;
-            case "00000015-0000-0010-1018-000000101018": //A18 樓梯
+            case "00020015-0000-0000-0001-000000000004": //A18 樓梯
                 if (nextWaypointID.equals("00000015-0000-0010-1008-000000101008") || nextWaypointID.equals("00000015-0000-0010-1010-000000101010")) //中央走廊(A8 & A10)
                 {
                     image = R.drawable.a18_1;
@@ -860,7 +860,7 @@ public class ARInitialImage {
                 }
                 break;
             case "00000015-0000-0001-8500-000000011500"://C10 1樓電梯
-                if (nextWaypointID.equals("00000015-0000-0010-1018-000000101018")) //A18 樓梯
+                if (nextWaypointID.equals("00020015-0000-0000-0001-000000000004")) //A18 樓梯
                 {
                     image = R.drawable.a19_4;
                     predictDirection = 2;
@@ -893,7 +893,7 @@ public class ARInitialImage {
                     image = R.drawable.a19_3;
                     predictDirection = 0;//north
                 }
-                else if(nextWaypointID.equals("00000015-0000-0010-1018-000000101018")) //樓梯
+                else if(nextWaypointID.equals("00020015-0000-0000-0001-000000000004")) //樓梯
                 {
                     image = R.drawable.a19_4;
                     predictDirection = 2;//east
@@ -943,7 +943,7 @@ public class ARInitialImage {
                 }
                 break;
             case "00000015-0000-0010-1024-000000101024": // A24 領藥處大廳
-                if(nextWaypointID.equals("00000015-0000-0010-1018-000000101018")) // A18 樓梯
+                if(nextWaypointID.equals("00020015-0000-0000-0001-000000000004")) // A18 樓梯
                 {
                     image = R.drawable.a24_1;
                     predictDirection = 4;//south
@@ -1042,7 +1042,7 @@ public class ARInitialImage {
                     image = R.drawable.b1_2;
                     predictDirection = 0;//north
                 }
-                else if(nextWaypointID.equals("00000015-0000-0010-1018-000000101018")) //A18 (1F樓梯)
+                else if(nextWaypointID.equals("00020015-0000-0000-0001-000000000004")) //A18 (1F樓梯)
                 {
                     image = R.drawable.b2_1;
                     predictDirection = 2;//east
@@ -1073,13 +1073,13 @@ public class ARInitialImage {
                     image = R.drawable.c1_1;
                     predictDirection = 4;//south
                 }
-                else if(nextWaypointID.equals("00160015-0000-0000-0001-000000000001") || nextWaypointID.equals("00000015-0000-0001-8500-000000019000")) //C2 & C3 樓梯
+                else if(nextWaypointID.equals("00170015-0000-0000-0001-000000000001") || nextWaypointID.equals("00000015-0000-0001-8500-000000019000")) //C2 & C3 樓梯
                 {
                     image = R.drawable.c1_2;
                     predictDirection = 0;//north
                 }
                 break;
-            case "00160015-0000-0000-0001-000000000001": //C2 樓梯
+            case "00170015-0000-0000-0001-000000000001": //C2 樓梯
                 if(nextWaypointID.equals("00000015-0000-0000-0101-000000000101")) //C1 新舊大樓連接走廊
                 {
                     image = R.drawable.c2_1;
@@ -1095,7 +1095,7 @@ public class ARInitialImage {
                     image = R.drawable.c2_3;
                     predictDirection = 0;//north
                 }
-                else if(nextWaypointID.equals("00190016-0000-0000-0002-000000000001")) //D1 2F樓梯
+                else if(nextWaypointID.equals("00180016-0000-0000-0002-000000000001")) //D1 2F樓梯
                 {
                     image = R.drawable.c2_s;
                     predictDirection = 6;//west
@@ -1117,14 +1117,14 @@ public class ARInitialImage {
                     image = R.drawable.c2_3;
                     predictDirection = 0;//north
                 }
-                else if(nextWaypointID.equals("00190016-0000-0000-0002-000000000001")) //D1 2F樓梯
+                else if(nextWaypointID.equals("00180016-0000-0000-0002-000000000001")) //D1 2F樓梯
                 {
                     image = R.drawable.c2_s;
                     predictDirection = 6;//west
                 }
                 break;
             case "00000015-0000-0000-0404-000000000404": //C4 核子醫學部
-                if(nextWaypointID.equals("00160015-0000-0000-0001-000000000001") || nextWaypointID.equals("00000015-0000-0001-8500-000000019000")) //C2 & C3 樓梯
+                if(nextWaypointID.equals("00170015-0000-0000-0001-000000000001") || nextWaypointID.equals("00000015-0000-0001-8500-000000019000")) //C2 & C3 樓梯
                 {
                     image = R.drawable.c4_1;
                     predictDirection = 4;//south
@@ -1146,7 +1146,7 @@ public class ARInitialImage {
                 }
                 break;
             case "00000015-0000-0000-0505-000000000505": //C5 抽血
-                if(nextWaypointID.equals("00160015-0000-0000-0001-000000000001") || nextWaypointID.equals("00000015-0000-0001-8500-000000019000")) //C2 & C3 樓梯
+                if(nextWaypointID.equals("00170015-0000-0000-0001-000000000001") || nextWaypointID.equals("00000015-0000-0001-8500-000000019000")) //C2 & C3 樓梯
                 {
                     image = R.drawable.c5_1;
                     predictDirection = 4;//south
@@ -1178,7 +1178,7 @@ public class ARInitialImage {
                     image = R.drawable.c6_2;
                     predictDirection = 6;//west
                 }
-                else if(nextWaypointID.equals("00200016-0000-0000-0002-000000000002"))  //D3 迴轉樓梯(神經部)
+                else if(nextWaypointID.equals("00180016-0000-0000-0002-000000000002"))  //D3 迴轉樓梯(神經部)
                 {
                     image = R.drawable.c6_s;
                     predictDirection = 4;//south
@@ -1195,7 +1195,7 @@ public class ARInitialImage {
                     image = R.drawable.c6_2;
                     predictDirection = 6;//west
                 }
-                else if(nextWaypointID.equals("00200016-0000-0000-0002-000000000002"))  //D3 迴轉樓梯(神經部)
+                else if(nextWaypointID.equals("00180016-0000-0000-0002-000000000002"))  //D3 迴轉樓梯(神經部)
                 {
                     image = R.drawable.c6_s;
                     predictDirection = 4;//south
@@ -1256,7 +1256,7 @@ public class ARInitialImage {
                     image = R.drawable.c8_2;
                     predictDirection = 2;//east
                 }
-                else if(nextWaypointID.equals("00210016-0000-0000-0002-000000000003"))  //D6 迴轉樓梯(心臟血管功能)
+                else if(nextWaypointID.equals("00180016-0000-0000-0002-000000000003"))  //D6 迴轉樓梯(心臟血管功能)
                 {
                     image = R.drawable.c8_s;
                     predictDirection = 4;//south
@@ -1273,19 +1273,19 @@ public class ARInitialImage {
                     image = R.drawable.c8_2;
                     predictDirection = 2;//east
                 }
-                else if(nextWaypointID.equals("00210016-0000-0000-0002-000000000003"))  //D6 迴轉樓梯(心臟血管功能)
+                else if(nextWaypointID.equals("00180016-0000-0000-0002-000000000003"))  //D6 迴轉樓梯(心臟血管功能)
                 {
                     image = R.drawable.c8_s;
                     predictDirection = 4;//south
                 }
                 break;
-            case "00190016-0000-0000-0002-000000000001": //D1  樓梯
+            case "00180016-0000-0000-0002-000000000001": //D1  樓梯
                 if(nextWaypointID.equals("00000016-0000-0002-4000-000000017000")) //D4 岔路
                 {
                     image = R.drawable.d1_1;
                     predictDirection = 0;//north
                 }
-                else if(nextWaypointID.equals("00160015-0000-0000-0001-000000000001") || nextWaypointID.equals("00000015-0000-0001-8500-000000019000")) //C2 & C3 樓梯
+                else if(nextWaypointID.equals("00170015-0000-0000-0001-000000000001") || nextWaypointID.equals("00000015-0000-0001-8500-000000019000")) //C2 & C3 樓梯
                 {
                     image = R.drawable.d1_s;
                     predictDirection = 6;//west
@@ -1297,13 +1297,13 @@ public class ARInitialImage {
                     image = R.drawable.d2_1;
                     predictDirection = 6;//west
                 }
-                else if(nextWaypointID.equals("00200016-0000-0000-0002-000000000002")) //D3 迴轉樓梯(神經部)
+                else if(nextWaypointID.equals("00180016-0000-0000-0002-000000000002")) //D3 迴轉樓梯(神經部)
                 {
                     image = R.drawable.d3_s;
                     predictDirection = 0;//north
                 }
                 break;
-            case "00200016-0000-0000-0002-000000000002": //D3  迴轉樓梯(神經部)
+            case "00180016-0000-0000-0002-000000000002": //D3  迴轉樓梯(神經部)
                 if(nextWaypointID.equals("00000016-0000-0001-9500-000000017000")) //D2 神經部檢查室
                 {
                     image = R.drawable.d3_1;
@@ -1316,7 +1316,7 @@ public class ARInitialImage {
                 }
                 break;
             case "00000016-0000-0002-4000-000000017000": //D4 神經部檢查室/心臟血管功能檢查室岔路
-                if(nextWaypointID.equals("00190016-0000-0000-0002-000000000001")) //D1  樓梯
+                if(nextWaypointID.equals("00180016-0000-0000-0002-000000000001")) //D1  樓梯
                 {
                     image = R.drawable.d4_1;
                     predictDirection = 4;//south
@@ -1338,13 +1338,13 @@ public class ARInitialImage {
                     image = R.drawable.d5_2;
                     predictDirection = 2;//east
                 }
-                else if(nextWaypointID.equals("00210016-0000-0000-0002-000000000003")) //D6  迴轉樓梯(心臟血管)
+                else if(nextWaypointID.equals("00180016-0000-0000-0002-000000000003")) //D6  迴轉樓梯(心臟血管)
                 {
                     image = R.drawable.d5_1;
                     predictDirection = 0;//north
                 }
                 break;
-            case "00210016-0000-0000-0002-000000000003": //D6  迴轉樓梯(心臟血管)
+            case "00180016-0000-0000-0002-000000000003": //D6  迴轉樓梯(心臟血管)
                 if(nextWaypointID.equals("00000016-0000-0002-8500-000000017000")) //D5  心臟血管
                 {
                     image = R.drawable.d6_1;

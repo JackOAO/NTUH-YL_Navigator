@@ -151,7 +151,7 @@ public class InitDirectionImage extends AppCompatActivity{
                     image.setImageResource(R.drawable.a8_1);
                     predictDirection = 6;//west
                 }
-                else if (nextWaypointID.equals("00000015-0000-0010-1018-000000101018")) //A18(樓梯)
+                else if (nextWaypointID.equals("00020015-0000-0000-0001-000000000004")) //A18(樓梯)
                 {
                     image.setImageResource(R.drawable.a7_1);
                     predictDirection = 0;//north
@@ -175,7 +175,7 @@ public class InitDirectionImage extends AppCompatActivity{
                     image.setImageResource(R.drawable.a8_1);
                     predictDirection = 6;//west
                 }
-                else if (nextWaypointID.equals("00000015-0000-0010-1018-000000101018")) //A18(樓梯)
+                else if (nextWaypointID.equals("00020015-0000-0000-0001-000000000004")) //A18(樓梯)
                 {
                     image.setImageResource(R.drawable.a7_1);
                     predictDirection = 0;//north
@@ -272,7 +272,7 @@ public class InitDirectionImage extends AppCompatActivity{
                     predictDirection = 2;//east
                 }
                 break;
-            case "00000015-0000-0010-1018-000000101018": //A18 樓梯
+            case "00020015-0000-0000-0001-000000000004": //A18 樓梯
                 if (nextWaypointID.equals("00000015-0000-0010-1008-000000101008") || nextWaypointID.equals("00000015-0000-0010-1010-000000101010")) //中央走廊(A8 & A10)
                 {
                     image.setImageResource(R.drawable.a18_1);
@@ -300,7 +300,7 @@ public class InitDirectionImage extends AppCompatActivity{
                 }
                 break;
             case "00000015-0000-0001-8500-000000011500"://C10 1樓電梯
-                if (nextWaypointID.equals("00000015-0000-0010-1018-000000101018")) //A18 樓梯
+                if (nextWaypointID.equals("00020015-0000-0000-0001-000000000004")) //A18 樓梯
                 {
                     image.setImageResource(R.drawable.a19_4);
                     predictDirection = 2;
@@ -338,7 +338,7 @@ public class InitDirectionImage extends AppCompatActivity{
                     image.setImageResource(R.drawable.a19_3);
                     predictDirection = 0;//north
                 }
-                else if(nextWaypointID.equals("00000015-0000-0010-1018-000000101018")) //樓梯
+                else if(nextWaypointID.equals("00020015-0000-0000-0001-000000000004")) //樓梯
                 {
                     image.setImageResource(R.drawable.a19_4);
                     predictDirection = 2;//east
@@ -388,7 +388,7 @@ public class InitDirectionImage extends AppCompatActivity{
                 }
                 break;
             case "00000015-0000-0010-1024-000000101024": // A24 領藥處大廳
-                if(nextWaypointID.equals("00000015-0000-0010-1018-000000101018")) // A18 樓梯
+                if(nextWaypointID.equals("00020015-0000-0000-0001-000000000004")) // A18 樓梯
                 {
                     image.setImageResource(R.drawable.a24_1);
                     predictDirection = 4;//south
@@ -487,7 +487,7 @@ public class InitDirectionImage extends AppCompatActivity{
                     image.setImageResource(R.drawable.b1_2);
                     predictDirection = 0;//north
                 }
-                else if(nextWaypointID.equals("00000015-0000-0010-1018-000000101018")) //A18 (1F樓梯)
+                else if(nextWaypointID.equals("00020015-0000-0000-0001-000000000004")) //A18 (1F樓梯)
                 {
                     image.setImageResource(R.drawable.b2_1);
                     predictDirection = 2;//east
@@ -519,13 +519,13 @@ public class InitDirectionImage extends AppCompatActivity{
                     image.setImageResource(R.drawable.c1_1);
                     predictDirection = 4;//south
                 }
-                else if(nextWaypointID.equals("00160015-0000-0000-0001-000000000001") || nextWaypointID.equals("00000015-0000-0001-8500-000000019000")) //C2 & C3 樓梯
+                else if(nextWaypointID.equals("00170015-0000-0000-0001-000000000001") || nextWaypointID.equals("00000015-0000-0001-8500-000000019000")) //C2 & C3 樓梯
                 {
                     image.setImageResource(R.drawable.c1_2);
                     predictDirection = 0;//north
                 }
                 break;
-            case "00160015-0000-0000-0001-000000000001": //C2 樓梯
+            case "00170015-0000-0000-0001-000000000001": //C2 樓梯
                 if(nextWaypointID.equals("00000015-0000-0000-0101-000000000101")) //C1 新舊大樓連接走廊
                 {
                     image.setImageResource(R.drawable.c2_1);
@@ -541,7 +541,7 @@ public class InitDirectionImage extends AppCompatActivity{
                     image.setImageResource(R.drawable.c2_3);
                     predictDirection = 0;//north
                 }
-                else if(nextWaypointID.equals("00190016-0000-0000-0002-000000000001")) //D1 2F樓梯
+                else if(nextWaypointID.equals("00180016-0000-0000-0002-000000000001")) //D1 2F樓梯
                 {
                     image.setImageResource(R.drawable.c2_s);
                     predictDirection = 6;//west
@@ -563,14 +563,14 @@ public class InitDirectionImage extends AppCompatActivity{
                     image.setImageResource(R.drawable.c2_3);
                     predictDirection = 0;//north
                 }
-                else if(nextWaypointID.equals("00190016-0000-0000-0002-000000000001")) //D1 2F樓梯
+                else if(nextWaypointID.equals("00180016-0000-0000-0002-000000000001")) //D1 2F樓梯
                 {
                     image.setImageResource(R.drawable.c2_s);
                     predictDirection = 6;//west
                 }
                 break;
             case "00000015-0000-0000-0404-000000000404": //C4 核子醫學部
-                if(nextWaypointID.equals("00160015-0000-0000-0001-000000000001") || nextWaypointID.equals("00000015-0000-0001-8500-000000019000")) //C2 & C3 樓梯
+                if(nextWaypointID.equals("00170015-0000-0000-0001-000000000001") || nextWaypointID.equals("00000015-0000-0001-8500-000000019000")) //C2 & C3 樓梯
                 {
                     image.setImageResource(R.drawable.c4_1);
                     predictDirection = 4;//south
@@ -592,7 +592,7 @@ public class InitDirectionImage extends AppCompatActivity{
                 }
                 break;
             case "00000015-0000-0000-0505-000000000505": //C5 抽血
-                if(nextWaypointID.equals("00160015-0000-0000-0001-000000000001") || nextWaypointID.equals("00000015-0000-0001-8500-000000019000")) //C2 & C3 樓梯
+                if(nextWaypointID.equals("00170015-0000-0000-0001-000000000001") || nextWaypointID.equals("00000015-0000-0001-8500-000000019000")) //C2 & C3 樓梯
                 {
                     image.setImageResource(R.drawable.c5_1);
                     predictDirection = 4;//south
@@ -624,7 +624,7 @@ public class InitDirectionImage extends AppCompatActivity{
                     image.setImageResource(R.drawable.c6_2);
                     predictDirection = 6;//west
                 }
-                else if(nextWaypointID.equals("00200016-0000-0000-0002-000000000002"))  //D3 迴轉樓梯(神經部)
+                else if(nextWaypointID.equals("00180016-0000-0000-0002-000000000002"))  //D3 迴轉樓梯(神經部)
                 {
                     image.setImageResource(R.drawable.c6_s);
                     predictDirection = 4;//south
@@ -641,7 +641,7 @@ public class InitDirectionImage extends AppCompatActivity{
                     image.setImageResource(R.drawable.c6_2);
                     predictDirection = 6;//west
                 }
-                else if(nextWaypointID.equals("00200016-0000-0000-0002-000000000002"))  //D3 迴轉樓梯(神經部)
+                else if(nextWaypointID.equals("00180016-0000-0000-0002-000000000002"))  //D3 迴轉樓梯(神經部)
                 {
                     image.setImageResource(R.drawable.c6_s);
                     predictDirection = 4;//south
@@ -702,7 +702,7 @@ public class InitDirectionImage extends AppCompatActivity{
                     image.setImageResource(R.drawable.c8_2);
                     predictDirection = 2;//east
                 }
-                else if(nextWaypointID.equals("00210016-0000-0000-0002-000000000003"))  //D6 迴轉樓梯(心臟血管功能)
+                else if(nextWaypointID.equals("00180016-0000-0000-0002-000000000003"))  //D6 迴轉樓梯(心臟血管功能)
                 {
                     image.setImageResource(R.drawable.c8_s);
                     predictDirection = 4;//south
@@ -719,19 +719,19 @@ public class InitDirectionImage extends AppCompatActivity{
                     image.setImageResource(R.drawable.c8_2);
                     predictDirection = 2;//east
                 }
-                else if(nextWaypointID.equals("00210016-0000-0000-0002-000000000003"))  //D6 迴轉樓梯(心臟血管功能)
+                else if(nextWaypointID.equals("00180016-0000-0000-0002-000000000003"))  //D6 迴轉樓梯(心臟血管功能)
                 {
                     image.setImageResource(R.drawable.c8_s);
                     predictDirection = 4;//south
                 }
                 break;
-            case "00190016-0000-0000-0002-000000000001": //D1  樓梯
+            case "00180016-0000-0000-0002-000000000001": //D1  樓梯
                 if(nextWaypointID.equals("00000016-0000-0002-4000-000000017000")) //D4 岔路
                 {
                     image.setImageResource(R.drawable.d1_1);
                     predictDirection = 0;//north
                 }
-                else if(nextWaypointID.equals("00160015-0000-0000-0001-000000000001") || nextWaypointID.equals("00000015-0000-0001-8500-000000019000")) //C2 & C3 樓梯
+                else if(nextWaypointID.equals("00170015-0000-0000-0001-000000000001") || nextWaypointID.equals("00000015-0000-0001-8500-000000019000")) //C2 & C3 樓梯
                 {
                     image.setImageResource(R.drawable.d1_s);
                     predictDirection = 6;//west
@@ -743,13 +743,13 @@ public class InitDirectionImage extends AppCompatActivity{
                     image.setImageResource(R.drawable.d2_1);
                     predictDirection = 6;//west
                 }
-                else if(nextWaypointID.equals("00200016-0000-0000-0002-000000000002")) //D3 迴轉樓梯(神經部)
+                else if(nextWaypointID.equals("00180016-0000-0000-0002-000000000002")) //D3 迴轉樓梯(神經部)
                 {
                     image.setImageResource(R.drawable.d3_s);
                     predictDirection = 0;//north
                 }
                 break;
-            case "00200016-0000-0000-0002-000000000002": //D3  迴轉樓梯(神經部)
+            case "00180016-0000-0000-0002-000000000002": //D3  迴轉樓梯(神經部)
                 if(nextWaypointID.equals("00000016-0000-0001-9500-000000017000")) //D2 神經部檢查室
                 {
                     image.setImageResource(R.drawable.d3_1);
@@ -762,7 +762,7 @@ public class InitDirectionImage extends AppCompatActivity{
                 }
                 break;
             case "00000016-0000-0002-4000-000000017000": //D4 神經部檢查室/心臟血管功能檢查室岔路
-                if(nextWaypointID.equals("00190016-0000-0000-0002-000000000001")) //D1  樓梯
+                if(nextWaypointID.equals("00180016-0000-0000-0002-000000000001")) //D1  樓梯
                 {
                     image.setImageResource(R.drawable.d4_1);
                     predictDirection = 4;//south
@@ -784,13 +784,13 @@ public class InitDirectionImage extends AppCompatActivity{
                     image.setImageResource(R.drawable.d5_2);
                     predictDirection = 2;//east
                 }
-                else if(nextWaypointID.equals("00210016-0000-0000-0002-000000000003")) //D6  迴轉樓梯(心臟血管)
+                else if(nextWaypointID.equals("00180016-0000-0000-0002-000000000003")) //D6  迴轉樓梯(心臟血管)
                 {
                     image.setImageResource(R.drawable.d5_1);
                     predictDirection = 0;//north
                 }
                 break;
-            case "00210016-0000-0000-0002-000000000003": //D6  迴轉樓梯(心臟血管)
+            case "00180016-0000-0000-0002-000000000003": //D6  迴轉樓梯(心臟血管)
                 if(nextWaypointID.equals("00000016-0000-0002-8500-000000017000")) //D5  心臟血管
                 {
                     image.setImageResource(R.drawable.d6_1);

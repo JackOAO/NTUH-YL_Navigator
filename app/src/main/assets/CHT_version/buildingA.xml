@@ -32,7 +32,7 @@
 	<region id='2' name='region2' neighbor1='region1' neighbor2='' neighbor3='' neighbor4='' elevation='2'>
      
 		<node id='00000016-0000-0002-8500-000000017000' name='心臟血管檢查室' region='region2' category='檢查室'/>
-		<node id='00200016-0000-0000-0002-000000000002' name='內視鏡/超音波檢查室' region='region2' category='檢查室'/>
+		<node id='00180016-0000-0000-0002-000000000002' name='內視鏡/超音波檢查室' region='region2' category='檢查室'/>
 		<node id='00000016-0000-0001-9500-000000017000' name='神經部檢查室' region='region2' category='檢查室'/>
 
     </region>
