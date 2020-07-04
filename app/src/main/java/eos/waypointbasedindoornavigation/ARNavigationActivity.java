@@ -1396,8 +1396,8 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
         //beaconManager.setForegroundBetweenScanPeriod(2*ONE_SECOND);
 
 
-        beaconManager.setForegroundScanPeriod(500);
-        beaconManager.setForegroundBetweenScanPeriod(1500);
+        beaconManager.setForegroundScanPeriod(50);
+        beaconManager.setForegroundBetweenScanPeriod(0);
 
         beaconManager.removeAllMonitorNotifiers();
         beaconManager.removeAllRangeNotifiers();
@@ -1426,8 +1426,8 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
         }
         beaconManager.enableForegroundServiceScanning(builder.build(), 456);
         beaconManager.setEnableScheduledScanJobs(false);
-        beaconManager.setBackgroundBetweenScanPeriod(1500);
-        beaconManager.setBackgroundScanPeriod(500);
+        beaconManager.setBackgroundBetweenScanPeriod(0);
+        beaconManager.setBackgroundScanPeriod(1100);
         beaconManager.bind(ARNavigationActivity.this);
     }
 
@@ -2799,7 +2799,7 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
                 case FRONT_RIGHTSIDE:
                     turnDirection = PLEASE_GO_STRAIGHT_RIGHTSIDE;
                     if (LastisSlash == false) {
-                        add3DObject("file:///android_asset/ARModel/RightSite.obj",mViroView.getLastCameraPositionRealtime().add(mViroView.getLastCameraForwardRealtime()),navigationPath.get(0)._waypointID);
+                        add3DObject("file:///android_asset/ARModel/RightFront.obj",mViroView.getLastCameraPositionRealtime().add(mViroView.getLastCameraForwardRealtime()),navigationPath.get(0)._waypointID);
                         LastisSlash = true;
                     } else {
                         add3DObject("file:///android_asset/ARModel/Front.obj",mViroView.getLastCameraPositionRealtime().add(mViroView.getLastCameraForwardRealtime()),navigationPath.get(0)._waypointID);
@@ -2810,7 +2810,7 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
                 case FRONT_LEFTSIDE:
                     turnDirection = PLEASE_GO_STRAIGHT_LEFTSIDE;
                     if (LastisSlash == false) {
-                        add3DObject("file:///android_asset/ARModel/LeftSite.obj",mViroView.getLastCameraPositionRealtime().add(mViroView.getLastCameraForwardRealtime()),navigationPath.get(0)._waypointID);
+                        add3DObject("file:///android_asset/ARModel/LeftFront.obj",mViroView.getLastCameraPositionRealtime().add(mViroView.getLastCameraForwardRealtime()),navigationPath.get(0)._waypointID);
                         LastisSlash = true;
                     } else {
                         add3DObject("file:///android_asset/ARModel/Front.obj",mViroView.getLastCameraPositionRealtime().add(mViroView.getLastCameraForwardRealtime()),navigationPath.get(0)._waypointID);
