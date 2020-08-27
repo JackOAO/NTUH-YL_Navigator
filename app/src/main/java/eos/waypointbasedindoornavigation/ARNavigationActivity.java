@@ -1712,8 +1712,10 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
                         turnDirection = STAIR;
                     }
                     else
+                    {
                         Toast.makeText(ARNavigationActivity.this, PLEASE_KEEP_PHONE_UPRIGHT, Toast.LENGTH_LONG).show();
-
+                        return;
+                    }
                 }
             }
             else if(turnDirection != STAIR && turnDirection != ELEVATOR && turnDirection != ARRIVED)
@@ -1731,8 +1733,10 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
                         FirstTurn = false;
                     }
                     else
+                    {
                         Toast.makeText(ARNavigationActivity.this, PLEASE_KEEP_PHONE_UPRIGHT, Toast.LENGTH_LONG).show();
-
+                        return;
+                    }
                 }
                 //turnNotificationForPopup = null;
             }
@@ -1772,8 +1776,10 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
                                 }
                             }
                             else
+                            {
                                 Toast.makeText(ARNavigationActivity.this, PLEASE_KEEP_PHONE_UPRIGHT, Toast.LENGTH_LONG).show();
-
+                                return;
+                            }
                         } else {
                             Toast.makeText(ARNavigationActivity.this, PLEASEFACETO + toDirection(predictDirection), Toast.LENGTH_LONG).show();
                             return;
@@ -1811,8 +1817,10 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
                                 }
                             }
                             else
+                            {
                                 Toast.makeText(ARNavigationActivity.this, PLEASE_KEEP_PHONE_UPRIGHT, Toast.LENGTH_LONG).show();
-
+                                return;
+                            }
                         } else {
                             Toast.makeText(ARNavigationActivity.this, PLEASEFACETO + toDirection(predictDirection), Toast.LENGTH_LONG).show();
                             return;
@@ -1850,8 +1858,10 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
                                 }
                             }
                             else
+                            {
                                 Toast.makeText(ARNavigationActivity.this, PLEASE_KEEP_PHONE_UPRIGHT, Toast.LENGTH_LONG).show();
-
+                                return;
+                            }
                         } else {
                             Toast.makeText(ARNavigationActivity.this, PLEASEFACETO + toDirection(predictDirection), Toast.LENGTH_LONG).show();
                             return;
@@ -1889,8 +1899,10 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
                                 }
                             }
                             else
+                            {
                                 Toast.makeText(ARNavigationActivity.this, PLEASE_KEEP_PHONE_UPRIGHT, Toast.LENGTH_LONG).show();
-
+                                return;
+                            }
                         } else {
                             Toast.makeText(ARNavigationActivity.this, PLEASEFACETO + toDirection(predictDirection), Toast.LENGTH_LONG).show();
                             return;
@@ -1928,8 +1940,10 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
                                 }
                             }
                             else
+                            {
                                 Toast.makeText(ARNavigationActivity.this, PLEASE_KEEP_PHONE_UPRIGHT, Toast.LENGTH_LONG).show();
-
+                                return;
+                            }
                         }else {
                             Toast.makeText(ARNavigationActivity.this, PLEASEFACETO + toDirection(predictDirection), Toast.LENGTH_LONG).show();
                             return;
@@ -1967,8 +1981,10 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
                                 }
                             }
                             else
+                            {
                                 Toast.makeText(ARNavigationActivity.this, PLEASE_KEEP_PHONE_UPRIGHT, Toast.LENGTH_LONG).show();
-
+                                return;
+                            }
                         } else {
                             Toast.makeText(ARNavigationActivity.this, PLEASEFACETO + toDirection(predictDirection), Toast.LENGTH_LONG).show();
                             return;
@@ -2005,8 +2021,10 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
                                 }
                             }
                             else
+                            {
                                 Toast.makeText(ARNavigationActivity.this, PLEASE_KEEP_PHONE_UPRIGHT, Toast.LENGTH_LONG).show();
-
+                                return;
+                            }
                         }else {
                             Toast.makeText(ARNavigationActivity.this, PLEASEFACETO + toDirection(predictDirection), Toast.LENGTH_LONG).show();
                             return;
@@ -2043,8 +2061,10 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
                                 }
                             }
                             else
+                            {
                                 Toast.makeText(ARNavigationActivity.this, PLEASE_KEEP_PHONE_UPRIGHT, Toast.LENGTH_LONG).show();
-
+                                return;
+                            }
                         }else {
                             Toast.makeText(ARNavigationActivity.this, PLEASEFACETO + toDirection(predictDirection), Toast.LENGTH_LONG).show();
                             return;
@@ -2081,8 +2101,10 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
                                 }
                             }
                             else
+                            {
                                 Toast.makeText(ARNavigationActivity.this, PLEASE_KEEP_PHONE_UPRIGHT, Toast.LENGTH_LONG).show();
-
+                                return;
+                            }
                         }else {
                             Toast.makeText(ARNavigationActivity.this, PLEASEFACETO + toDirection(predictDirection), Toast.LENGTH_LONG).show();
                             return;
@@ -2240,8 +2262,10 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
                                 //predictDirection =new ARInitialImage().getPredict(navigationPath.get(1)._waypointID, navigationPath.get(2)._waypointID);
                             }
                             else
+                            {
                                 Toast.makeText(ARNavigationActivity.this, PLEASE_KEEP_PHONE_UPRIGHT, Toast.LENGTH_LONG).show();
-
+                                return;
+                            }
                         }
                         else
                         {
@@ -2291,8 +2315,10 @@ public class ARNavigationActivity extends AppCompatActivity implements BeaconCon
                                 //predictDirection =new ARInitialImage().getPredict(navigationPath.get(1)._waypointID, navigationPath.get(2)._waypointID);
                             }
                             else
+                            {
                                 Toast.makeText(ARNavigationActivity.this, PLEASE_KEEP_PHONE_UPRIGHT, Toast.LENGTH_LONG).show();
-
+                                return;
+                            }
                         }
                         else
                         {
